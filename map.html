@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>A Voice For Us</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+  <style>
+    #map{ width: 900px; height: 500px; }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script>
+
+  // initialize the map
+  var map = L.map('map').setView([39, -98], 4);
+
+  // load a tile layer
+   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      }).addTo(map);
+
+   var marker = L.marker([31.994813, -102.156397]).addTo(map);
+   marker.bindPopup("<b>A Voice for Us</b><br /><br /> <b>A Man Who Allegedly Tried To Kill An Asian American Family Because Of The Coronavirus Could Face Hate Crime Charges</b><br /> April 1, 2020 <br /> <p style=\"color:red\">Severe</p> Jose L. Gomez, 19, stabbed the three people on March 14 at the Midland, Texas, Sam's Club before being taken down by a store employee, who saved the family's lives and was injured in the process, police told BuzzFeed News. <br /><br /> Source: <a href=https://www.buzzfeednews.com/article/juliareinstein/man-attempted-murder-asian-american-family>https://www.buzzfeednews.com/article/juliareinstein/man-attempted-murder-asian-american-family</a>");
+
+  </script>
+</body>
+</html>
