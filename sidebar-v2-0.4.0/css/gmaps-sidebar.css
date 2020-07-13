@@ -95,6 +95,16 @@
   .sidebar.collapsed > .sidebar-content {
     overflow-y: hidden; }
 
+    @media (min-width: 768px) and (max-width: 991px) {
+      .sidebar-content {
+        min-width: 265px; } }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      .sidebar-content {
+        min-width: 350px; } }
+    @media (min-width: 1200px) {
+      .sidebar-content {
+        min-width: 420px; } }
+
 .sidebar-pane {
   display: none;
   left: 0;
@@ -105,7 +115,7 @@
     display: block; }
   @media (min-width: 768px) and (max-width: 991px) {
     .sidebar-pane {
-      min-width: 480px; } }
+      min-width: 265px; } }
   @media (min-width: 992px) and (max-width: 1199px) {
     .sidebar-pane {
       min-width: 350px; } }
@@ -203,7 +213,3 @@
 @media (min-width: 768px) {
   .sidebar-right.collapsed ~ .sidebar-map .gm-style > div.gmnoprint[style*="right: 28px"] {
     margin-right: 60px !important; } }
-
-.idkman {
-    font-family: "Hind";
-  }
