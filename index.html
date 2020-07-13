@@ -8,10 +8,20 @@
    crossorigin=""/>
    <link rel="stylesheet" href="sidebar-v2-0.4.0/css/leaflet-sidebar.css" />
    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-  
+
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
+
+   <title>Kathy Wang</title>
+
+  <meta property="og:image" content="images/coverimage.jpg"/>
+  <meta property="og:title" content="Allied Voices"/>
+  <meta property="og:url" content="http://www.alliedvoices.org"/>
+  <meta property="og:description" content="We help users assess and equip themselves for their racial landscape,
+  wherever they may be."/>
+  <meta property="og:type" content="website"/>
+  <link rel="icon" href="images/logo.png">
 
   <style>
     #map { width: 100%; height: 100%; }
@@ -22,7 +32,7 @@
 <body>
 
   <div id="map" class="sidebar-map"></div>
-  
+
   <div id="sidebar" class="sidebar collapsed">
     <div class="sidebar-tabs">
       <ul role="tablist">
@@ -111,7 +121,7 @@
 
   <script src="sidebar-v2-0.4.0/js/leaflet-sidebar.js"></script>
   <script src="leaflet-color-markers-master/js/leaflet-color-markers.js"></script>
-  
+
   <script>
     // initialize the map
     var map = L.map('map').setView([39, -98], 5);
@@ -152,10 +162,10 @@
       attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
 
-    var marker0 = L.marker([51.514969, -0.144491], {icon: redIcon}).addTo(map); 
+    var marker0 = L.marker([51.514969, -0.144491], {icon: redIcon}).addTo(map);
     marker0.on('click', function () {
       sidebar.open("news");
-      newsContentDiv.innerHTML = "<br /><b>Asian man reportedly attacked in London by racist angry about coronavirus</b><br />March 05, 2020<br /> <p style=\"color:red\">Severe</p>An Asian man was left with multiple fractures to his face after a racist assault in London by a man shouting, “I don’t want your coronavirus in my country!” Jonathan Mok, 23, was beaten on Oxford Streets, one of the city’s busiest thoroughfares, the Independent reported.<br /><br /> Source: <a href=\"https://nypost.com/2020/03/05/asian-man-reportedly-attacked-in-london-by-racist-angry-about-coronavirus/\" target=\"_blank\">https://nypost.com/2020/03/05/asian-man-reportedly-attacked-in-london-by-racist-angry-about-coronavirus/</a>"
+      newsContentDiv.innerHTML = "<br /><b>Asian man reportedly attacked in London by racist angry about coronavirus</b><br />March 05, 2020<br /> <p style=\"color:red\">Severe</p>An Asian man was left with multiple fractures to his face after a racist assault in London by a man shouting, ï¿½I donï¿½t want your coronavirus in my country!ï¿½ Jonathan Mok, 23, was beaten on Oxford Streets, one of the cityï¿½s busiest thoroughfares, the Independent reported.<br /><br /> Source: <a href=\"https://nypost.com/2020/03/05/asian-man-reportedly-attacked-in-london-by-racist-angry-about-coronavirus/\" target=\"_blank\">https://nypost.com/2020/03/05/asian-man-reportedly-attacked-in-london-by-racist-angry-about-coronavirus/</a>"
     });
 
     var marker1 = L.marker([31.994813, -102.156397], {icon: redIcon}).addTo(map);
@@ -166,25 +176,25 @@
     });
 
 
-    var marker2 = L.marker([44.928499, -92.958752], {icon: redIcon}).addTo(map); 
+    var marker2 = L.marker([44.928499, -92.958752], {icon: redIcon}).addTo(map);
     marker2.on('click', function () {
       sidebar.open("news");
       newsContentDiv.innerHTML = "<br /><b>Racist note tells Woodbury couple to 'take the virus back to China'</b><br />March 30, 2020<br /> <p style=\"color:red\">Severe</p>According to Alvin Moua, he came home from work around noon on Wednesday and found a note taped to the front door of his Woodbury townhome.<br /><br /> Source: <a href=\"http://www.citypages.com/news/racist-note-tells-woodbury-couple-to-take-the-virus-back-to-china/569169611\" target=\"_blank\">http://www.citypages.com/news/racist-note-tells-woodbury-couple-to-take-the-virus-back-to-china/569169611</a>"
     });
 
-    var marker3 = L.marker([41.396424, -73.061373], {icon: redIcon}).addTo(map); 
+    var marker3 = L.marker([41.396424, -73.061373], {icon: redIcon}).addTo(map);
     marker3.on('click', function () {
       sidebar.open("news");
       newsContentDiv.innerHTML = "<br /><b>Racist Death Threats Lodged Against Seymour Restaurant</b><br />April 05, 2020<br /> <p style=\"color:red\">Severe</p>A Chinese food restaurant received a flurry of profanity laced, racist death threats from two different phone numbers Friday.<br /><br /> Source: <a href=\"https://valley.newhavenindependent.org/archives/entry/update_racist_death_threats_lodged_against_seymour_restaurant/\" target=\"_blank\">https://valley.newhavenindependent.org/archives/entry/update_racist_death_threats_lodged_against_seymour_restaurant/</a>"
     });
 
-    var marker4 = L.marker([40.749059, -73.986368], {icon: redIcon}).addTo(map); 
+    var marker4 = L.marker([40.749059, -73.986368], {icon: redIcon}).addTo(map);
     marker4.on('click', function () {
       sidebar.open("news");
       newsContentDiv.innerHTML = "<br /><b>NYPD Investigating Hate Crime After Asian Woman Allegedly Punched For Not Wearing Face Mask</b><br />March 11, 2020<br /> <p style=\"color:red\">Severe</p>Police are investigating a possible bias attack after a woman punched another woman and yelled anti-Asian slurs Tuesday morning in midtown.<br /><br /> Source: <a href=\"https://gothamist.com/news/nypd-investigating-hate-crime-after-asian-woman-allegedly-punched-not-wearing-face-mask\" target=\"_blank\">https://gothamist.com/news/nypd-investigating-hate-crime-after-asian-woman-allegedly-punched-not-wearing-face-mask</a>"
     });
 
-    var marker5 = L.marker([40.6943, -73.9249], {icon: redIcon}).addTo(map); 
+    var marker5 = L.marker([40.6943, -73.9249], {icon: redIcon}).addTo(map);
     marker5.on('click', function () {
       sidebar.open("news");
       newsContentDiv.innerHTML = "<br /><b>Coronavirus hate attack: Woman in face mask allegedly assaulted by man who calls her 'diseased'</b><br />February 05, 2020<br /> <p style=\"color:red\">Severe</p>A woman wearing a face mask was allegedly assaulted and called \"diseased\" in an incident in a New York City subway that was apparently sparked by bias over the coronavirus.<br /><br /> Source: <a href=\"https://www.nbcnews.com/news/us-news/coronavirus-hate-attack-woman-face-mask-allegedly-assaulted-man-who-n1130671\" target=\"_blank\">https://www.nbcnews.com/news/us-news/coronavirus-hate-attack-woman-face-mask-allegedly-assaulted-man-who-n1130671</a>"
@@ -193,10 +203,10 @@
     var marker6 = L.marker([34.201207, -118.473534], {icon: redIcon}).addTo(map);
     marker6.on('click', function () {
       sidebar.open("news");
-      newsContentDiv.innerHTML = "<br /><b>Bullies attack Asian American teen at school, accusing him of having coronavirus</b><br />February 14, 2020<br /> <p style=\"color:red\">Severe</p>A 16-year-old boy in California's San Fernando Valley was physically attacked this week by bullies in his high school who accused him of having the coronavirus — simply because he is Asian American.<br /><br /> Source: <a href=\"https://www.cbsnews.com/news/coronavirus-bullies-attack-asian-teen-los-angeles-accusing-him-of-having-coronavirus/\" target=\"_blank\">https://www.cbsnews.com/news/coronavirus-bullies-attack-asian-teen-los-angeles-accusing-him-of-having-coronavirus/</a>"
+      newsContentDiv.innerHTML = "<br /><b>Bullies attack Asian American teen at school, accusing him of having coronavirus</b><br />February 14, 2020<br /> <p style=\"color:red\">Severe</p>A 16-year-old boy in California's San Fernando Valley was physically attacked this week by bullies in his high school who accused him of having the coronavirus ï¿½ simply because he is Asian American.<br /><br /> Source: <a href=\"https://www.cbsnews.com/news/coronavirus-bullies-attack-asian-teen-los-angeles-accusing-him-of-having-coronavirus/\" target=\"_blank\">https://www.cbsnews.com/news/coronavirus-bullies-attack-asian-teen-los-angeles-accusing-him-of-having-coronavirus/</a>"
     });
- 
-    var marker7 = L.marker([30.419827, -97.752301], {icon: orangeIcon}).addTo(map); 
+
+    var marker7 = L.marker([30.419827, -97.752301], {icon: orangeIcon}).addTo(map);
     marker7.on('click', function () {
       sidebar.open("news");
       newsContentDiv.innerHTML = "<br /><b>Some Asian Americans in Austin say they've become targets of public's coronavirus fears</b><br />February 07, 2020<br /> <p style=\"color:orange\">Moderate</p>Across the country, coronavirus fears are sparking allegations of discrimination against people of Asian descent. It's bad enough that it prompted a CDC official to warn that being Asian isn't a risk factor for coronavirus.<br /><br /> Source: <a href=\"https://cbsaustin.com/news/local/some-asian-americans-in-austin-say-theyve-become-targets-of-publics-coronavirus-fears\" target=\"_blank\">https://cbsaustin.com/news/local/some-asian-americans-in-austin-say-theyve-become-targets-of-publics-coronavirus-fears</a>"
@@ -205,7 +215,7 @@
     var marker8 = L.marker([34.152945, -118.385787], {icon: orangeIcon}).addTo(map);
     marker8.on('click', function () {
       sidebar.open("news");
-      newsContentDiv.innerHTML = "<br /><b>Boy teased about coronavirus, says because he’s Asian; Teacher accused of intolerance</b><br />February 10, 2020<br /> <p style=\"color:orange\">Moderate</p>A local teenager was sent to the school nurse’s office after he coughed in class. His mom says it’s because of growing coronavirus co<br /><br /> Source: <a href=\"https://www.foxla.com/news/boy-teased-about-coronavirus-says-because-hes-asian-teacher-accused-of-intolerance\" target=\"_blank\">https://www.foxla.com/news/boy-teased-about-coronavirus-says-because-hes-asian-teacher-accused-of-intolerance</a>"
+      newsContentDiv.innerHTML = "<br /><b>Boy teased about coronavirus, says because heï¿½s Asian; Teacher accused of intolerance</b><br />February 10, 2020<br /> <p style=\"color:orange\">Moderate</p>A local teenager was sent to the school nurseï¿½s office after he coughed in class. His mom says itï¿½s because of growing coronavirus co<br /><br /> Source: <a href=\"https://www.foxla.com/news/boy-teased-about-coronavirus-says-because-hes-asian-teacher-accused-of-intolerance\" target=\"_blank\">https://www.foxla.com/news/boy-teased-about-coronavirus-says-because-hes-asian-teacher-accused-of-intolerance</a>"
     });
 
     var marker9 = L.marker([39.252945, -100.385787], {icon: greenIcon}).addTo(map);
