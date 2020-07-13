@@ -203,3 +203,7 @@
 @media (min-width: 768px) {
   .sidebar-right.collapsed ~ .sidebar-map .gm-style > div.gmnoprint[style*="right: 28px"] {
     margin-right: 60px !important; } }
+
+.idkman {
+    font-family: "Hind";
+  }

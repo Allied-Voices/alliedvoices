@@ -114,16 +114,32 @@
     .sidebar-pane {
       min-width: 420px; } }
 
+body {
+  font-family: "Hind", sans-serif;
+}
+
 .sidebar-header {
   margin: 18px 0px 0;
   height: 40px;
   padding: 0;
   line-height: 40px;
   font-size: 24pt;
+  font-weight: bold;
   /* color: #fff; */
   background-color: #fff; }
   .sidebar-right .sidebar-header {
     padding-left: 40px; }
+
+h2 {
+  font-size: 18pt;
+  font-weight: normal;
+}
+
+p {
+  font-family: "Hind", sans-serif;
+  font-size: 14pt;
+  font-weight: bold;
+}
 
 .sidebar-close {
   position: absolute;
