@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import L from 'leaflet';
-import { Map, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, ZoomControl} from 'react-leaflet';
 import { Sidebar, Tab } from './Sidebar';
 
 class App extends Component {
