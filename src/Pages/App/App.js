@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Map, TileLayer, ZoomControl} from 'react-leaflet';
-import { Sidebar, Tab } from './Sidebar';
+import { Sidebar, Tab } from '../../Components/MapSidebar/MapSidebar';
+import MapComponent from '../../Components/MapComponent/MapComponent';
 
 class App extends Component {
 
@@ -11,12 +11,6 @@ class App extends Component {
     zoom: 5,
     collapsed: true,
     selected: '',
-  }
-
-  handleClick = () => {
-    this.setState({
-      zoom: this.state.zoom + 1
-    })
   }
 
   onClose() {
@@ -33,11 +27,15 @@ class App extends Component {
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng];
     return (
       <div>
-        <Sidebar id="sidebar" collapsed={this.state.collapsed} selected={this.state.selected}
-          onOpen={this.onOpen.bind(this)} onClose={this.onClose.bind(this)}>
+        <Sidebar
+          id="sidebar"
+          collapsed={this.state.collapsed}
+          selected={this.state.selected}
+          onOpen={this.onOpen.bind(this)}
+          onClose={this.onClose.bind(this)}
+        >
           <Tab id="home" header="Home" icon="fa fa-home" >
             <p>No place like home!</p>
           </Tab>
@@ -51,14 +49,7 @@ class App extends Component {
             <p>Settings dialogue.</p>
           </Tab>
         </Sidebar>
-        <Map className="map" center={position} zoom={this.state.zoom} zoomControl={false}>
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <ZoomControl position="topright" />
-
-        </Map>
+        <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom}></MapComponent>
       </div>
     );
   }
