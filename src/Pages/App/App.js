@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Sidebar, Tab } from '../../Components/MapSidebar/MapSidebar';
+import { Sidebar, Tab } from '../../Components/MapSideBar/MapSideBar';
 import MapComponent from '../../Components/MapComponent/MapComponent';
+import MapTopBar from '../../Components/MapTopBar/MapTopBar';
 
 class App extends Component {
 
@@ -29,6 +30,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <MapTopBar></MapTopBar>
         <Sidebar
           id="sidebar"
           collapsed={this.state.collapsed}

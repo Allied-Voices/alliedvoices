@@ -1,5 +1,6 @@
 .map {
-  height:100vh;
+  top:50px;
+  height:calc(100vh - 50px);
 }
 
 button{

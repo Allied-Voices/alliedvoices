@@ -1,0 +1,18 @@
+.Container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index:2001;
+  position:absolute;
+  background:#fff;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.43);
+  height:49px;
+  width:100%;
+}
+
+.test{
+  font-size:18px;
+  position:absolute;
+  left: 20px;
+}

@@ -1,15 +1,16 @@
 .sidebar {
   position: absolute;
-  top: 0;
+  top: 45px;
   bottom: 0;
   width: 100%;
   overflow: hidden;
+  box-shadow:6px 7px 10px -6px rgba(0,0,0,0.43);
   z-index: 2000; }
   .sidebar.collapsed {
     width: 40px; }
   @media (min-width: 768px) {
     .sidebar {
-      top: 0px;
+      top: 45.4px;
       bottom: 0px;
       transition: width 500ms; } }
   @media (min-width: 768px) and (max-width: 991px) {
@@ -38,7 +39,7 @@
   top: 0;
   bottom: 0;
   height: 100%;
-  background-color: #fff; }
+  background-color: #ffffff; }
   .sidebar-left .sidebar-tabs {
     left: 0; }
   .sidebar-right .sidebar-tabs {
@@ -83,7 +84,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 1);
   overflow-x: hidden;
   overflow-y: auto; }
   .sidebar-left .sidebar-content {
@@ -200,16 +201,7 @@ p {
     .sidebar-right ~ .sidebar-map {
       margin-right: 0; } }
 
-.sidebar {
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65); }
-  .sidebar.leaflet-touch {
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65); 
-    border-right: 0px solid rgba(0, 0, 0, 0.2); }
-  @media (min-width: 768px) {
-    .sidebar {
-      border-radius: 4px; }
-      .sidebar.leaflet-touch {
-        border: 0px solid rgba(0, 0, 0, 0.2); } }
+
 
 @media (min-width: 768px) {
   .sidebar-left ~ .sidebar-map .leaflet-left {
