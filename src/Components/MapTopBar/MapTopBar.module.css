@@ -11,8 +11,28 @@
   width:100%;
 }
 
-.test{
-  font-size:18px;
+.Anchor{
+  display:flex;
+  align-items: center;
+  text-decoration:none;
+  color:black;
+  margin:0;
+  padding:0;
+}
+
+.LogoContainer{
+  display:flex;
   position:absolute;
+  align-items: center;
   left: 20px;
+}
+
+.Title{
+  font-size:18px;
+}
+
+.Logo{
+  height:18px;
+  width:18px;
+  margin-right:10px;
 }

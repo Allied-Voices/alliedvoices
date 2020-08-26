@@ -55,9 +55,9 @@
   transition: width 0.5s;
 }
 
-.InnerSection:hover{
+.InnerSection:focus-within{
   direction:ltr;
-  width:180px;
+  width:250px;
   transition: width 0.5s;
 }
 
@@ -91,4 +91,24 @@
 .Icon{
   height:15px;
   width:15px;
+}
+
+.Form{
+  display:flex;
+}
+
+.ArrowContainer{
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+  background:rgba(255,255,255,0);
+  outline:0;
+  border:0;
+  padding:0;
+  margin:0px;
+}
+
+.Arrow{
+  margin-right:10px;
+  transform: rotate(180deg);
 }

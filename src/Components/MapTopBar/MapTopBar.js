@@ -2,11 +2,16 @@ import React from 'react';
 import MapTopBarStyles from './MapTopBar.module.css'
 import SearchBar from '../SearchBar/SearchBar';
 
-const MapTopBar = () => {
+const MapTopBar = (props) => {
   return (
     <div className={MapTopBarStyles.Container}>
-      <h1 className={MapTopBarStyles.test}>Allied Voices</h1>
-      <SearchBar></SearchBar>
+      <div className={MapTopBarStyles.LogoContainer}>
+        <a className={MapTopBarStyles.Anchor} href="/">
+          <img className={MapTopBarStyles.Logo} src="./logo.svg" alt="allied voices logo"></img>
+          <h1 className={MapTopBarStyles.Title}>Allied Voices</h1>
+        </a>
+      </div>
+      <SearchBar changeLocation={props.changeLocation}></SearchBar>
     </div>
   );
 }

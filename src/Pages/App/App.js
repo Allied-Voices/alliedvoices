@@ -27,10 +27,18 @@ class App extends Component {
     })
   }
 
+  changeLocation = (lat, lng, zoom) => {
+    this.setState({
+      lat: lat,
+      lng: lng,
+      zoom: zoom
+    })
+  }
+
   render() {
     return (
       <div>
-        <MapTopBar></MapTopBar>
+        <MapTopBar changeLocation={this.changeLocation}></MapTopBar>
         <Sidebar
           id="sidebar"
           collapsed={this.state.collapsed}
