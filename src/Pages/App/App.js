@@ -12,6 +12,7 @@ class App extends Component {
     zoom: 5,
     collapsed: true,
     selected: '',
+    voices: [{ lat: 37, lng: -98 }]
   }
 
   onClose() {
@@ -34,6 +35,13 @@ class App extends Component {
       zoom: zoom
     })
   }
+
+  // refreshvoices = (newvoices) => {
+  //   let voices = newvoices;
+  //   this.setState({
+  //     voices
+  //   })
+  // }
 
   render() {
     return (
@@ -59,7 +67,7 @@ class App extends Component {
             <p>Settings dialogue.</p>
           </Tab>
         </Sidebar>
-        <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom}></MapComponent>
+        <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom} voices={this.state.voices} ></MapComponent>
       </div>
     );
   }
