@@ -18,6 +18,8 @@ class SearchBar extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log('hi')
+
     const response = await fetch(BASE_API_URL + encodeURIComponent(this.state.searchInput) + API_KEY, {
       methods: "GET",
     })
@@ -27,9 +29,22 @@ class SearchBar extends Component {
       console.log(responseData.results[0].geometry.location);
       const { lat, lng } = responseData.results[0].geometry.location
       this.props.changeLocation(lat, lng, 13)
+      const ATresponse = await fetch(`.netlify/functions/Articles?lat=${lat}&lng=${lng}`, {
+        methods: "GET",
+      })
+
+      const ATresponseData = await ATresponse.json();
+      console.log(ATresponseData)
     } catch (error) {
       console.log(error)
     }
+
+    // const ATresponse = await fetch(`.netlify/functions/Articles?lat=${40.6}&lng=${-73.8}`, {
+    //   methods: "GET",
+    // })
+
+    // const ATresponseData = await ATresponse.json();
+    // console.log(ATresponseData)
 
   }
 
