@@ -18,8 +18,6 @@ class SearchBar extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('hi')
-
     const response = await fetch(BASE_API_URL + encodeURIComponent(this.state.searchInput) + API_KEY, {
       methods: "GET",
     })
@@ -29,23 +27,23 @@ class SearchBar extends Component {
       console.log(responseData.results[0].geometry.location);
       const { lat, lng } = responseData.results[0].geometry.location
       this.props.changeLocation(lat, lng, 13)
+
       const ATresponse = await fetch(`.netlify/functions/Articles?lat=${lat}&lng=${lng}`, {
         methods: "GET",
       })
-
       const ATresponseData = await ATresponse.json();
+      this.props.refreshVoices(ATresponseData)
       console.log(ATresponseData)
     } catch (error) {
       console.log(error)
     }
 
-    // const ATresponse = await fetch(`.netlify/functions/Articles?lat=${40.6}&lng=${-73.8}`, {
+    // This is just for testing
+    // const ATresponse = await fetch(`.netlify/functions/Articles?lat=${40.7}&lng=${-74.0}`, {
     //   methods: "GET",
     // })
-
     // const ATresponseData = await ATresponse.json();
-    // console.log(ATresponseData)
-
+    // this.props.refreshVoices(ATresponseData)
   }
 
   render() {
@@ -85,33 +83,3 @@ class SearchBar extends Component {
 }
 
 export default SearchBar;
-
-// const SearchBar = () => {
-//   return (
-//     <div className={SearchBarStyles.Container}>
-//       <div className={SearchBarStyles.Section}>
-//         <div className={SearchBarStyles.InnerSection}>
-//           <label className={SearchBarStyles.InputLabel} for="search"><img className={SearchBarStyles.Icon} src="/search.svg" alt="search icon"></img></label>
-//           <input autoComplete="off" id="search" className={SearchBarStyles.Input}></input>
-//         </div>
-//       </div>
-//       <div className={SearchBarStyles.Section}>
-//         <select className={SearchBarStyles.Select}>
-//           <option>All Races</option>
-//           <option>Option 1</option>
-//           <option>Option 2</option>
-//           <option>Option 3</option>
-//         </select>
-//       </div>
-//       <div className={SearchBarStyles.Section}>
-//         <select className={SearchBarStyles.Select}>
-//           <option>All Types</option>
-//           <option>Option 1</option>
-//           <option>Option 2</option>
-//           <option>Option 3</option>
-//         </select></div>
-//     </div>
-//   );
-// }
-
-// export default SearchBar;

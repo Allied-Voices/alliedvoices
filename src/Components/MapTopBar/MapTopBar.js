@@ -11,7 +11,7 @@ const MapTopBar = (props) => {
           <h1 className={MapTopBarStyles.Title}>Allied Voices</h1>
         </a>
       </div>
-      <SearchBar changeLocation={props.changeLocation}></SearchBar>
+      <SearchBar changeLocation={props.changeLocation} refreshVoices={props.refreshVoices}></SearchBar>
     </div>
   );
 }

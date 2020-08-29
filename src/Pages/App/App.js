@@ -12,7 +12,7 @@ class App extends Component {
     zoom: 5,
     collapsed: true,
     selected: '',
-    voices: [{ lat: 37, lng: -98 }]
+    voices: []
   }
 
   onClose() {
@@ -36,17 +36,17 @@ class App extends Component {
     })
   }
 
-  // refreshvoices = (newvoices) => {
-  //   let voices = newvoices;
-  //   this.setState({
-  //     voices
-  //   })
-  // }
+  refreshVoices = (newVoices) => {
+    let voices = [...newVoices];
+    this.setState({
+      voices
+    })
+  }
 
   render() {
     return (
       <div>
-        <MapTopBar changeLocation={this.changeLocation}></MapTopBar>
+        <MapTopBar changeLocation={this.changeLocation} refreshVoices={this.refreshVoices}></MapTopBar>
         <Sidebar
           id="sidebar"
           collapsed={this.state.collapsed}

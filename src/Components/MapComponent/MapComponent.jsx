@@ -11,9 +11,10 @@ const MapComponent = ({ lat, lng, zoom, voices }) => {
       />
       <ZoomControl position="topright" />
       {voices.map((voice, index) => (
-        <Marker position={[voice.lat, voice.lng]}>
+        <Marker key={`${voice.lat}-${voice.lng}`} position={[voice.lat, voice.lng]}>
           <Popup>
-            {index} A pretty CSS3 popup. <br /> Easily customizable.
+            <strong>{voice.Name}</strong><br />
+            <strong>Type: </strong>{voice.Type}<br />
           </Popup>
         </Marker>)
       )}
