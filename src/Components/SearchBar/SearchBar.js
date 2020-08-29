@@ -52,12 +52,12 @@ class SearchBar extends Component {
         <div className={SearchBarStyles.Section}>
           <div className={SearchBarStyles.InnerSection}>
             <label className={SearchBarStyles.InputLabel} htmlFor="search_input">
-              <img className={SearchBarStyles.Icon} src="/search.svg" alt="search icon"></img>
+              <img className={SearchBarStyles.Icon} src="/assets/search.svg" alt="search icon"></img>
             </label>
             <form className={SearchBarStyles.Form} onSubmit={this.handleSubmit}>
               <input name="searchInput" onChange={this.handleChange} value={this.state.searchInput} autoComplete="off" id="search_input" className={SearchBarStyles.Input}></input>
               <button className={SearchBarStyles.ArrowContainer} type="submit">
-                <img className={SearchBarStyles.Arrow} alt="arrow to enter form" src="/arrow.svg"></img>
+                <img className={SearchBarStyles.Arrow} alt="arrow to enter form" src="/assets/arrow.svg"></img>
               </button>
             </form>
           </div>

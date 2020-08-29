@@ -7,7 +7,7 @@ const MapTopBar = (props) => {
     <div className={MapTopBarStyles.Container}>
       <div className={MapTopBarStyles.LogoContainer}>
         <a className={MapTopBarStyles.Anchor} href="/">
-          <img className={MapTopBarStyles.Logo} src="./logo.svg" alt="allied voices logo"></img>
+          <img className={MapTopBarStyles.Logo} src="./assets/logo.svg" alt="allied voices logo"></img>
           <h1 className={MapTopBarStyles.Title}>Allied Voices</h1>
         </a>
       </div>
