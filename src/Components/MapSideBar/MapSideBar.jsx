@@ -3,6 +3,8 @@ import { MapComponent } from 'react-leaflet'
 import { PropTypes } from 'prop-types'
 import './leaflet-sidebar.min.css'
 
+const Eradius = 3958.8;
+
 class Tab extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
@@ -17,6 +19,32 @@ class Tab extends React.Component {
     active: PropTypes.bool,
   }
 
+  renderTabSection(voice) {
+    // Determine message for the date
+    const diff = Date.now() - Date.parse(voice.Date)
+    var dateMsg;
+    if (diff < 60000) dateMsg = `${diff / 1000} seconds ago`;
+    else if (diff < 3600000) dateMsg = `${diff / 1000 / 60} minutes ago`;
+    else if (diff < 86400000) dateMsg = `${diff / 1000 / 60 / 25} hours ago`;
+    else dateMsg = new Date(Date.parse(voice.Date)).toLocaleDateString();
+
+    // Determine distance
+    const rad1 = this.props.lat * Math.PI / 180;
+    const rad2 = voice.lat * Math.PI / 180;
+    const diffLat = (voice.lat - this.props.lat) * Math.PI / 180;
+    const diffLng = (voice.lng - this.props.lng) * Math.PI / 180;
+    const a = Math.sin(diffLat / 2) * Math.sin(diffLat / 2) + Math.cos(rad1) * Math.cos(rad2) * Math.sin(diffLng / 2) * Math.sin(diffLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = Math.floor(Eradius * c);
+
+    return (
+      <div key={voice.Name} className="tab-section-container">
+        <h2 className="tab-section-header">{voice["Incident type copy"]}</h2>
+        <p className="tab-section-footer">{dateMsg} · {`${d} mi away`} · {voice.Publisher}</p>
+      </div>
+    )
+  }
+
   render() {
     const active = this.props.active ? ' active' : '';
     var closeIcon;
@@ -28,6 +56,12 @@ class Tab extends React.Component {
       const closecls = this.props.position === 'right' ? "fa fa-caret-right" : "fa fa-caret-left";
       closeIcon = <i className={closecls} />
     }
+
+    var tabSections;
+    if (typeof (this.props.children) === 'object' && this.props.children[0]) {
+      tabSections = this.props.children.map(voice => this.renderTabSection(voice))
+    }
+
     return (
       <div id={this.props.id} className={"sidebar-pane" + active}>
         <h1 className="sidebar-header">
@@ -36,7 +70,7 @@ class Tab extends React.Component {
             {closeIcon}
           </div>
         </h1>
-        {this.props.children}
+        {tabSections}
       </div>
     );
   }

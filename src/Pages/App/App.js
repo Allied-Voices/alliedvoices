@@ -44,6 +44,9 @@ class App extends Component {
   }
 
   render() {
+    const goodDeeds = this.state.voices.filter(voice => voice.Type === "Good deed")
+    const incidents = this.state.voices.filter(voice => voice.Type === "Race-related incident")
+
     return (
       <div>
         <MapTopBar changeLocation={this.changeLocation} refreshVoices={this.refreshVoices}></MapTopBar>
@@ -54,16 +57,16 @@ class App extends Component {
           onOpen={this.onOpen.bind(this)}
           onClose={this.onClose.bind(this)}
         >
-          <Tab id="home" header="Home" icon="fa fa-home" >
-            <p>No place like home!</p>
+          <Tab id="overview" header="Overview" icon={<img src="/assets/overview-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
+            <div><p>No place like home!</p></div>
           </Tab>
-          <Tab id="report" header="Report" icon="fa fa-plus-square" >
-            <p>Report dialogue.</p>
+          <Tab id="good-deed" header="Good Deeds" icon={<img src="/assets/gd-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
+            {goodDeeds}
           </Tab>
-          <Tab id="Question" header="Questions" icon="fa fa-question fa-stack" >
-            <p>Settings dialogue.</p>
+          <Tab id="incidents" header="Incidents" icon={<img src="/assets/incident-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
+            {incidents}
           </Tab>
-          <Tab id="settings" header="Settings" icon="fa fa-cog" >
+          <Tab id="resources" header="Resources" icon={<img src="/assets/resources-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
             <p>Settings dialogue.</p>
           </Tab>
         </Sidebar>

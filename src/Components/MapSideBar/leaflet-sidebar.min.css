@@ -289,3 +289,23 @@ p {
 #last-resource-link {
   padding-bottom: 24px;
 }
+
+.tab-section-container{
+  margin:10px 0px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  padding:24px 24px;
+}
+
+.tab-section-header{
+  font-size: 19px;
+  font-weight: bold;
+  margin:0px;
+}
+
+.tab-section-footer{
+  font-size: 13px;
+  font-weight:300;
+  color: #7895FF;
+  margin:15px 0 -10px 0;
+}
