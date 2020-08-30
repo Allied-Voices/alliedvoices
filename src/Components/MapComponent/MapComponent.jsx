@@ -18,10 +18,10 @@ const incidentMarker = new L.Icon({
   popupAnchor: [0, -23],
 })
 
-const MapComponent = ({ lat, lng, zoom, voices }) => {
+const MapComponent = ({ lat, lng, zoom, voices, closeSidebar }) => {
 
   return (
-    <Map className="map" center={[lat, lng]} zoom={zoom} zoomControl={false}>
+    <Map className="map" center={[lat, lng]} zoom={zoom} zoomControl={false} onClick={closeSidebar}>
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

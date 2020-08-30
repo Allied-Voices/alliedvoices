@@ -15,13 +15,14 @@ class App extends Component {
     voices: []
   }
 
-  onClose() {
+  onClose = () => {
     this.setState({
       collapsed: true,
       selected: ''
     });
   }
-  onOpen(id) {
+
+  onOpen = (id) => {
     this.setState({
       collapsed: false,
       selected: id,
@@ -54,8 +55,8 @@ class App extends Component {
           id="sidebar"
           collapsed={this.state.collapsed}
           selected={this.state.selected}
-          onOpen={this.onOpen.bind(this)}
-          onClose={this.onClose.bind(this)}
+          onOpen={this.onOpen}
+          onClose={this.onClose}
         >
           <Tab id="overview" header="Overview" icon={<img src="/assets/overview-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
             <div><p>No place like home!</p></div>
@@ -70,7 +71,7 @@ class App extends Component {
             <p>Settings dialogue.</p>
           </Tab>
         </Sidebar>
-        <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom} voices={this.state.voices} ></MapComponent>
+        <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom} voices={this.state.voices} closeSidebar={this.onClose}></MapComponent>
       </div>
     );
   }
