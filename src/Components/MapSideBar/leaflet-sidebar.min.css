@@ -303,9 +303,30 @@ p {
   margin:0px;
 }
 
-.tab-section-footer{
+.tab-section-details{
   font-size: 13px;
   font-weight:300;
   color: #7895FF;
-  margin:15px 0 -10px 0;
+  margin:0px 0 -10px 0;
+}
+
+.tab-section-snippet{
+  font-weight:normal;
+  font-size:16px;
+}
+
+.tab-section-readmore{
+    text-align: center;
+    font-weight: normal;
+    margin: 0px;
+    font-size: 14px;
+}
+
+.tab-section-readmore:hover{
+  cursor:pointer;
+  color: #7895FF;
+}
+
+.tab-section-iframe{
+  transition:height 1s;
 }

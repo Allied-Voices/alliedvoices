@@ -19,7 +19,23 @@ class Tab extends React.Component {
     active: PropTypes.bool,
   }
 
-  renderTabSection(voice) {
+  state = {
+    iframeOpen: null
+  }
+
+  expandTab = (index) => {
+    if (this.state.iframeOpen === index) {
+      this.setState({
+        iframeOpen: null
+      })
+    } else {
+      this.setState({
+        iframeOpen: index
+      })
+    }
+  }
+
+  renderTabSection(voice, index) {
     // Determine message for the date
     const diff = Date.now() - Date.parse(voice.Date)
     var dateMsg;
@@ -40,7 +56,15 @@ class Tab extends React.Component {
     return (
       <div key={voice.Name} className="tab-section-container">
         <h2 className="tab-section-header">{voice["Incident type copy"]}</h2>
-        <p className="tab-section-footer">{dateMsg} · {`${d} mi away`} · {voice.Publisher}</p>
+        <p className="tab-section-details">{dateMsg} · {`${d} mi away`} · {voice.Publisher}</p>
+        <p className="tab-section-snippet">{voice.Snippet}</p>
+        <p className="tab-section-readmore" onClick={() => { this.expandTab(index) }}>Read More at {voice.Publisher}</p>
+        <iframe className="tab-section-iframe"
+          title={`Article from ${voice.Publisher}`}
+          width="100%"
+          height={this.state.iframeOpen === index ? "500px" : "0"}
+          src={voice.URL}>
+        </iframe>
       </div>
     )
   }
@@ -59,7 +83,7 @@ class Tab extends React.Component {
 
     var tabSections;
     if (typeof (this.props.children) === 'object' && this.props.children[0]) {
-      tabSections = this.props.children.map(voice => this.renderTabSection(voice))
+      tabSections = this.props.children.map((voice, index) => this.renderTabSection(voice, index))
     }
 
     return (
