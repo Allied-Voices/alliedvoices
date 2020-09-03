@@ -28,7 +28,7 @@ const MapComponent = ({ lat, lng, zoom, voices, closeSidebar }) => {
       />
       <ZoomControl position="topright" />
       {voices.map((voice, index) => (
-        <Marker key={`${voice.lat}-${voice.lng}`} position={[voice.lat, voice.lng]} icon={voice.Type === 'Good deed' ? gdMarker : incidentMarker}>
+        <Marker key={`${index}-${voice.lat}-${voice.lng}`} position={[voice.lat, voice.lng]} icon={voice.Type === 'Good deed' ? gdMarker : incidentMarker}>
           <Popup>
             <strong>{voice.Name}</strong><br />
             <strong>Type: </strong>{voice.Type}<br />
