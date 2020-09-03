@@ -14,7 +14,6 @@ class Tab extends React.Component {
     disabled: PropTypes.bool,
     // Provided by the Sidebar; don't mark as required (user doesn't need to include them):
     onClose: PropTypes.func,
-    closeIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     position: PropTypes.oneOf(['left', 'right']),
     active: PropTypes.bool,
   }
@@ -59,11 +58,14 @@ class Tab extends React.Component {
         <p className="tab-section-details">{dateMsg} · {`${d} mi away`} · {voice.Publisher}</p>
         <p className="tab-section-snippet">{voice.Snippet}</p>
         <p className="tab-section-readmore" onClick={() => { this.expandTab(index) }}>Read More at {voice.Publisher}</p>
-        <iframe className="tab-section-iframe"
+        <iframe
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin"
+          className="tab-section-iframe"
           title={`Article from ${voice.Publisher}`}
           width="100%"
           height={this.state.iframeOpen === index ? "500px" : "0"}
-          src={voice.URL}>
+          src={this.state.iframeOpen === index ? voice.URL : ""}>
         </iframe>
       </div>
     )
@@ -111,7 +113,6 @@ class Sidebar extends MapComponent {
     collapsed: PropTypes.bool,
     position: PropTypes.oneOf(['left', 'right']),
     selected: PropTypes.string,
-    closeIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
     children: PropTypes.oneOfType([
