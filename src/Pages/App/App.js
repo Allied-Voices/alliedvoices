@@ -3,7 +3,8 @@ import './App.css';
 import { Sidebar, Tab } from '../../Components/MapSideBar/MapSideBar';
 import MapComponent from '../../Components/MapComponent/MapComponent';
 import MapTopBar from '../../Components/MapTopBar/MapTopBar';
-//import { Link } from 'react-router-dom'
+import { getVoices } from "../../utils/airtable"
+import { getLocation } from '../../utils/geolocationdb';
 
 class App extends Component {
 
@@ -41,6 +42,18 @@ class App extends Component {
   refreshVoices = (newVoices) => {
     let voices = [...newVoices];
     this.setState({
+      voices
+    })
+  }
+
+  componentDidMount = async () => {
+    const { lat, lng } = await getLocation()
+    const voices = await getVoices(lat, lng)
+
+    this.setState({
+      lat,
+      lng,
+      zoom: 13,
       voices
     })
   }
