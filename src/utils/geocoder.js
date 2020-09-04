@@ -2,15 +2,24 @@ const BASE_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json?address=
 const API_KEY = '&key=AIzaSyBjrzncwvY7Af3BhEwJpAqw_7rH7X6J7Gs'
 
 async function getCoordinatesFor(location, cb) {
-  const response = await fetch(BASE_API_URL + encodeURIComponent(location) + API_KEY, {
-    methods: "GET",
-  })
-  const responseData = await response.json();
-  if (cb) {
-    cb()
-  } else {
-    return responseData.results[0].geometry.location
-  }
+   const response = await fetch(BASE_API_URL + encodeURIComponent(location) + API_KEY, {
+      methods: "GET",
+   })
+   const responseData = await response.json();
+   let locations = [];
+   responseData.results[0].address_components.forEach((address_component) => {
+      if (address_component.types.includes('locality') || address_component.types.includes('administrative_area_level_1')) {
+         locations.push(address_component.long_name)
+      }
+   })
+   if (cb) {
+      cb()
+   } else {
+      return {
+         ...responseData.results[0].geometry.location,
+         locations
+      }
+   }
 }
 
 export { getCoordinatesFor }

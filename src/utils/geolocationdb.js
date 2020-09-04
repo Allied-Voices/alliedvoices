@@ -9,7 +9,7 @@ async function getLocation(cb) {
   if (cb) {
     cb()
   } else {
-    return { lat: responseData.latitude, lng: responseData.longitude, generalLocations: [responseData.city, responseData.state] }
+    return { lat: responseData.latitude, lng: responseData.longitude, locations: [responseData.city, responseData.state] }
   }
 }
 

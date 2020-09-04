@@ -34,7 +34,7 @@ class Tab extends React.Component {
     }
   }
 
-  renderTabSection(voice, index) {
+  renderVoiceSection(voice, index) {
     // Determine message for the date
     const diff = Date.now() - Date.parse(voice.Date)
     var dateMsg;
@@ -71,6 +71,17 @@ class Tab extends React.Component {
     )
   }
 
+  renderResourceSection(resource, index) {
+    return (
+      <div key={resource.Name} className="tab-section-container">
+        <h2 className="tab-section-header">{resource.Name}</h2>
+        <p className="tab-section-snippet">Visit <a rel="noopener noreferrer" target="_blank" href={resource.URL}>{resource.URL}</a></p>
+      </div>
+    )
+  }
+
+
+
   render() {
     const active = this.props.active ? ' active' : '';
     var closeIcon;
@@ -84,8 +95,11 @@ class Tab extends React.Component {
     }
 
     var tabSections;
-    if (typeof (this.props.children) === 'object' && this.props.children[0]) {
-      tabSections = this.props.children.map((voice, index) => this.renderTabSection(voice, index))
+    console.log(this.props.voices)
+    if (typeof (this.props.voices) === 'object' && this.props.voices[0]) {
+      tabSections = this.props.voices.map((voice, index) => this.renderVoiceSection(voice, index))
+    } else if (typeof (this.props.resources) === 'object' && this.props.resources[0]) {
+      tabSections = this.props.resources.map((resource, index) => this.renderResourceSection(resource, index))
     }
 
     return (

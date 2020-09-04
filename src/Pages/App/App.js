@@ -3,7 +3,7 @@ import './App.css';
 import { Sidebar, Tab } from '../../Components/MapSideBar/MapSideBar';
 import MapComponent from '../../Components/MapComponent/MapComponent';
 import MapTopBar from '../../Components/MapTopBar/MapTopBar';
-import { getVoices } from "../../utils/airtable"
+import { getVoices, getResources } from "../../utils/airtable"
 import { getLocation } from '../../utils/geolocationdb';
 
 class App extends Component {
@@ -14,7 +14,9 @@ class App extends Component {
     zoom: 5,
     collapsed: true,
     selected: '',
-    voices: []
+    voices: [],
+    resources: [],
+    locations: []
   }
 
   onClose = () => {
@@ -31,11 +33,12 @@ class App extends Component {
     })
   }
 
-  changeLocation = (lat, lng, zoom) => {
+  changeLocation = (lat, lng, zoom, locations) => {
     this.setState({
-      lat: lat,
-      lng: lng,
-      zoom: zoom
+      lat,
+      lng,
+      zoom,
+      locations
     })
   }
 
@@ -46,16 +49,35 @@ class App extends Component {
     })
   }
 
+  refreshResources = (newResources) => {
+    let resources = [...newResources];
+    this.setState({
+      resources
+    })
+  }
+
   componentDidMount = async () => {
-    const { lat, lng } = await getLocation()
-    const voices = await getVoices(lat, lng)
+    const { lat, lng, locations } = await getLocation()
 
     this.setState({
       lat,
       lng,
-      zoom: 13,
-      voices
+      locations,
+      zoom: 13
     })
+
+    getVoices(lat, lng, (voices) => {
+      this.setState({
+        voices
+      })
+    })
+
+    getResources(locations, (resources) => {
+      this.setState({
+        resources
+      })
+    })
+
   }
 
   render() {
@@ -64,7 +86,12 @@ class App extends Component {
 
     return (
       <div>
-        <MapTopBar changeLocation={this.changeLocation} refreshVoices={this.refreshVoices}></MapTopBar>
+        <MapTopBar
+          changeLocation={this.changeLocation}
+          refreshVoices={this.refreshVoices}
+          refreshResources={this.refreshResources}
+        >
+        </MapTopBar>
         <Sidebar
           id="sidebar"
           collapsed={this.state.collapsed}
@@ -72,18 +99,37 @@ class App extends Component {
           onOpen={this.onOpen}
           onClose={this.onClose}
         >
-          <Tab id="overview" header="Overview" icon={<img src="/assets/overview-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
-            <div><p>No place like home!</p></div>
-          </Tab>
-          <Tab id="good-deed" header="Good Deeds" icon={<img src="/assets/gd-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
-            {goodDeeds}
-          </Tab>
-          <Tab id="incidents" header="Incidents" icon={<img src="/assets/incident-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
-            {incidents}
-          </Tab>
-          <Tab id="resources" header="Resources" icon={<img src="/assets/resources-icon.svg" alt="overview icon" />} lat={this.state.lat} lng={this.state.lng} >
-            <p>Settings dialogue.</p>
-          </Tab>
+          <Tab
+            id="overview"
+            header="Overview"
+            icon={<img src="/assets/overview-icon.svg" alt="overview icon" />}
+            lat={this.state.lat}
+            lng={this.state.lng}
+          />
+          <Tab
+            id="good-deed"
+            header="Good Deeds"
+            icon={<img src="/assets/gd-icon.svg" alt="overview icon" />}
+            lat={this.state.lat}
+            lng={this.state.lng}
+            voices={goodDeeds}
+          />
+          <Tab
+            id="incidents"
+            header="Incidents"
+            icon={<img src="/assets/incident-icon.svg" alt="overview icon" />}
+            lat={this.state.lat}
+            lng={this.state.lng}
+            voices={incidents}
+          />
+          <Tab
+            id="resources"
+            header={this.state.locations.length ? `Resources in ${this.state.locations[0]}` : `Resources`}
+            icon={<img src="/assets/resources-icon.svg" alt="overview icon" />}
+            lat={this.state.lat}
+            lng={this.state.lng}
+            resources={this.state.resources}
+          />
         </Sidebar>
         <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom} voices={this.state.voices} closeSidebar={this.onClose}></MapComponent>
       </div>
