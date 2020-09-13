@@ -2,6 +2,7 @@ import React from 'react'
 import { MapComponent } from 'react-leaflet'
 import { PropTypes } from 'prop-types'
 import './leaflet-sidebar.min.css'
+import Tag from '../Tag/Tag';
 
 const Eradius = 3958.8;
 
@@ -52,10 +53,17 @@ class Tab extends React.Component {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = Math.floor(Eradius * c);
 
+    // Determine Tags if they exist
+    let tags = null;
+    if (voice['Location Tags for Resources']) {
+      tags = voice['Location Tags for Resources'].map((tag) => <Tag>{tag}</Tag>)
+    }
+
     return (
       <div key={voice.Name} className="tab-section-container">
-        <h2 className="tab-section-header">{voice["Incident type copy"]}</h2>
+        <h2 className="tab-section-title">{voice["Incident type copy"]}</h2>
         <p className="tab-section-details">{dateMsg} · {`${d} mi away`} · {voice.Publisher}</p>
+        {tags}
         <p className="tab-section-snippet">{voice.Snippet}</p>
         <p className="tab-section-readmore" onClick={() => { this.expandTab(index) }}>Read More at {voice.Publisher}</p>
         <iframe
@@ -74,13 +82,11 @@ class Tab extends React.Component {
   renderResourceSection(resource, index) {
     return (
       <div key={resource.Name} className="tab-section-container">
-        <h2 className="tab-section-header">{resource.Name}</h2>
+        <h2 className="tab-section-title">{resource.Name}</h2>
         <p className="tab-section-snippet">Visit <a rel="noopener noreferrer" target="_blank" href={resource.URL}>{resource.URL}</a></p>
       </div>
     )
   }
-
-
 
   render() {
     const active = this.props.active ? ' active' : '';

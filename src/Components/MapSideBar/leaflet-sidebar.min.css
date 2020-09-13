@@ -297,10 +297,16 @@ p {
   padding:24px 24px;
 }
 
-.tab-section-header{
+.tab-section-title{
   font-size: 19px;
   font-weight: bold;
-  margin:0px;
+  margin:0;
+}
+
+.tab-section-subtitle{
+  font-size: 16px;
+  font-weight: bold;
+  margin:15px 0 0 0;
 }
 
 .tab-section-details{

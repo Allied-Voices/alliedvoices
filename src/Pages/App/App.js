@@ -86,12 +86,14 @@ class App extends Component {
 
     return (
       <div>
+
         <MapTopBar
           changeLocation={this.changeLocation}
           refreshVoices={this.refreshVoices}
           refreshResources={this.refreshResources}
         >
         </MapTopBar>
+
         <Sidebar
           id="sidebar"
           collapsed={this.state.collapsed}
@@ -121,6 +123,7 @@ class App extends Component {
             lat={this.state.lat}
             lng={this.state.lng}
             voices={incidents}
+            resources={this.state.resources}
           />
           <Tab
             id="resources"
@@ -131,7 +134,9 @@ class App extends Component {
             resources={this.state.resources}
           />
         </Sidebar>
+
         <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom} voices={this.state.voices} closeSidebar={this.onClose}></MapComponent>
+
       </div>
     );
   }
