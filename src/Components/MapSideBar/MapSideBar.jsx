@@ -54,22 +54,40 @@ class Tab extends React.Component {
     const d = Math.floor(Eradius * c);
 
     // Determine Tags and Related Resources if they exist
-    let tags = null;
+    let locationTags = null;
+    let incidentTags = null;
     let relatedResources = null;
+    let relatedVoices = null;
+
     if (voice['Location Tags for Resources']) {
-      tags = voice['Location Tags for Resources'].map((tag) => {
+      locationTags = voice['Location Tags for Resources'].map((tag) => {
         if (this.props.resources && this.props.resources[tag]) {
-          relatedResources = this.props.resources[tag].map((rowId) => { return <a key={rowId} href={this.props.resources.rows[rowId].URL}>{this.props.resources.rows[rowId].Name}</a> })
+          relatedResources = this.props.resources[tag].map((rowId) => { return <li key={rowId}><a href={this.props.resources.rows[rowId].URL}>{this.props.resources.rows[rowId].Name}</a></li> })
         }
-        return (<Tag key={tag}>{tag}</Tag>)
+        return (<Tag type="Location" key={tag}>{tag}</Tag>)
       })
     }
+
+    if (voice['Incident type']) {
+      incidentTags = voice['Incident type'].map((type, index) => {
+        if (this.props.allVoices && this.props.allVoices[type]) {
+          let randomIndex = Math.floor(Math.random() * (this.props.allVoices[type].length - 1))
+          let article = this.props.allVoices.rows[this.props.allVoices[type][randomIndex]];
+          if (!relatedVoices) relatedVoices = [];
+          relatedVoices.push(<li key={index}><a href={article.URL}>{article.Name}</a></li>)
+        }
+        return (<Tag type="Incident" key={type}>{type}</Tag>)
+      })
+    }
+
+
 
     return (
       <div key={voice.Name} className="tab-section-container">
         <h2 className="tab-section-title">{voice["Incident type copy"]}</h2>
         <p className="tab-section-details">{dateMsg} · {`${d} mi away`} · {voice.Publisher}</p>
-        {tags}
+        {incidentTags}
+        {locationTags}
         <p className="tab-section-snippet">{voice.Snippet}</p>
         <p className="tab-section-readmore" onClick={() => { this.expandTab(index) }}>Read More at {voice.Publisher}</p>
         <iframe
@@ -84,7 +102,17 @@ class Tab extends React.Component {
         {relatedResources &&
           <>
             <p className="tab-section-subtitle">Resources</p>
-            {relatedResources}
+            <ul className="tab-section-list">
+              {relatedResources}
+            </ul>
+          </>
+        }
+        {relatedVoices &&
+          <>
+            <p className="tab-section-subtitle">Related Articles</p>
+            <ul className="tab-section-list">
+              {relatedVoices}
+            </ul>
           </>
         }
       </div>

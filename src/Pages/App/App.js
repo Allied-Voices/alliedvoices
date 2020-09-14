@@ -14,7 +14,7 @@ class App extends Component {
     zoom: 5,
     collapsed: true,
     selected: '',
-    voices: [],
+    voices: { rows: [] },
     resources: { rows: [] },
     locations: []
   }
@@ -42,9 +42,9 @@ class App extends Component {
     })
   }
 
-  refreshVoices = (newVoices) => {
+  refreshVoices = (voices) => {
     this.setState({
-      voices: newVoices
+      voices
     })
   }
 
@@ -79,8 +79,8 @@ class App extends Component {
   }
 
   render() {
-    const goodDeeds = this.state.voices.filter(voice => voice.Type === "Good deed")
-    const incidents = this.state.voices.filter(voice => voice.Type === "Race-related incident")
+    const goodDeeds = this.state.voices.rows.filter(voice => voice.Type === "Good deed")
+    const incidents = this.state.voices.rows.filter(voice => voice.Type === "Race-related incident")
 
     return (
       <div>
@@ -121,6 +121,7 @@ class App extends Component {
             lat={this.state.lat}
             lng={this.state.lng}
             voices={incidents}
+            allVoices={this.state.voices}
             resources={this.state.resources}
           />
           <Tab
@@ -133,7 +134,7 @@ class App extends Component {
           />
         </Sidebar>
 
-        <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom} voices={this.state.voices} closeSidebar={this.onClose}></MapComponent>
+        <MapComponent lat={this.state.lat} lng={this.state.lng} zoom={this.state.zoom} voices={this.state.voices.rows} closeSidebar={this.onClose}></MapComponent>
 
       </div>
     );

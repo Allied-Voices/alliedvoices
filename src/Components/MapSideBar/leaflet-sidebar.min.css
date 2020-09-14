@@ -336,3 +336,27 @@ p {
 .tab-section-iframe{
   transition:height 1s;
 }
+
+.tab-section-list{
+  list-style: none;
+  margin:4px 0 16px 0;
+}
+
+.tab-section-list>li{
+  margin: 15px 0;
+  text-decoration: none;
+}
+.tab-section-list>li:first-child{
+  margin: 0 0 15px 0;
+  text-decoration: none;
+}
+
+.tab-section-list>li{
+  margin: 15px 0;
+  text-decoration: none;
+}
+
+.tab-section-list>li>a{
+  text-decoration: none;
+  font-weight:500;
+}
