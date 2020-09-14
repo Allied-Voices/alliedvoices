@@ -53,10 +53,16 @@ class Tab extends React.Component {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = Math.floor(Eradius * c);
 
-    // Determine Tags if they exist
+    // Determine Tags and Related Resources if they exist
     let tags = null;
+    let relatedResources = null;
     if (voice['Location Tags for Resources']) {
-      tags = voice['Location Tags for Resources'].map((tag) => <Tag>{tag}</Tag>)
+      tags = voice['Location Tags for Resources'].map((tag) => {
+        if (this.props.resources && this.props.resources[tag]) {
+          relatedResources = this.props.resources[tag].map((rowId) => { return <a key={rowId} href={this.props.resources.rows[rowId].URL}>{this.props.resources.rows[rowId].Name}</a> })
+        }
+        return (<Tag key={tag}>{tag}</Tag>)
+      })
     }
 
     return (
@@ -75,6 +81,12 @@ class Tab extends React.Component {
           height={this.state.iframeOpen === index ? "500px" : "0"}
           src={this.state.iframeOpen === index ? voice.URL : ""}>
         </iframe>
+        {relatedResources &&
+          <>
+            <p className="tab-section-subtitle">Resources</p>
+            {relatedResources}
+          </>
+        }
       </div>
     )
   }
@@ -101,11 +113,11 @@ class Tab extends React.Component {
     }
 
     var tabSections;
-    console.log(this.props.voices)
+
     if (typeof (this.props.voices) === 'object' && this.props.voices[0]) {
       tabSections = this.props.voices.map((voice, index) => this.renderVoiceSection(voice, index))
-    } else if (typeof (this.props.resources) === 'object' && this.props.resources[0]) {
-      tabSections = this.props.resources.map((resource, index) => this.renderResourceSection(resource, index))
+    } else if (this.props.resources && this.props.resources.rows[0]) {
+      tabSections = this.props.resources.rows.map((resource, index) => this.renderResourceSection(resource, index))
     }
 
     return (

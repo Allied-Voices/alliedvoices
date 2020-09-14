@@ -15,7 +15,7 @@ class App extends Component {
     collapsed: true,
     selected: '',
     voices: [],
-    resources: [],
+    resources: { rows: [] },
     locations: []
   }
 
@@ -43,14 +43,12 @@ class App extends Component {
   }
 
   refreshVoices = (newVoices) => {
-    let voices = [...newVoices];
     this.setState({
-      voices
+      voices: newVoices
     })
   }
 
-  refreshResources = (newResources) => {
-    let resources = [...newResources];
+  refreshResources = (resources) => {
     this.setState({
       resources
     })

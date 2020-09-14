@@ -4,7 +4,8 @@ exports.handler = function (event, context, callback) {
   var Airtable = require('airtable');
   var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
 
-  var data = [];
+  var data = {};
+  data.rows = [];
 
   var locations = JSON.parse(event.queryStringParameters.locations)
   var filterString = ''
@@ -21,7 +22,11 @@ exports.handler = function (event, context, callback) {
     fields: ["Name", "URL", "Location Tags for Relevancy", "Tags for Relevancy"],
   }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function (record) {
-      data.push(record.fields)
+      record.fields['Location Tags for Relevancy'].forEach((tag) => {
+        if (!data[tag]) data[tag] = [];
+        data[tag].push(data.rows.length)
+      })
+      data.rows.push(record.fields);
     });
     fetchNextPage();
   }, function done(err) {
