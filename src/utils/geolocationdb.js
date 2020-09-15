@@ -1,9 +1,10 @@
 // const BASE_GEOLOCATIONDB_URL = 'https://geolocation-db.com/json/7733a990-ebd4-11ea-b9a6-2955706ddbf3'
 const BASE_IPSTACK_URL = ".netlify/functions/Geolocation"
 // const BASE_IP_API_URL = 'http://ip-api.com/json/'
+const BASE_IP_INFO_URL = 'https://ipinfo.io?token=c61770f410d81b'
 
 async function getLocation(cb) {
-  const response = await fetch(BASE_IPSTACK_URL, {
+  const response = await fetch(BASE_IP_INFO_URL, {
     method: "GET"
   })
   const responseData = await response.json();
@@ -13,7 +14,8 @@ async function getLocation(cb) {
   } else {
     // return { lat: responseData.latitude, lng: responseData.longitude, locations: [responseData.city, responseData.state] }
     // return { lat: responseData.latitude, lng: responseData.longitude, locations: [responseData.city, responseData.region_name] }
-    return { lat: responseData.latitude, lng: responseData.longitude, locations: [responseData.city, responseData.region] }
+    let coordinates = responseData.loc.split(',')
+    return { lat: coordinates[0], lng: coordinates[1], locations: [responseData.city, responseData.region] }
   }
 }
 
