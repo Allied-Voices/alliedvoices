@@ -1,5 +1,5 @@
 // const BASE_GEOLOCATIONDB_URL = 'https://geolocation-db.com/json/7733a990-ebd4-11ea-b9a6-2955706ddbf3'
-const BASE_IPSTACK_URL = ".netlify/functions/Geolocation"
+// const BASE_IPSTACK_URL = ".netlify/functions/Geolocation"
 // const BASE_IP_API_URL = 'http://ip-api.com/json/'
 const BASE_IP_INFO_URL = 'https://ipinfo.io?token=c61770f410d81b'
 
