@@ -1,0 +1,14 @@
+.Tag{
+  display:inline-block;
+  margin:25px 10px 0 0;
+  padding:0 8px;
+  border-radius:10px;
+  color:white;
+}
+
+.Tag>p{
+  font-size:13px;
+  font-weight: 300;
+  margin:0px;
+  padding:0px;
+}
