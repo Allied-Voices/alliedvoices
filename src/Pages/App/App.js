@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import LandingPage from '../LandingPage/LandingPage'
 import MapPage from '../MapPage/MapPage'
+import LocationContextProvider from '../../Context/LocationContext'
 import './App.css';
 
 class App extends Component {
@@ -12,14 +13,16 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/map">
-          <MapPage />
-        </Route>
-        <Route path="/">
-          <LandingPage />
-        </Route>
-      </Switch>
+      <LocationContextProvider>
+        <Switch>
+          <Route exact path="/map">
+            <MapPage />
+          </Route>
+          <Route path="/">
+            <LandingPage />
+          </Route>
+        </Switch>
+      </LocationContextProvider>
     );
   }
 }
