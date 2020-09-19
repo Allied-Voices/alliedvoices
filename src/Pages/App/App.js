@@ -6,11 +6,6 @@ import LocationContextProvider from '../../Context/LocationContext'
 import './App.css';
 
 class App extends Component {
-
-  state = {
-  }
-
-
   render() {
     return (
       <LocationContextProvider>
