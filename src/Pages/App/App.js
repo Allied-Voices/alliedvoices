@@ -10,10 +10,10 @@ class App extends Component {
     return (
       <LocationContextProvider>
         <Switch>
-          <Route exact path="/map">
+          <Route exact path="/">
             <MapPage />
           </Route>
-          <Route path="/">
+          <Route path="/landing">
             <LandingPage />
           </Route>
         </Switch>
