@@ -1,0 +1,38 @@
+.Container{
+  border:2px solid #DDDDDD;
+  border-radius:25px;
+  padding:9px 10px;
+  display:flex;
+  align-items: center;
+  width:90%;
+}
+
+.Input{
+  border:0px;
+  width:100%;
+  font-size:16px;
+  outline: none;
+}
+
+.Input::placeholder{
+  color: #B4B4B4;
+}
+
+.ArrowContainer{
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+  background:rgba(255,255,255,0);
+  outline:0;
+  border:0;
+  padding:0;
+  margin:0px;
+}
+
+.Arrow{
+  margin-right:10px;
+  transform: rotate(180deg);
+  filter:grayscale(1);
+  opacity: 0;
+  transition: 0.5s;
+}
