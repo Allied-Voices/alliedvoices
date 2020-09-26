@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Map from '../../Components/Map/Map';
+import SideBar from '../../Components/SideBar/SideBar';
 import NewMapPageStyles from './NewMapPageStyles.module.css'
 
 class NewMapPage extends Component {
@@ -7,9 +9,8 @@ class NewMapPage extends Component {
 
     return (
       <div className={NewMapPageStyles.Container}>
-
-        <h1>Hello World</h1>
-
+        <SideBar />
+        <Map />
       </div>
     );
   }
