@@ -1,0 +1,18 @@
+.Button{
+  background:white;
+  font-weight:400;
+  padding: 10px 20px;
+  border:1px solid #DDDDDD;
+  border-radius:20px;
+  outline:none;
+}
+
+.Button:hover{
+  cursor:pointer;
+  border-color:#000000;
+}
+
+.Active{
+  background:#F4F4F4;
+  border-color:#000000;
+}
