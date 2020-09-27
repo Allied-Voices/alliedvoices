@@ -21,3 +21,15 @@
   align-items: center;
   margin-bottom:16px;
 }
+
+.SearchSection{
+  width:95%;
+  margin-bottom:16px;
+}
+
+.FilterSection{
+  width:95%;
+  margin-bottom:24px;
+  display:flex;
+  justify-content: space-between;
+}
