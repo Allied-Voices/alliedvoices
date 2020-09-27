@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Map as LeafletMap, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet'
 import MapStyles from './MapStyles.module.css'
+import { AppContext } from '../../Context/AppContext'
 
 const Map = () => {
   const [coordinates, setCoordinates] = useState({ lat: 39, lng: -98, });
   const [zoom, setZoom] = useState(5)
+  const appContext = useContext(AppContext)
 
+  useEffect(() => {
+    if (coordinates.lat !== appContext.lat && coordinates.lng !== appContext.lng) {
+      setCoordinates({ lat: appContext.lat, lng: appContext.lng });
+      setZoom(13)
+    }
+  }, [coordinates.lat, coordinates.lng, appContext.lat, appContext.lng])
 
   return (
     <LeafletMap className={MapStyles.Map} center={[coordinates.lat, coordinates.lng]} zoom={zoom} zoomControl={false}>
