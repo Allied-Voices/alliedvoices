@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Logo from '../Logo/Logo';
-import AppContext from '../../Context/AppContext'
+import { AppContext } from '../../Context/AppContext'
 import SideBarArticleStyles from './SideBarArticleStyles.module.css'
 import GoodDeedHeart from '../../Images/GoodDeedHeart.svg'
 import IncidentHeart from '../../Images/IncidentHeart.svg'
