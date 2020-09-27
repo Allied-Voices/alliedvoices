@@ -1,6 +1,6 @@
 import React from 'react';
-
 import Button from '../Components/Button/Button'
+import "../Style/Global.css"
 
 export default {
   title: "AlliedVoices/Buttons",

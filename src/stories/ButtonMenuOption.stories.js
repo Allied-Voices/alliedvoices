@@ -1,5 +1,6 @@
 import React from 'react';
 import ButtonMenuOption from '../Components/ButtonMenuOption/ButtonMenuOption';
+import "../Style/Global.css"
 
 export default {
   title: "AlliedVoices/ButtonMenuOption",
