@@ -9,7 +9,6 @@ async function getLocation(cb) {
     method: "GET"
   })
   const responseData = await response.json();
-  console.log(responseData)
   if (cb) {
     cb()
   } else {
