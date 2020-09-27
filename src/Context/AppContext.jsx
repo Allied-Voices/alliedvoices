@@ -9,8 +9,8 @@ class AppContextProvider extends Component {
     lat: 39,
     lng: -98,
     locations: [],
-    voices: [],
-    resources: []
+    voices: {},
+    resources: {}
   }
 
   // Get Initial Location, Voices and Resources
