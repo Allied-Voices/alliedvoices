@@ -3,13 +3,13 @@ import { Switch, Route } from 'react-router-dom'
 import LandingPage from '../LandingPage/LandingPage'
 import MapPage from '../MapPage/MapPage'
 import NewMapPage from '../NewMapPage/NewMapPage';
-import LocationContextProvider from '../../Context/LocationContext'
+import AppContextProvider from '../../Context/AppContext'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <LocationContextProvider>
+      <AppContextProvider>
         <Switch>
           <Route exact path="/">
             <MapPage />
@@ -21,7 +21,7 @@ class App extends Component {
             <NewMapPage />
           </Route>
         </Switch>
-      </LocationContextProvider>
+      </AppContextProvider>
     );
   }
 }
