@@ -1,0 +1,37 @@
+.Container{
+  border:1px solid black;
+  display:flex;
+  align-items: center;
+}
+
+.Text{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height:50px;
+}
+
+.subHeading{
+  display:flex;
+  flex-direction: row;
+}
+
+.subHeading > p {
+  color:var(--primary-color);
+  font-size:12px;
+}
+
+.subHeading > img {
+  height:10px;
+  width:10px;
+  margin-right: 8px;
+}
+
+.ImgContainer{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-right:10px;
+  height:50px;
+  width:50px;
+}
