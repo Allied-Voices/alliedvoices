@@ -4,7 +4,7 @@ import LandingPage from '../LandingPage/LandingPage'
 import MapPage from '../MapPage/MapPage'
 import NewMapPage from '../NewMapPage/NewMapPage';
 import AppContextProvider from '../../Context/AppContext'
-import './App.css';
+import '../../Style/Global.css';
 
 class App extends Component {
   render() {
