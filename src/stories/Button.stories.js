@@ -3,9 +3,8 @@ import React from 'react';
 import Button from '../Components/Button/Button'
 
 export default {
-  title: "AlliedVoices/Components",
+  title: "AlliedVoices/Buttons",
   component: Button,
-
 }
 
 const Template = (args) => <Button {...args} />
