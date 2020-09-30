@@ -20,6 +20,9 @@
 .CheckboxText{
   margin-left:8px;
   display:inline-block;
+
+  font-weight:400;
+  font-size: 16px;
 }
 
 .CheckboxLabel{

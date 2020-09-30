@@ -4,6 +4,8 @@
 }
 
 .MenuContainer{
+  background:white;
+
   position:absolute;
   top:54px;
 
@@ -15,4 +17,8 @@
   border-radius:13px;
 
   box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 37px 0px;
+}
+
+.MenuContainer > * {
+  margin:10px 0;
 }
