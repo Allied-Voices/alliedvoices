@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Map as LeafletMap, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet'
+import { Map as LeafletMap, TileLayer, ZoomControl} from 'react-leaflet';
 import MapStyles from './MapStyles.module.css'
 import { AppContext } from '../../Context/AppContext'
 
