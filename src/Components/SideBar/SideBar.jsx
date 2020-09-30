@@ -24,8 +24,8 @@ const SideBar = () => {
 
       <div className={SideBarStyles.FilterSection}>
         <Button label='Location' active />
-        <ButtonMenu label='Type' />
-        <ButtonMenu label='Race' />
+        <ButtonMenu label='Type' options={['Good Deed', 'Race-Related Incident']} />
+        <ButtonMenu label='Race' options={['Asian', 'Black']} />
         <ButtonMenu label='Time' />
         <ButtonMenu label='More Filters' />
       </div>
