@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react'
-import { getLocation } from '../utils/geolocationdb';
+// import { getLocation } from '../utils/geolocationdb';
 import { getVoices, getResources } from "../utils/airtable"
 
 export const AppContext = createContext();
