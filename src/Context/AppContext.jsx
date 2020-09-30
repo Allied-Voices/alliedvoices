@@ -15,7 +15,7 @@ class AppContextProvider extends Component {
 
   // Get Initial Location, Voices and Resources
   componentDidMount = async () => {
-    const { lat, lng, locations } = await getLocation()
+    // const { lat, lng, locations } = await getLocation()
     this.setState({
       lat: 40.730610,
       lng: -73.935242,
