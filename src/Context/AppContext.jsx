@@ -10,7 +10,10 @@ class AppContextProvider extends Component {
     lng: -98,
     locations: [],
     voices: {},
-    resources: {}
+    resources: {},
+    selected: -1,
+    selectedLat:39,
+    selectedLng:-98
   }
 
   // Get Initial Location, Voices and Resources
@@ -20,6 +23,8 @@ class AppContextProvider extends Component {
       lat: 40.730610,
       lng: -73.935242,
       locations: ['New York'],
+      selectedLat:40.730610,
+      selectedLng:-73.935242,
     }, () => {
 
       getVoices(this.state.lat, this.state.lng, (voices) => {
@@ -37,9 +42,21 @@ class AppContextProvider extends Component {
     })
   }
 
+  selectArticle = (index) => {
+    if(index!==this.state.selected){
+      this.setState({
+        selected:index,
+        selectedLat:this.state.voices.rows[index].lat,
+        selectedLng:this.state.voices.rows[index].lng,
+      })
+    }
+  }
+
   render() {
     return (
-      <AppContext.Provider value={{ ...this.state }}>
+      <AppContext.Provider value={{ ...this.state,
+        selectArticle:this.selectArticle
+       }}>
         {this.props.children}
       </AppContext.Provider>
     );
