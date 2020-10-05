@@ -1,7 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Map as LeafletMap, TileLayer, ZoomControl} from 'react-leaflet';
+import { Map as LeafletMap, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet'
 import MapStyles from './MapStyles.module.css'
 import { AppContext } from '../../Context/AppContext'
+
+const gdMarker = new L.Icon({
+  iconUrl: '/assets/gd-marker.svg',
+  iconRetinaUrl: '/assets/gd-marker.svg',
+  iconSize: [25, 25],
+  iconAnchor: [13, 25],
+  popupAnchor: [0, -25],
+})
+
+const incidentMarker = new L.Icon({
+  iconUrl: '/assets/incident-marker.svg',
+  iconRetinaUrl: '/assets/incident-marker.svg',
+  iconSize: [25, 23],
+  iconAnchor: [13, 23],
+  popupAnchor: [0, -23],
+})
 
 const Map = () => {
   const [coordinates, setCoordinates] = useState({ lat: 39, lng: -98, });
@@ -9,11 +26,11 @@ const Map = () => {
   const appContext = useContext(AppContext)
 
   useEffect(() => {
-    if (coordinates.lat !== appContext.lat && coordinates.lng !== appContext.lng) {
-      setCoordinates({ lat: appContext.lat, lng: appContext.lng });
+    if (coordinates.lat !== appContext.selectedLat && coordinates.lng !== appContext.selectedLng) {
+      setCoordinates({ lat: appContext.selectedLat, lng: appContext.selectedLng });
       setZoom(13)
     }
-  }, [coordinates.lat, coordinates.lng, appContext.lat, appContext.lng])
+  }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng])
 
   return (
     <LeafletMap className={MapStyles.Map} center={[coordinates.lat, coordinates.lng]} zoom={zoom} zoomControl={false}>
@@ -22,6 +39,14 @@ const Map = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <ZoomControl position="topright" />
+      {appContext.voices.rows && appContext.voices.rows.map((voice, index) => (
+        <Marker key={`${index}-${voice.lat}-${voice.lng}`} position={[voice.lat, voice.lng]} icon={voice.Type === 'Good deed' ? gdMarker : incidentMarker}>
+          <Popup>
+            <strong>{voice.Name}</strong><br />
+            <strong>Type: </strong>{voice.Type}<br />
+          </Popup>
+        </Marker>)
+      )}
     </LeafletMap>
   );
 }

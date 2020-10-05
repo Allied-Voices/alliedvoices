@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import Logo from '../Logo/Logo';
 import { AppContext } from '../../Context/AppContext'
 import SideBarArticleStyles from './SideBarArticleStyles.module.css'
 import GoodDeedHeart from '../../Images/GoodDeedHeart.svg'
 import IncidentHeart from '../../Images/IncidentHeart.svg'
 
-const SideBarArticle = ({ heading, date, lat, lng, publisher, img, type }) => {
+const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, img, type, onClick, selected }) => {
 
   const appContext = useContext(AppContext)
 
@@ -31,7 +31,7 @@ const SideBarArticle = ({ heading, date, lat, lng, publisher, img, type }) => {
   }
 
   return (
-    <div className={SideBarArticleStyles.Container}>
+    <div className={`${SideBarArticleStyles.Container}` + (selected? ` ${SideBarArticleStyles.Selected}`:'')} onClick={onClick}>
       <div className={SideBarArticleStyles.ImgContainer}>
         {img ?
           <img src={img} alt={`${heading}`} /> :
@@ -41,12 +41,12 @@ const SideBarArticle = ({ heading, date, lat, lng, publisher, img, type }) => {
       <div className={SideBarArticleStyles.Text}>
         <h4>{heading}</h4>
         <div className={SideBarArticleStyles.subHeading}>
-          {type === "Good deed" ? <img src={GoodDeedHeart} alt='Good deed heart' /> : <img src={IncidentHeart} alt='Good deed heart' />}
+          {type === "Good deed" ? <img src={GoodDeedHeart} alt='Good deed heart' /> : <img src={IncidentHeart} alt='Good deed heart'/>}
           <p>{dateMsg} · {`${d} mi away`} · {publisher}</p>
         </div>
       </div>
     </div>
   );
-}
+})
 
 export default SideBarArticle;

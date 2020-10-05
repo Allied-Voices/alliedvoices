@@ -31,8 +31,19 @@ const SideBar = () => {
       </div>
 
       <div className={SideBarStyles.ArticleSection}>
-        {appContext.voices.rows && appContext.voices.rows.map((voice) =>
-          <SideBarArticle heading={voice.Name} date={voice.Date} lat={voice.lat} lng={voice.lng} publisher={voice.Publisher} type={voice.Type} />
+        {appContext.voices.rows && appContext.voices.rows.map((voice, index) =>
+          <SideBarArticle
+            key={index}
+            index={index} 
+            heading={voice.Name} 
+            date={voice.Date} 
+            lat={voice.lat} 
+            lng={voice.lng} 
+            publisher={voice.Publisher} 
+            type={voice.Type} 
+            onClick={() => appContext.selectArticle(index)}
+            selected={index===appContext.selected}
+          />
         )}
       </div>
 
