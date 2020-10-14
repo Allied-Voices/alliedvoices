@@ -1,0 +1,14 @@
+.Container {
+  border: 1px solid #DDDDDD;
+}
+
+.ButtonContainer{
+  border-radius: 4px;
+  background: #7895FF;
+}
+
+.Input{
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+}

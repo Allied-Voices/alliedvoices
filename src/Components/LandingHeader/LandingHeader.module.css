@@ -1,0 +1,10 @@
+.Container{
+  width: 100%;
+  background: #7895FF;
+}
+
+.Header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}

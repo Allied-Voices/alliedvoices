@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LandingHeader from './LandingPage';
 
 class LandingPage extends Component {
   state = {}
@@ -6,6 +7,7 @@ class LandingPage extends Component {
     return (
       <div>
         Placeholder for LandingPage
+        <LandingHeader />
       </div>
     );
   }
