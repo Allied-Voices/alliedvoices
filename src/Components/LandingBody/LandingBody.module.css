@@ -1,3 +1,13 @@
 .Container{
   width: 100%;
 }
+
+.Images{
+  display:flex;
+  justify-content: space-around;
+}
+
+.Headers{
+  display:flex;
+  justify-content: space-around;
+}
