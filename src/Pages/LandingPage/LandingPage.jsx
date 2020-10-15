@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LandingHeader from './LandingPage';
+import LandingHeader from '../LandingHeader/LandingHeader';
 
 class LandingPage extends Component {
   state = {}
