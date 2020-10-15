@@ -14,7 +14,7 @@ const SideBar = () => {
     <div className={SideBarStyles.Container}>
 
       <div className={SideBarStyles.Header}>
-        <Logo primary />
+        <Logo primary width='42' height='40' />
         <h3>Allied Voices</h3>
       </div>
 

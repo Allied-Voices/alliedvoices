@@ -6,11 +6,14 @@ const LandingSearch = () => {
 
   return (
     <form className={LandingSearchStyles.Container}>
+      <div className={LandingSearchStyles.Location}>
+        LOCATION
+      </div>  
       <input className={LandingSearchStyles.Input}>
       </input>
       <button className={LandingSearchStyles.ButtonContainer}>
         <SearchIcon secondary /> 
-        Search
+        <h4>Search</h4>
       </button>
     </form>
   );

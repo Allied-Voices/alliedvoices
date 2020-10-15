@@ -8,14 +8,17 @@ const LandingHeader = () => {
 
   return (
     <div className={LandingHeaderStyles.Container}>
-      {/* <div className={LandingHeaderStyles.Header}>
-        <Logo secondary />
+      <div className={LandingHeaderStyles.Logo}>
+        <Logo secondary width='42' height='40'/>
+      </div>
+      <div className={LandingHeaderStyles.Name}>
         <h3>Allied Voices</h3>
-      </div> */}
+      </div>
+      
 
-      {/* <div className={LandingHeaderStyles.SearchSection}>
+      <div className={LandingHeaderStyles.SearchSection}>
         <LandingSearch />
-      </div> */}
+      </div>
     <h2>Navigate your racial landscape</h2>
 
     {/* <div>
