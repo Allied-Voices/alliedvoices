@@ -1,7 +1,6 @@
 import React, { Component, createContext } from 'react'
 // import { getLocation } from '../utils/geolocationdb';
 import { getVoices, getResources } from "../utils/airtable"
-
 export const AppContext = createContext();
 
 class AppContextProvider extends Component {
@@ -9,11 +8,12 @@ class AppContextProvider extends Component {
     lat: 39,
     lng: -98,
     locations: [],
-    voices: {},
+    voices: {rows:[]},
     resources: {},
-    selected: -1,
+    selected: 99,
     selectedLat:39,
-    selectedLng:-98
+    selectedLng:-98,
+    articleToggled:false
   }
 
   // Get Initial Location, Voices and Resources
@@ -48,14 +48,23 @@ class AppContextProvider extends Component {
         selected:index,
         selectedLat:this.state.voices.rows[index].lat,
         selectedLng:this.state.voices.rows[index].lng,
+        articleToggled:true
       })
     }
   }
 
+  closeArticle = () => {
+    this.setState({
+      articleToggled:false
+    })
+  }
+
   render() {
     return (
-      <AppContext.Provider value={{ ...this.state,
-        selectArticle:this.selectArticle
+      <AppContext.Provider value={{ 
+        ...this.state,
+        selectArticle:this.selectArticle,
+        closeArticle:this.closeArticle
        }}>
         {this.props.children}
       </AppContext.Provider>
