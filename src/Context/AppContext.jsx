@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react'
-// import { getLocation } from '../utils/geolocationdb';
+import { getLocation } from '../utils/geolocationdb';
 import { getVoices, getResources } from "../utils/airtable"
 export const AppContext = createContext();
 
@@ -18,13 +18,13 @@ class AppContextProvider extends Component {
 
   // Get Initial Location, Voices and Resources
   componentDidMount = async () => {
-    // const { lat, lng, locations } = await getLocation()
+    const { lat, lng, locations } = await getLocation()
     this.setState({
-      lat: 40.730610,
-      lng: -73.935242,
-      locations: ['New York'],
-      selectedLat:40.730610,
-      selectedLng:-73.935242,
+      lat: lat,
+      lng: lng,
+      locations: locations,
+      selectedLat: lat,
+      selectedLng: lng
     }, () => {
 
       getVoices(this.state.lat, this.state.lng, (voices) => {
