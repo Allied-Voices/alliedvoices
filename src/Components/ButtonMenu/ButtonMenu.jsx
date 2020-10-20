@@ -4,7 +4,7 @@ import ButtonMenuOption from '../ButtonMenuOption/ButtonMenuOption';
 import Search from '../Search/Search';
 import ButtonMenuStyles from './ButtonMenu.module.css'
 
-const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder, optionsTitle, options, ...props }) => {
+const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder, searchFunction, optionsTitle, options, ...props }) => {
   const menuRef = useRef(null);
   const [selectedItems, setItems] = useState([]);
   const [menuOpened, toggleMenu] = useState(false);
@@ -44,7 +44,7 @@ const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder
       )
 
       menuItems.push(
-          <Search placeholder={searchPlaceholder} searchf/>
+          <Search searchFunction={ searchFunction? searchFunction : null} placeholder={searchPlaceholder} searchf/>
       )
     }
 

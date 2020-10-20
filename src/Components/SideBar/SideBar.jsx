@@ -27,6 +27,7 @@ const SideBar = () => {
           includeSearch={true}
           searchTitle='See Voices from a different location' 
           searchPlaceholder='Enter location here' 
+          searchFunction={appContext.updateLocation}
           optionsTitle="Select location type here"
           options={['Public Space', 'Commute', 'Workplace', 'Home', 'Place of Worship', 'Online']}
         />
