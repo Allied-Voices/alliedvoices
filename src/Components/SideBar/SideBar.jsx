@@ -24,9 +24,9 @@ const SideBar = () => {
       <div className={SideBarStyles.FilterSection}>
         <ButtonMenu 
           buttonLabel={"Location"} 
-          includeSearchBar={true}
-          searchBarTitle='See Voices from a different location' 
-          searchBarPlaceholder='Enter location here' 
+          includeSearch={true}
+          searchTitle='See Voices from a different location' 
+          searchPlaceholder='Enter location here' 
           optionsTitle="Select location type here"
           options={['Public Space', 'Commute', 'Workplace', 'Home', 'Place of Worship', 'Online']}
         />

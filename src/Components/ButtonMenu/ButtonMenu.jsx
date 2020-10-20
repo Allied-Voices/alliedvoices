@@ -4,10 +4,10 @@ import ButtonMenuOption from '../ButtonMenuOption/ButtonMenuOption';
 import Search from '../Search/Search';
 import ButtonMenuStyles from './ButtonMenu.module.css'
 
-const ButtonMenu = ({ buttonLabel, includeSearchBar, searchBarTitle, searchBarPlaceholder, optionsTitle, options, ...props }) => {
+const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder, optionsTitle, options, ...props }) => {
   const menuRef = useRef(null);
-  const [selectedItems, setItems] = useState([])
-  const [menuOpened, toggleMenu] = useState(false)
+  const [selectedItems, setItems] = useState([]);
+  const [menuOpened, toggleMenu] = useState(false);
 
   // Logic for clicking outside of the component
   useEffect(() => {
@@ -38,13 +38,13 @@ const ButtonMenu = ({ buttonLabel, includeSearchBar, searchBarTitle, searchBarPl
   const renderMenu = () => {
     var menuItems = [];
 
-    if(searchBarTitle && includeSearchBar){
+    if(searchTitle && includeSearch){
       menuItems.push(
-        <h3>{searchBarTitle}</h3>
+        <h3>{searchTitle}</h3>
       )
 
       menuItems.push(
-        <Search placeholder={searchBarPlaceholder}/>
+          <Search placeholder={searchPlaceholder} searchf/>
       )
     }
 
