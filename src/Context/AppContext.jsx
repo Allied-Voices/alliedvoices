@@ -99,6 +99,7 @@ class AppContextProvider extends Component {
     return (
       <AppContext.Provider value={{ 
         ...this.state,
+        updateLocation:this.updateLocation,
         selectArticle:this.selectArticle,
         closeArticle:this.closeArticle
        }}>
