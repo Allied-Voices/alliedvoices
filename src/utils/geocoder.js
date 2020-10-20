@@ -5,15 +5,26 @@ async function getCoordinatesFor(location, cb) {
    const response = await fetch(BASE_API_URL + encodeURIComponent(location) + API_KEY, {
       methods: "GET",
    })
+
+   // Example of API response from Geocode below 
    const responseData = await response.json();
+
+   // Grab the town, city, and state if available.
    let locations = [];
    responseData.results[0].address_components.forEach((address_component) => {
       if (address_component.types.includes('locality') || address_component.types.includes('administrative_area_level_1')) {
          locations.push(address_component.long_name)
       }
    })
+
+   // Call callback or return values
    if (cb) {
-      cb()
+      cb(
+         {
+         ...responseData.results[0].geometry.location,
+         locations
+         }
+      )
    } else {
       return {
          ...responseData.results[0].geometry.location,
@@ -24,6 +35,7 @@ async function getCoordinatesFor(location, cb) {
 
 export { getCoordinatesFor }
 
+// API Response
 /*
 {
    "results" : [
