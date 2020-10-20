@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SearchIcon from '../SearchIcon/SearchIcon';
 import SearchStyles from './Search.module.css'
 
-const Search = () => {
+const Search = ({placeholder, ...props}) => {
   const [text, setText] = useState('');
 
   const onSubmit = (e) => {
@@ -16,7 +16,7 @@ const Search = () => {
       <input className={SearchStyles.Input}
         onChange={(e) => { setText(e.target.value) }}
         autoComplete="off"
-        placeholder='i.e. verbal assault, microaggressions, good deeds, etc. '>
+        placeholder={placeholder}>
       </input>
       <button className={SearchStyles.ArrowContainer} type="submit">
         <img className={SearchStyles.Arrow} style={text ? { filter: 'grayscale(0)', opacity: 1 } : null} alt="arrow to enter form" src="/assets/arrow.svg"></img>
