@@ -1,6 +1,7 @@
 import React, { Component, createContext } from 'react'
 import { getLocation } from '../utils/geolocationdb';
 import { getVoices, getResources } from "../utils/airtable"
+import { getGeocodeInformationFor } from "../utils/geocoder"
 export const AppContext = createContext();
 
 class AppContextProvider extends Component {
@@ -31,15 +32,50 @@ class AppContextProvider extends Component {
         this.setState({
           voices
         })
-      })
+      });
 
       getResources(this.state.locations, (resources) => {
         this.setState({
           resources
         })
-      })
+      });
 
     })
+  }
+
+  // Update Location and Get New Voices
+  updateLocation = async (newLocation) => {
+    // Use Google Geocode to convert newLocation to coordinates, and to determine the town, city, and state name if user the user did not provide it.
+    const { lat, lng, locations } = await getGeocodeInformationFor(newLocation);
+
+    // Return if the newLocation is not recognized by a geocoder
+    if(!lat || !lng || !locations){
+      return false;
+    }
+
+    // Update State and then make calls to get new voices and resources
+    this.setState({
+      lat: lat,
+      lng: lng,
+      locations: locations,
+      selectedLat: lat,
+      selectedLng: lng
+    }, () => {
+
+      getVoices(this.state.lat, this.state.lng, (voices) => {
+        this.setState({
+          voices
+        })
+      });
+
+      getResources(this.state.locations, (resources) => {
+        this.setState({
+          resources
+        })
+      });
+
+    })
+
   }
 
   selectArticle = (index) => {
