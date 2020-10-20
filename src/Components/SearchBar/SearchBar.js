@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBarStyles from './SearchBar.module.css'
-import { getCoordinatesFor } from '../../utils/geocoder'
+import { getGeocodeInformationFor } from '../../utils/geocoder'
 import { getVoices, getResources } from '../../utils/airtable'
 
 
@@ -19,7 +19,7 @@ class SearchBar extends Component {
     e.preventDefault();
 
     try {
-      const { lat, lng, locations } = await getCoordinatesFor(this.state.searchInput)
+      const { lat, lng, locations } = await getGeocodeInformationFor(this.state.searchInput)
       this.props.changeLocation(lat, lng, 13, locations)
       getVoices(lat, lng, this.props.refreshVoices)
       getResources(locations, this.props.refreshResources)
