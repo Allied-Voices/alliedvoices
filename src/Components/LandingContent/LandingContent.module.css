@@ -1,0 +1,30 @@
+
+.Container{
+  width: 100%;
+  height: 514px;
+}
+
+.Images{
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Contents{
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Body{
+  line-height: 180%;
+  font-size: 14pt;
+}
+
+.Title{
+  margin-bottom: 30px;
+}
+
+.p span {
+  display: block;
+}
