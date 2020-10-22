@@ -1,0 +1,31 @@
+.Checkbox{
+  width:0px;
+  opacity:0;
+  margin:0;
+}
+
+.Checkbox:checked + .CheckboxSquare{
+  background:black;
+}
+
+.CheckboxSquare{
+  color:white;
+  display:inline-block;
+  border:1px solid rgb(176, 176, 176);
+  border-radius:4px;
+  height:24px;
+  width:24px;
+}
+
+.CheckboxText{
+  margin-left:8px;
+  display:inline-block;
+
+  font-weight:400;
+  font-size: 16px;
+}
+
+.CheckboxLabel{
+  display:flex;
+  align-items: center;
+}

@@ -1,0 +1,49 @@
+.Container{
+  background:white;
+  box-sizing: border-box;
+  width: 500px;
+  box-shadow: 0 -2px 4px 0 rgba(0,0,0,0.25);
+  padding:19px;
+  height:100%;
+  z-index:100;
+}
+
+@media only screen and (max-width: 1300px){
+  .Container{
+    width:39%;
+  }
+}
+
+@media only screen and (max-width:720px){
+  .Container{
+    width:100%
+  }
+}
+
+.Header{
+  display:flex;
+  align-items: center;
+  margin-bottom:16px;
+}
+
+.SearchSection{
+  width:95%;
+  margin-bottom:16px;
+}
+
+.FilterSection{
+  width:95%;
+  margin-bottom:16px;
+  display:flex;
+  justify-content: space-between;
+}
+
+.ArticleSection{
+  width:95%;
+  display:flex;
+  flex-direction: column;
+}
+
+.ArticleSection > div {
+  margin:0 0;
+}
