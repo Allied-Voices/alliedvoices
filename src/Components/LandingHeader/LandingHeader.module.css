@@ -22,6 +22,26 @@
   margin-bottom: 35px;
 }
 
+.ButtonContainer{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.Button{
+  padding: 8px 24px;
+  border-radius:10px;
+  border:0px;
+  font-size:14px;
+  font-weight: 500;
+  outline-width: 0;
+}
+
+.Button:hover{
+  background-color:#c7c7c7;
+  cursor:pointer;
+}
+
 h2,
 h3{
   color: #FFFFFF;
