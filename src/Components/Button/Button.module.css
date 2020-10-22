@@ -5,6 +5,12 @@
   border:2px solid #DDDDDD;
   border-radius:30px;
   outline:none;
+  min-width:50px;
+}
+
+.Alternative{
+  background:var(--primary-color);
+  color:white;
 }
 
 .Button:hover{

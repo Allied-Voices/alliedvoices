@@ -4,30 +4,21 @@ import { AppContext } from '../../Context/AppContext'
 import SideBarArticleStyles from './SideBarArticleStyles.module.css'
 import GoodDeedHeart from '../../Images/GoodDeedHeart.svg'
 import IncidentHeart from '../../Images/IncidentHeart.svg'
+import { calculateDistance }  from '../../utils/distance'
+import { calculateTimeSpan } from '../../utils/date'
 
 const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, img, type, onClick, selected }) => {
 
   const appContext = useContext(AppContext)
 
-  const diff = Date.now() - Date.parse(date)
-  var dateMsg;
-  if (diff < 60000) dateMsg = `${diff / 1000} seconds ago`;
-  else if (diff < 3600000) dateMsg = `${diff / 1000 / 60} minutes ago`;
-  else if (diff < 86400000) dateMsg = `${diff / 1000 / 60 / 25} hours ago`;
-  else dateMsg = new Date(Date.parse(date)).toLocaleDateString();
-
+  const dateMsg = calculateTimeSpan(date)
+  
   // Determine distance
-  var d;
-  if (appContext && appContext.lat && appContext.lng && lat && lng) {
-    const rad1 = lat * Math.PI / 180;
-    const rad2 = appContext.lat * Math.PI / 180;
-    const diffLat = (appContext.lat - lat) * Math.PI / 180;
-    const diffLng = (appContext.lng - lng) * Math.PI / 180;
-    const a = Math.sin(diffLat / 2) * Math.sin(diffLat / 2) + Math.cos(rad1) * Math.cos(rad2) * Math.sin(diffLng / 2) * Math.sin(diffLng / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    d = Math.floor(3958.8 * c);
+  var distanceMsg;
+  if (appContext) {
+    distanceMsg = calculateDistance(appContext.lat, appContext.lng, lat, lng)
   } else {
-    d = "Unknown"
+    distanceMsg = "Unknown"
   }
 
   return (
@@ -42,7 +33,7 @@ const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, 
         <h4>{heading}</h4>
         <div className={SideBarArticleStyles.subHeading}>
           {type === "Good deed" ? <img src={GoodDeedHeart} alt='Good deed heart' /> : <img src={IncidentHeart} alt='Good deed heart'/>}
-          <p>{dateMsg} · {`${d} mi away`} · {publisher}</p>
+          <p>{dateMsg} · {distanceMsg} · {publisher}</p>
         </div>
       </div>
     </div>

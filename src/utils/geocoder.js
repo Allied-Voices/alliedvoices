@@ -1,29 +1,54 @@
 const BASE_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json?address='
 const API_KEY = '&key=AIzaSyBjrzncwvY7Af3BhEwJpAqw_7rH7X6J7Gs'
 
-async function getCoordinatesFor(location, cb) {
+async function getGeocodeInformationFor(location, cb) {
    const response = await fetch(BASE_API_URL + encodeURIComponent(location) + API_KEY, {
       methods: "GET",
    })
+
+   // Example of API response from Geocode below 
    const responseData = await response.json();
-   let locations = [];
-   responseData.results[0].address_components.forEach((address_component) => {
-      if (address_component.types.includes('locality') || address_component.types.includes('administrative_area_level_1')) {
-         locations.push(address_component.long_name)
+
+   if(responseData.status === "OK"){
+
+      // Grab the town, city, and state if available.
+      let locations = [];
+      responseData.results[0].address_components.forEach((address_component) => {
+         if (address_component.types.includes('locality') || address_component.types.includes('administrative_area_level_1')) {
+            locations.push(address_component.long_name)
+         }
+      })
+
+      // Call callback or return values
+      if (cb) {
+         cb(
+            {
+            ...responseData.results[0].geometry.location,
+            locations
+            }
+         )
+      } else {
+         return {
+            ...responseData.results[0].geometry.location,
+            locations
+         }
       }
-   })
-   if (cb) {
-      cb()
-   } else {
-      return {
-         ...responseData.results[0].geometry.location,
-         locations
+      
+   }else{
+
+      // Return null values
+      return{
+         lat:null,
+         lng:null,
+         locations:null
       }
+
    }
 }
 
-export { getCoordinatesFor }
+export { getGeocodeInformationFor }
 
+// API Response
 /*
 {
    "results" : [

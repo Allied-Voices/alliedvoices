@@ -1,0 +1,93 @@
+.Container{
+  background:white;
+  box-sizing: border-box;
+  height:100vh;
+  width:0;  
+  overflow-x:hidden;
+  transition: width 1s;
+}
+
+.HeadingContainer{
+  margin-top:24px;
+  margin-left:10px;
+  position:relative;
+  width:800px;
+}
+
+.HeadingContainer > h2 {
+  padding-right:40px;
+}
+
+.Close{
+  position:absolute;
+  right:40px;
+  top:0px;
+}
+
+.SubheadingContainer{
+  margin-top:16px;
+  margin-left:10px;
+  color: var(--primary-color);
+  width:800px;
+}
+
+.TagsContainer{
+  margin-top:24px;
+  margin-left:26px;
+  width:800px;
+}
+
+.IframeContainer{
+  width:800px;
+  margin-top:24px;
+  margin-left:26px;
+}
+
+.IframeContainer h3{
+  margin:0;
+  margin-bottom:4px;
+  text-transform: uppercase;
+}
+
+.Iframe{
+  width:750px;
+  height:600px;
+  border:1px solid black;
+}
+
+.RelatedStories{
+  margin-top:32px;
+  margin-left:10px;
+  position:relative;
+  width:800px;
+}
+
+.RelatedStories>ul{
+  margin-left:16px;
+  width:800px;
+}
+
+.RelatedStories li{
+  display:block;
+  margin-bottom:8px;
+}
+
+.Resources{
+  margin-top:32px;
+  margin-bottom:64px;
+  margin-left:10px;
+  position:relative;
+  width:800px;
+}
+
+.Resources>ul{
+  margin-left:16px;
+}
+
+.Toggled{
+  width:800px;
+}
+
+.Hidden{
+  width:0px;
+}
