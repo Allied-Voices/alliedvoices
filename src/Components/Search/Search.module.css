@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.Disabled{
+  background:rgba(239, 239, 239, 0.3);
+}
+
 .Input{
   border:0px;
   width:100%;

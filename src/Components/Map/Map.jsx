@@ -24,16 +24,23 @@ const Map = () => {
   const [coordinates, setCoordinates] = useState({ lat: 39, lng: -98, });
   const [zoom, setZoom] = useState(5)
   const appContext = useContext(AppContext)
+  const mapRef = React.createRef();
 
   useEffect(() => {
+    window.test = mapRef.current.leafletElement;
+    setTimeout(()=>{window.test.invalidateSize()}, 450)
     if (coordinates.lat !== appContext.selectedLat && coordinates.lng !== appContext.selectedLng) {
       setCoordinates({ lat: appContext.selectedLat, lng: appContext.selectedLng });
-      setZoom(13)
+      setZoom(13);
     }
-  }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng])
+  }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng, mapRef])
+
+  // useEffect(()=>{
+  //   console.log(mapRef.current.leafletElement.invalidateSize())
+  // })
 
   return (
-    <LeafletMap className={MapStyles.Map} center={[coordinates.lat, coordinates.lng]} zoom={zoom} zoomControl={false}>
+    <LeafletMap ref={mapRef} className={MapStyles.Map} center={[coordinates.lat, coordinates.lng]} zoom={zoom} zoomControl={false}>
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

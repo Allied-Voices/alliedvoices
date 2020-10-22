@@ -11,7 +11,7 @@
 
   padding:20px;
 
-  width:300px;
+  width:250px;
 
   border:1px solid rgba(118, 118, 118, 0.28);
   border-radius:13px;
@@ -21,4 +21,12 @@
 
 .MenuContainer > * {
   margin:10px 0;
+}
+
+.MenuContainer > h3:nth-of-type(2) {
+  margin-top:24px;
+}
+
+.FilterContainer{
+  margin:8px 0 0 0;
 }

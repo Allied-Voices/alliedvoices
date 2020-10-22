@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import ButtonMenu from '../ButtonMenu/ButtonMenu'
-import Button from '../Button/Button'
 import { AppContext } from '../../Context/AppContext'
 import SideBarArticle from '../SideBarArticle/SideBarArticle'
 import SideBarStyles from './SideBar.module.css'
@@ -19,15 +18,40 @@ const SideBar = () => {
       </div>
 
       <div className={SideBarStyles.SearchSection}>
-        <Search />
+        <Search placeholder={'This search is not yet implemented. Use filters below.'} disabled/>
+        {/* <Search placeholder={'i.e. verbal assault, microaggressions, good deeds, etc. '} /> */}
       </div>
 
       <div className={SideBarStyles.FilterSection}>
-        <Button label='Location' active />
-        <ButtonMenu label='Type' options={['Good Deed', 'Race-Related Incident']} />
-        <ButtonMenu label='Race' options={['Asian', 'Black']} />
-        <ButtonMenu label='Time' />
-        <ButtonMenu label='More Filters' />
+        <ButtonMenu 
+          buttonLabel={"Location"} 
+          includeSearch={true}
+          searchTitle='See Voices from a different location' 
+          searchPlaceholder='Enter location here' 
+          searchFunction={appContext.updateLocation}
+          optionsTitle="Select location type here"
+          options={['Public Space', 'Commute', 'Workplace', 'Home', 'Place of Worship', 'Online']}
+        />
+        <ButtonMenu 
+          buttonLabel='Type' 
+          optionsTitle='Filter by Content Type' 
+          options={['News', 'Incident Report', 'Opinion', 'Good Deeds']} 
+        />
+        <ButtonMenu 
+          buttonLabel='Source' 
+          optionsTitle='Filter by Source' 
+          options={['News', 'Reporting Center', 'Social Media', 'User Submissions']}
+        />
+        <ButtonMenu 
+          buttonLabel='Incident Tags'
+          optionsTitle='Filter by Incident Tags'
+          options={['Physical', 'Verbal', 'Vandalism']}
+        />
+        <ButtonMenu 
+          buttonLabel='Race' 
+          optionsTitle='Filter by Race' 
+          options={['Asian', 'Black']} 
+        />
       </div>
 
       <div className={SideBarStyles.ArticleSection}>
