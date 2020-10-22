@@ -1,0 +1,54 @@
+.Container{
+  width: 100%;
+  background: #7895FF;
+  height: 280px;
+}
+
+.Logo{
+  justify-content: center;
+  margin-bottom: -6px;
+  padding: 15px 10px;
+  display: flex;
+}
+
+.Name{
+  margin-bottom: 35px;
+}
+
+.SearchSection{
+  justify-content: center;
+  align-items: center;
+  display:flex;
+  margin-bottom: 35px;
+}
+
+.ButtonContainer{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.Button{
+  padding: 8px 24px;
+  border-radius:10px;
+  border:0px;
+  font-size:14px;
+  font-weight: 500;
+  outline-width: 0;
+}
+
+.Button:hover{
+  background-color:#c7c7c7;
+  cursor:pointer;
+}
+
+h2,
+h3{
+  color: #FFFFFF;
+  text-align: center;
+}
+
+
+
+/* How to change "Search" to the right 
+font-size:16px; and color (white) */
