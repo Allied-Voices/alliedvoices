@@ -40,25 +40,25 @@ const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder
 
     if(searchTitle && includeSearch){
       menuItems.push(
-        <h3>{searchTitle}</h3>
+        <h3 key={searchTitle} >{searchTitle}</h3>
       )
 
       menuItems.push(
-          <Search searchFunction={ searchFunction? searchFunction : null} placeholder={searchPlaceholder} searchf/>
+          <Search key={'seach'} searchFunction={ searchFunction? searchFunction : null} placeholder={searchPlaceholder} searchf/>
       )
     }
 
     if(optionsTitle && Array.isArray(options) && options[0]){
       menuItems.push(
-        <h3>{optionsTitle}</h3>
+        <h3 key={optionsTitle} >{optionsTitle}</h3>
       )
 
       options.forEach((option) => {
-        menuItems.push(<ButtonMenuOption option={option} onChange={handleChange(option)} selected={selectedItems.includes(option)} />)
+        menuItems.push(<ButtonMenuOption key={option} option={option} onChange={handleChange(option)} selected={selectedItems.includes(option)} />)
       })
 
       menuItems.push(
-        <div className={ButtonMenuStyles.FilterContainer}>
+        <div key='filter' className={ButtonMenuStyles.FilterContainer}>
           <Button style={{padding:'8px 16px'}} label="Filter" alternative/>
         </div>
       )
