@@ -33,7 +33,7 @@ const Map = () => {
       setCoordinates({ lat: appContext.selectedLat, lng: appContext.selectedLng });
       setZoom(13);
     }
-  }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng])
+  }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng, mapRef])
 
   // useEffect(()=>{
   //   console.log(mapRef.current.leafletElement.invalidateSize())
