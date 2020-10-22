@@ -2,6 +2,8 @@
   width: 100%;
   background: #7895FF;
   height: 280px;
+  text-align:center;
+  color:white;
 }
 
 .Logo{
@@ -41,13 +43,6 @@
   background-color:#c7c7c7;
   cursor:pointer;
 }
-
-h2,
-h3{
-  color: #FFFFFF;
-  text-align: center;
-}
-
 
 
 /* How to change "Search" to the right 
