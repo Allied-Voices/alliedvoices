@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom'
 import Logo from '../Logo/Logo';
 import Search from '../Search/Search';
 import ButtonMenu from '../ButtonMenu/ButtonMenu'
@@ -13,8 +14,10 @@ const SideBar = () => {
     <div className={SideBarStyles.Container}>
 
       <div className={SideBarStyles.Header}>
-        <Logo primary width='42' height='40' />
-        <h3>Allied Voices</h3>
+        <Link to ="/">
+          <Logo primary width='42' height='40' />
+          <h3>Allied Voices</h3>
+        </Link>
       </div>
 
       <div className={SideBarStyles.SearchSection}>
