@@ -4,9 +4,9 @@ import ButtonMenuOption from '../ButtonMenuOption/ButtonMenuOption';
 import Search from '../Search/Search';
 import ButtonMenuStyles from './ButtonMenu.module.css'
 
-const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder, searchFunction, optionsTitle, options, ...props }) => {
+const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder, searchFunction, optionsTitle, options, optionChangeFunction, filterKey, filterFunction, ...props }) => {
   const menuRef = useRef(null);
-  const [selectedItems, setItems] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [menuOpened, toggleMenu] = useState(false);
 
   // Logic for clicking outside of the component
@@ -25,14 +25,17 @@ const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder
 
   const handleChange = (option) => {
     return (e) => {
-      console.log('test')
       if (e.target.checked) {
-        setItems([...selectedItems, option])
+        setSelectedOptions([...selectedOptions, option]);
       } else {
-        let newArr = selectedItems.filter((item) => item !== option)
-        setItems(newArr)
+        let newArr = selectedOptions.filter((item) => item !== option)
+        setSelectedOptions(newArr)
       }
     }
+  }
+
+  const handleFilterClick = () => {
+    if(filterFunction) filterFunction(filterKey, selectedOptions);
   }
 
   const renderMenu = () => {
@@ -54,12 +57,12 @@ const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder
       )
 
       options.forEach((option) => {
-        menuItems.push(<ButtonMenuOption key={option} option={option} onChange={handleChange(option)} selected={selectedItems.includes(option)} />)
+        menuItems.push(<ButtonMenuOption key={option} option={option} onChange={handleChange(option)} selected={selectedOptions.includes(option)} />)
       })
 
       menuItems.push(
         <div key='filter' className={ButtonMenuStyles.FilterContainer}>
-          <Button style={{padding:'8px 16px'}} label="Filter" alternative/>
+          <Button style={{padding:'8px 16px'}} onClick={handleFilterClick} label="Filter" alternative/>
         </div>
       )
     }
@@ -73,7 +76,7 @@ const ButtonMenu = ({ buttonLabel, includeSearch, searchTitle, searchPlaceholder
 
   return (
     <div className={ButtonMenuStyles.Container} ref={menuRef}>
-      <Button onClick={() => toggleMenu(!menuOpened)} label={buttonLabel} active={menuOpened || selectedItems[0]}></Button>
+      <Button onClick={() => toggleMenu(!menuOpened)} label={buttonLabel} active={menuOpened || selectedOptions[0]}></Button>
 
       { menuOpened && renderMenu()}
 
