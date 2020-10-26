@@ -40,7 +40,7 @@ const SideBar = () => {
         <ButtonMenu 
           buttonLabel='Type' 
           optionsTitle='Filter by Content Type' 
-          options={['News', 'Incident Report', 'Opinion', 'Good Deeds']} 
+          options={['Race-related incident', 'Opinion', 'Good deed']} 
           filterFunction = {appContext.filterVoices}
           filterKey = "Type"
         />
