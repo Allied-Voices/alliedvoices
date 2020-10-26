@@ -12,11 +12,13 @@ const Article = () => {
   var resources = null;
   var relatedArticles = null;
   
-  if(article && article['Location Tags for Resources']){
+  if(article && article['Location Tags']){
     resources = [];
     let resourceIndices = [];
-    article['Location Tags for Resources'].forEach((location)=>{
-      resourceIndices = [...resourceIndices, ...appContext['resources'][location]]
+    article['Location Tags'].forEach((location)=>{
+      if(appContext['resources'][location]){
+        resourceIndices = [...resourceIndices, ...appContext['resources'][location]];
+      }
     });
     resourceIndices = new Set(resourceIndices);
     resourceIndices.forEach((index)=>{
@@ -29,7 +31,9 @@ const Article = () => {
     relatedArticles = [];
     let voiceIndices = [];
     article['Incident type'].forEach((incidentType)=>{
-      voiceIndices = [...voiceIndices, ...appContext['voices'][incidentType]]
+      if(appContext['voices'][incidentType]){
+        voiceIndices = [...voiceIndices, ...appContext['voices'][incidentType]];
+      }
     });
     voiceIndices = new Set(voiceIndices);
     voiceIndices.forEach((index)=>{
@@ -60,8 +64,8 @@ const Article = () => {
         </h3>
       </div>
       <div className={ArticleStyles.TagsContainer}>
-        {(article && article['Incident type']) && article['Incident type'].map((label)=><Tag type='Incident'>{label}</Tag>)}
-        {(article && article['Location Tags for Resources']) && article['Location Tags for Resources'].map((label)=><Tag type='Location'>{label}</Tag>)}
+        {(article && article['Incident type']) && article['Incident type'].map((label)=><Tag key={label} type='Incident'>{label}</Tag>)}
+        {(article && article['Location Tags']) && article['Location Tags'].map((label)=><Tag key={label} type='Location'>{label}</Tag>)}
       </div>
       <div className={ArticleStyles.IframeContainer}>
         <h3>Read more at <span>{article && article.Publisher}</span></h3>
