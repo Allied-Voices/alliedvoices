@@ -14,7 +14,14 @@ class AppContextProvider extends Component {
     selected: 99,
     selectedLat:39,
     selectedLng:-98,
-    articleToggled:false
+    articleToggled:false,
+    filterOptions: {
+      'Location Tags': [],
+      'Race': [],
+      'Type': [],
+      'Content Type': [],
+      'Incident type': [],
+    }
   }
 
   // Get Initial Location, Voices and Resources
@@ -33,6 +40,12 @@ class AppContextProvider extends Component {
           voices
         })
       });
+
+      // getVoices(40.73, -73.93, (voices) => {
+      //   this.setState({
+      //     voices
+      //   })
+      // });
 
       getResources(this.state.locations, (resources) => {
         this.setState({
@@ -62,7 +75,7 @@ class AppContextProvider extends Component {
       selectedLng: lng
     }, () => {
 
-      getVoices(this.state.lat, this.state.lng, (voices) => {
+      getVoices(this.state.lat, this.state.lng, this.state.filterOptions, (voices) => {
         this.setState({
           voices
         })
@@ -95,11 +108,37 @@ class AppContextProvider extends Component {
     })
   }
 
+  setFilterOptions = (filterKey, filterOption) => {
+    let index = this.state.filterOptions[filterKey].findIndex((option) => option === filterOption);
+    let newArr = [...this.state.filterOptions[filterKey]];
+    if(index !== -1){
+      newArr.splice(index, 1);
+    }else{
+      newArr.push(filterOption);
+    }
+    this.setState({
+      filterOptions: {...this.state.filterOptions, [filterKey]:newArr}
+    })
+  }
+
+  filterVoices = (filterKey, filterOptions) => {
+    this.setState({
+      filterOptions: {...this.state.filterOptions, [filterKey]:filterOptions}
+    }, ()=> {
+      getVoices(this.state.lat, this.state.lng, this.state.filterOptions, (voices) => {
+        this.setState({
+          voices
+        })
+      });
+    })
+  }
+
   render() {
     return (
       <AppContext.Provider value={{ 
         ...this.state,
         updateLocation:this.updateLocation,
+        filterVoices:this.filterVoices,
         selectArticle:this.selectArticle,
         closeArticle:this.closeArticle
        }}>

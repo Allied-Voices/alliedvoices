@@ -19,7 +19,9 @@ async function getVoices(lat, lng, ...args) {
   if(filterOptions){
     let filterKeys = Object.keys(filterOptions);
     filterKeys.forEach((key)=>{
-      query += `&${key}=` + JSON.stringify(filterOptions[key]);
+      if(filterOptions[key].length > 0){
+        query += `&${key}=` + JSON.stringify(filterOptions[key]);
+      }
     });
   }
 
