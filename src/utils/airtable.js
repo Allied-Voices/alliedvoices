@@ -17,7 +17,6 @@ async function getVoices(lat, lng, ...args) {
   let query = `?lat=${lat}&lng=${lng}`
 
   if(filterOptions){
-    console.log(filterOptions)
     let filterKeys = Object.keys(filterOptions);
     filterKeys.forEach((key)=>{
       if(filterOptions[key].length > 0){

@@ -37,8 +37,6 @@ exports.handler = function (event, context, callback) {
   filterString += `lat > ${parseFloat(event.queryStringParameters.lat) - 0.5}, lat < ${parseFloat(event.queryStringParameters.lat) + 0.5},
                       lng > ${parseFloat(event.queryStringParameters.lng) - 0.5}, lng < ${parseFloat(event.queryStringParameters.lng) + 0.5})`
 
-  console.log(filterString);
-
   var data = {};
   data.rows = [];
 

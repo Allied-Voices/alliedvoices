@@ -110,8 +110,6 @@ class AppContextProvider extends Component {
   }
 
   filterVoices = (filterKey, filterOptions) => {
-    console.log('filterKey', filterKey);
-    console.log('filterOption', filterOptions);
     this.setState({
       filterOptions: {...this.state.filterOptions, [filterKey]:filterOptions}
     }, ()=> {
