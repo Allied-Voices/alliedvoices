@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SearchIcon from '../SearchIcon/SearchIcon';
 import SearchStyles from './Search.module.css'
 
-const Search = ({placeholder, searchFunction, disabled, ...props}) => {
+const Search = ({placeholder, searchFunction, filterFunction, disabled, ...props}) => {
   const [text, setText] = useState('');
 
   let classNames = `${SearchStyles.Container}`;
@@ -12,7 +12,11 @@ const Search = ({placeholder, searchFunction, disabled, ...props}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    searchFunction(text);
+    if(searchFunction){
+      searchFunction(text);
+    }else if(filterFunction){
+      filterFunction('search', [text]);
+    }
   }
 
   return (
