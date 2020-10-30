@@ -4,11 +4,21 @@ exports.handler = function (event, context, callback) {
   var Airtable = require('airtable');
   var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
 
-  const {lat, lng, ...filterOptions} = event.queryStringParameters;
+  const {lat, lng, search, ...filterOptions} = event.queryStringParameters;
 
   var filterString = 'AND('
 
-  if(filterOptions){
+  if(search){
+    let searchValue = JSON.parse(search)[0];
+    filterString += 'OR('
+    filterString += `FIND("${searchValue}", {Name}), 
+      FIND("${searchValue}", {Type}), 
+      FIND("${searchValue}", {Severity}), 
+      FIND("${searchValue}", {Incident type}), 
+      FIND("${searchValue}", {Race}), 
+      FIND("${searchValue}", {Type}), 
+      FIND("${searchValue}", {Location Tags})), `
+  }else if(filterOptions){
     let filterKeys = Object.keys(filterOptions);
     filterKeys.forEach(key => {
       let filterStringForKey = 'OR(';
@@ -26,8 +36,6 @@ exports.handler = function (event, context, callback) {
 
   filterString += `lat > ${parseFloat(event.queryStringParameters.lat) - 0.5}, lat < ${parseFloat(event.queryStringParameters.lat) + 0.5},
                       lng > ${parseFloat(event.queryStringParameters.lng) - 0.5}, lng < ${parseFloat(event.queryStringParameters.lng) + 0.5})`
-
-  console.log(filterString);
 
   var data = {};
   data.rows = [];

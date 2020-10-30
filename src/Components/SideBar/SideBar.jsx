@@ -21,7 +21,7 @@ const SideBar = () => {
       </div>
 
       <div className={SideBarStyles.SearchSection}>
-        <Search placeholder={'This search is not yet implemented. Use filters below.'} disabled/>
+        <Search placeholder={'Search for Voices'} filterFunction={appContext.filterVoices}/>
         {/* <Search placeholder={'i.e. verbal assault, microaggressions, good deeds, etc. '} /> */}
       </div>
 
