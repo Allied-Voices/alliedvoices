@@ -21,6 +21,7 @@ class AppContextProvider extends Component {
       'Type': [],
       'Content Type': [],
       'Incident type': [],
+      'Search': []
     }
   }
 
@@ -108,20 +109,9 @@ class AppContextProvider extends Component {
     })
   }
 
-  setFilterOptions = (filterKey, filterOption) => {
-    let index = this.state.filterOptions[filterKey].findIndex((option) => option === filterOption);
-    let newArr = [...this.state.filterOptions[filterKey]];
-    if(index !== -1){
-      newArr.splice(index, 1);
-    }else{
-      newArr.push(filterOption);
-    }
-    this.setState({
-      filterOptions: {...this.state.filterOptions, [filterKey]:newArr}
-    })
-  }
-
   filterVoices = (filterKey, filterOptions) => {
+    console.log('filterKey', filterKey);
+    console.log('filterOption', filterOptions);
     this.setState({
       filterOptions: {...this.state.filterOptions, [filterKey]:filterOptions}
     }, ()=> {
