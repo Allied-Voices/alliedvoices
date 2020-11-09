@@ -35,6 +35,7 @@ const SideBar = () => {
           optionsTitle="Select location type here"
           options={['Public Space', 'Commute', 'Workplace', 'Home', 'Place of Worship', 'Online']}
           filterFunction = {appContext.filterVoices}
+          clearFunction={appContext.clearVoices}
           filterKey = "Location Tags"
         />
         <ButtonMenu 
@@ -42,6 +43,7 @@ const SideBar = () => {
           optionsTitle='Filter by Content Type' 
           options={['Race-related incident', 'Opinion', 'Good deed']} 
           filterFunction = {appContext.filterVoices}
+          clearFunction={appContext.clearVoices}
           filterKey = "Type"
         />
         <ButtonMenu 
@@ -49,6 +51,7 @@ const SideBar = () => {
           optionsTitle='Filter by Source' 
           options={['News', 'Reporting Center', 'Social Media', 'User Submissions']}
           filterFunction = {appContext.filterVoices}
+          clearFunction={appContext.clearVoices}
           filterKey = "Content Type"
         />
         <ButtonMenu 
@@ -56,6 +59,7 @@ const SideBar = () => {
           optionsTitle='Filter by Incident Tags'
           options={['Physical', 'Verbal', 'Vandalism']}
           filterFunction = {appContext.filterVoices}
+          clearFunction={appContext.clearVoices}
           filterKey = "Incident type"
         />
         <ButtonMenu 
@@ -63,6 +67,7 @@ const SideBar = () => {
           optionsTitle='Filter by Race' 
           options={['Asian', 'Black']} 
           filterFunction = {appContext.filterVoices}
+          clearFunction={appContext.clearVoices}
           filterKey = "Race"
         />
       </div>

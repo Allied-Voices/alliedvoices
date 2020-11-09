@@ -21,7 +21,9 @@ class AppContextProvider extends Component {
       'Type': [],
       'Content Type': [],
       'Incident type': [],
-    }
+    },
+    options: []
+
   }
 
   // Get Initial Location, Voices and Resources
@@ -108,23 +110,38 @@ class AppContextProvider extends Component {
     })
   }
 
-  setFilterOptions = (filterKey, filterOption) => {
-    let index = this.state.filterOptions[filterKey].findIndex((option) => option === filterOption);
-    let newArr = [...this.state.filterOptions[filterKey]];
-    if(index !== -1){
-      newArr.splice(index, 1);
-    }else{
-      newArr.push(filterOption);
-    }
-    this.setState({
-      filterOptions: {...this.state.filterOptions, [filterKey]:newArr}
-    })
-  }
+  // setFilterOptions = (filterKey, filterOption) => {
+  //   // the index of the filtering options
+  //   let index = this.state.filterOptions[filterKey].findIndex((option) => option === filterOption);
+  //   // all the filtering options in an array
+  //   let newArr = [...this.state.filterOptions[filterKey]];
+  //   // if the index of the filter option is not newly added
+  //   if(index !== -1){
+  //     // then remove that element at the index
+  //     newArr.splice(index, 1);
+  //   }else{
+  //     // if the index of the filtering option is newly added then
+  //     // add the filtering option to the array of the filtering options
+  //     newArr.push(filterOption);
+  //   }
+  //   // 
+  //   this.setState({
+  //     filterOptions: {...this.state.filterOptions, [filterKey]:newArr}
+  //   })
+  // }
+
+
 
   filterVoices = (filterKey, filterOptions) => {
     this.setState({
+      // ...this.state.filterOptions - taking all the previous filter options (spread operator) and set it to a new state -> [filterKey]:filterOptions 
+      // [filterKey]:filterOptions  = the selected 
+      // filterKey - one of the filterOptions
+      // filterOptions - the options of each Filter Type
+      
       filterOptions: {...this.state.filterOptions, [filterKey]:filterOptions}
     }, ()=> {
+      //then get articles of the selected options
       getVoices(this.state.lat, this.state.lng, this.state.filterOptions, (voices) => {
         this.setState({
           voices
@@ -132,6 +149,12 @@ class AppContextProvider extends Component {
       });
     })
   }
+
+  //clearvoices
+  clearVoices(){
+    
+  }
+
 
   render() {
     return (
