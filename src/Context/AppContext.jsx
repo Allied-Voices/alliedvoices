@@ -11,7 +11,7 @@ class AppContextProvider extends Component {
     locations: [],
     voices: { rows: [] },
     resources: {},
-    selected: 99,
+    selected: -1,
     selectedLat: 39,
     selectedLng: -98,
     articleToggled: false,
@@ -111,7 +111,8 @@ class AppContextProvider extends Component {
 
   closeArticle = () => {
     this.setState({
-      articleToggled:false
+      articleToggled:false,
+      selected: -1
     });
   }
 

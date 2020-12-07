@@ -8,7 +8,7 @@ import { calculateTimeSpan } from '../../utils/date'
 
 const Article = () => {
   const appContext = useContext(AppContext);
-  var article = appContext.voices.rows[appContext.selected];
+  var article = appContext.selected >= 0 ? appContext.voices.rows[appContext.selected] : null;
   var resources = null;
   var relatedArticles = null;
   
