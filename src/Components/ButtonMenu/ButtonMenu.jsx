@@ -51,13 +51,15 @@ const ButtonMenu = ({
     if (filterFunction) {
       filterFunction(filterKey, selectedOptions);
       toggleMenu(false);
-    } else {
     }
   };
 
   const handleClearClick = () => {
-    //When the clear button is clicked, the selected options is given an empty array
     setSelectedOptions([]);
+    if (filterFunction) {
+      filterFunction(filterKey, []);
+      toggleMenu(false);
+    }
   };
 
   const renderMenu = () => {
