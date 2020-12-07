@@ -29,4 +29,25 @@
 
 .FilterContainer{
   margin:8px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ClearFilter{
+  background:white;
+  font-weight:400;
+  padding: 10px 20px;
+  border:2px solid #DDDDDD;
+  border-radius:30px;
+  outline:none;
+  min-width:50px;
+}
+
+.ClearFilter:hover{
+  cursor: pointer;
+}
+
+.ClearFilter:disabled{
+  cursor: not-allowed;
 }
