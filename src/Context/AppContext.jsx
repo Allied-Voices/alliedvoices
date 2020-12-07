@@ -118,18 +118,12 @@ class AppContextProvider extends Component {
   filterVoices = (filterKey, filterOptions) => {
     this.setState(
       {
-        // ...this.state.filterOptions - taking all the previous filter options (spread operator) and set it to a new state -> [filterKey]:filterOptions
-        // [filterKey]:filterOptions  = the selected
-        // filterKey - one of the filterOptions
-        // filterOptions - the options of each Filter Type
-
         filterOptions: {
           ...this.state.filterOptions,
           [filterKey]: filterOptions,
         },
       },
       () => {
-        //then get articles of the selected options
         getVoices(
           this.state.lat,
           this.state.lng,

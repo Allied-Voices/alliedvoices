@@ -19,7 +19,6 @@ const SideBar = () => {
       </div>
       <div className={SideBarStyles.SearchSection}>
         <Search placeholder={'Search for Voices'} filterFunction={appContext.filterVoices}/>
-        {/* <Search placeholder={'i.e. verbal assault, microaggressions, good deeds, etc. '} /> */}
       </div>
       <div className={SideBarStyles.FilterSection}>
         <ButtonMenu
