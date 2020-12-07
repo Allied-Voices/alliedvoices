@@ -13,7 +13,7 @@ const LandingSearch = () => {
     if(!searchInput && appContext.locations[0]){
       setSearchInput(appContext.locations[0]);
     }
-  });
+  }, [searchInput, appContext.locations]);
 
   const search = (e) => {
     e.preventDefault();
