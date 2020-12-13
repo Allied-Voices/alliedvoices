@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import useDebounce from '../../CustomHooks/use-debounce'
 import { Map as LeafletMap, TileLayer, ZoomControl, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet'
 import MapStyles from './MapStyles.module.css'
@@ -22,25 +23,47 @@ const incidentMarker = new L.Icon({
 
 const Map = () => {
   const [coordinates, setCoordinates] = useState({ lat: 39, lng: -98, });
-  const [zoom, setZoom] = useState(5)
+  const [newCoordinates, setNewCoordinates] = useState({lat: null, lng:null});
+  const [didClick, setDidClick] = useState(false);
   const appContext = useContext(AppContext)
-  const mapRef = React.createRef();
+  const mapRef = useRef();
+  const zoom = useRef(13);
 
   useEffect(() => {
-    window.test = mapRef.current.leafletElement;
-    setTimeout(()=>{window.test.invalidateSize()}, 450)
+    window.leafletElement = mapRef.current.leafletElement;
+    setTimeout(()=>{window.leafletElement.invalidateSize()}, 450);
     if (coordinates.lat !== appContext.selectedLat && coordinates.lng !== appContext.selectedLng) {
       setCoordinates({ lat: appContext.selectedLat, lng: appContext.selectedLng });
-      setZoom(13);
     }
-  }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng, mapRef])
+  }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng, mapRef]);
 
-  // useEffect(()=>{
-  //   console.log(mapRef.current.leafletElement.invalidateSize())
-  // })
+  const debouncedNewCoordinates = useDebounce(newCoordinates, 2000);
+
+  useEffect(()=>{
+    if(newCoordinates.lat !== null && newCoordinates.lng !== null && (Math.abs(newCoordinates.lat - coordinates.lat) > 0.25 || Math.abs(newCoordinates.lng - coordinates.lng) > 0.25)){
+      appContext.updateLocation({lat:newCoordinates.lat, lng:newCoordinates.lng});
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedNewCoordinates])
+
+  const handleMoveEnd = (e) => {
+    if(mapRef.current && didClick){
+      let latlng = mapRef.current.leafletElement.getCenter();
+      setNewCoordinates({lat:latlng.lat, lng:latlng.lng});
+      setDidClick(false);
+    }
+  }
+
+  const handleZoom = (e) => {
+    zoom.current = e.sourceTarget._zoom;
+  }
+
+  const handleMouseDown = (e) => {
+    setDidClick(true);
+  }
 
   return (
-    <LeafletMap ref={mapRef} className={MapStyles.Map} center={[coordinates.lat, coordinates.lng]} zoom={zoom} zoomControl={false}>
+    <LeafletMap ref={mapRef} className={MapStyles.Map} center={[coordinates.lat, coordinates.lng]} zoom={zoom.current} zoomControl={false} onmousedown={handleMouseDown} onmoveend={handleMoveEnd} onzoomend={handleZoom}>
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
