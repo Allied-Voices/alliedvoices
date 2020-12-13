@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import SearchIcon from '../SearchIcon/SearchIcon';
 import LandingSearchStyles from './LandingSearch.module.css';
@@ -7,20 +7,24 @@ import { AppContext } from '../../Context/AppContext';
 const LandingSearch = () => {
   let history = useHistory();
   const appContext = useContext(AppContext);
-  const [searchInput, setSearchInput] = useState(null);
+  const [searchInput, setSearchInput] = useState("");
+  const didLoad = useRef(false);
 
   useEffect(()=>{
-    if(searchInput === null && appContext.locations[0]){
+    if(!didLoad.current && appContext.locations[0]){
+      didLoad.current = true;
       setSearchInput(appContext.locations[0]);
     }
   }, [searchInput, appContext.locations]);
 
   const search = (e) => {
     e.preventDefault();
-    if(searchInput !== appContext.locations[0]){
-      appContext.updateLocation(searchInput);
+    if(searchInput){
+      if(searchInput !== appContext.locations[0] && searchInput){
+        appContext.updateLocation(searchInput);
+      }
+      history.push("/map");
     }
-    history.push("/map");
   }
 
   return (
