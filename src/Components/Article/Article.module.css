@@ -50,13 +50,20 @@
 }
 
 .Iframe{
-  width:750px;
-  height:600px;
+  width:938px;
+  height:950px;
+  -ms-zoom: 0.75;
+  -moz-transform: scale(0.75);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.75);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.80);
+  -webkit-transform-origin: 0 0;
   border:1px solid black;
 }
 
 .RelatedStories{
-  margin-top:32px;
+  margin-top:-162px;
   margin-left:10px;
   position:relative;
   width:800px;
