@@ -7,10 +7,10 @@ import { AppContext } from '../../Context/AppContext';
 const LandingSearch = () => {
   let history = useHistory();
   const appContext = useContext(AppContext);
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState(null);
 
   useEffect(()=>{
-    if(!searchInput && appContext.locations[0]){
+    if(searchInput === null && appContext.locations[0]){
       setSearchInput(appContext.locations[0]);
     }
   }, [searchInput, appContext.locations]);
