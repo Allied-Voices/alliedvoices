@@ -1,10 +1,19 @@
-const BASE_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json?address='
+const BASE_API_URL = 'https://maps.googleapis.com/maps/api/geocode/json?'
 const API_KEY = '&key=AIzaSyBjrzncwvY7Af3BhEwJpAqw_7rH7X6J7Gs'
 
 async function getGeocodeInformationFor(location, cb) {
-   const response = await fetch(BASE_API_URL + encodeURIComponent(location) + API_KEY, {
-      methods: "GET",
-   })
+
+   let response;
+
+   if(typeof(location) === "string"){
+      response = await fetch(BASE_API_URL + 'address=' + encodeURIComponent(location) + API_KEY, {
+         methods: "GET",
+      });
+   }else{
+      response = await fetch(BASE_API_URL + `latlng=${location.lat},${location.lng}` + API_KEY, {
+         methods: "GET",
+      });
+   }
 
    // Example of API response from Geocode below 
    const responseData = await response.json();
@@ -28,9 +37,17 @@ async function getGeocodeInformationFor(location, cb) {
             }
          )
       } else {
-         return {
-            ...responseData.results[0].geometry.location,
-            locations
+         if(typeof(location) === "string"){
+            return {
+               ...responseData.results[0].geometry.location,
+               locations
+            }
+         }else{
+            return {
+               lat: location.lat,
+               lng: location.lng,
+               locations
+            }
          }
       }
       
