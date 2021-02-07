@@ -1,6 +1,6 @@
 const BASE_URL = ".netlify/functions"
 
-async function getVoices(lat, lng, ...args) {
+async function getVoices(lat, lng, pageNum=1, ...args) {
   let cb;
   let filterOptions;
 
@@ -14,7 +14,7 @@ async function getVoices(lat, lng, ...args) {
     }
   })
 
-  let query = `?lat=${lat}&lng=${lng}`
+  let query = `?lat=${lat}&lng=${lng}&pageNum=${pageNum}`
 
   if(filterOptions){
     let filterKeys = Object.keys(filterOptions);
@@ -31,7 +31,7 @@ async function getVoices(lat, lng, ...args) {
   const ATresponseData = await ATresponse.json();
 
   if (cb) {
-    cb(ATresponseData);
+    cb(ATresponseData.articles, ATresponseData.totalPages);
   } else {
     return ATresponseData;
   }
