@@ -9,6 +9,23 @@ import SideBarStyles from "./SideBar.module.css";
 
 const SideBar = () => {
   const appContext = useContext(AppContext);
+
+  const numberOfPages = (selectedPage, maxPage, onClick) => {
+    let numbers = [];
+    for(let i = 1; i<=maxPage; i++){
+      if(i===selectedPage){
+        numbers.push(
+          <span key={i} className={SideBarStyles.Selected} >{i}</span>
+        )
+      }else{
+        numbers.push(
+          <span key={i} onClick={()=>{onClick(i)}}>{i}</span>
+        )
+      }
+    }
+    return numbers;
+  };
+
   return (
     <div className={SideBarStyles.Container}>
       <div className={SideBarStyles.Header}>
@@ -79,7 +96,7 @@ const SideBar = () => {
         />
       </div>
       <div className={SideBarStyles.ArticleSection}>
-        {appContext.voices.rows ? (
+        {appContext.voices.rows.length ? (
           appContext.voices.rows.map((voice, index) => (
             <SideBarArticle
               key={index}
@@ -97,6 +114,9 @@ const SideBar = () => {
         ) : (
           <div>There are no records of articles</div>
         )}
+      </div>
+      <div className={SideBarStyles.PageSection}>
+          {numberOfPages(appContext.pageNum, appContext.maxPageNum, appContext.selectPage)}
       </div>
     </div>
   );

@@ -57,3 +57,26 @@
 .ArticleSection > div {
   margin:0 0;
 }
+
+.PageSection {
+  padding:10px 0;
+  font-size:18px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PageSection > span {
+  padding-top:2px;
+  margin:0px 4px;
+  cursor:none;
+}
+
+.PageSection > span:hover {
+  color:var(--primary-color);color:var(--primary-color);
+  cursor:pointer;
+}
+
+.PageSection .Selected {
+  font-weight:900;
+}

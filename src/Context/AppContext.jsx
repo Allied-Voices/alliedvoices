@@ -10,6 +10,8 @@ class AppContextProvider extends Component {
     lng: -98,
     locations: [],
     voices: { rows: [] },
+    pageNum: 1,
+    maxPageNum: 0,
     resources: {},
     selected: -1,
     selectedLat: 39,
@@ -37,15 +39,17 @@ class AppContextProvider extends Component {
         selectedLng: lng,
       },
       () => {
-        getVoices(this.state.lat, this.state.lng, (voices) => {
+        getVoices(this.state.lat, this.state.lng, this.state.pageNum, (voices, maxPageNum) => {
           this.setState({
             voices,
+            maxPageNum
           });
         });
 
-        // getVoices(40.73, -73.93, (voices) => {
+        // getVoices(40.73, -73.93, this.state.pageNum, (voices,  maxPageNum) => {
         //   this.setState({
-        //     voices
+        //     voices,
+        //     maxPageNum
         //   })
         // });
 
@@ -76,15 +80,18 @@ class AppContextProvider extends Component {
         locations: locations,
         selectedLat: lat,
         selectedLng: lng,
+        pageNum: 1
       },
       () => {
         getVoices(
           this.state.lat,
           this.state.lng,
+          this.state.pageNum,
           this.state.filterOptions,
-          (voices) => {
+          (voices, maxPageNum) => {
             this.setState({
               voices,
+              maxPageNum
             });
           }
         );
@@ -123,15 +130,40 @@ class AppContextProvider extends Component {
           ...this.state.filterOptions,
           [filterKey]: filterOptions,
         },
+        pageNum: 1
       },
       () => {
         getVoices(
           this.state.lat,
           this.state.lng,
+          this.state.pageNum,
           this.state.filterOptions,
-          (voices) => {
+          (voices, maxPageNum) => {
             this.setState({
               voices,
+              maxPageNum
+            });
+          }
+        );
+      }
+    );
+  };
+
+  selectPage = (pageNum) => {
+    this.setState(
+      {
+        pageNum
+      },
+      () => {
+        getVoices(
+          this.state.lat,
+          this.state.lng,
+          this.state.pageNum,
+          this.state.filterOptions,
+          (voices, maxPageNum) => {
+            this.setState({
+              voices,
+              maxPageNum
             });
           }
         );
@@ -148,6 +180,7 @@ class AppContextProvider extends Component {
           filterVoices: this.filterVoices,
           selectArticle: this.selectArticle,
           closeArticle: this.closeArticle,
+          selectPage: this.selectPage
         }}
       >
         {this.props.children}
