@@ -1,7 +1,7 @@
 # Allied Voices 
 A web applicaion intended to help users navigate their racial landscape through data and positive resources.
 
-The application uses React on the frontend and is deployed through Netlify. Data for Allied Voices is stored in [Airtables] (https://airtable.com/tblQ7bsHsatEqVdV0/viwUWfuMz2txq5h50?blocks=bipaNlSeLZIeB6tl3).
+The application uses React on the frontend and is deployed through Netlify. Data for Allied Voices is stored in [Airtables](https://airtable.com/tblQ7bsHsatEqVdV0/viwUWfuMz2txq5h50?blocks=bipaNlSeLZIeB6tl3).
 
 ## Development
 To set up locally:
