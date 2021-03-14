@@ -52,37 +52,51 @@ const Article = () => {
 
   return ( 
     <div className={`${ArticleStyles.Container} ${articleClass}`}>
-      <div className={ArticleStyles.HeadingContainer}>
-        <h2 className={ArticleStyles.Title}>
-          {article && article.Name}
-        </h2>
-        <div className={ArticleStyles.Close} onClick={appContext.closeArticle}><CloseIcon/></div>
-      </div>
-      <div className={ArticleStyles.SubheadingContainer}>
-        <h3 className={ArticleStyles.Subtitle}>
-          {article && calculateTimeSpan(article.Date)} · {article && calculateDistance(appContext.lat, appContext.lng, article.lat, article.lng)}
-        </h3>
-      </div>
-      <div className={ArticleStyles.TagsContainer}>
-        {(article && article['Incident type']) && article['Incident type'].map((label)=><Tag key={label} type='Incident'>{label}</Tag>)}
-        {(article && article['Location Tags']) && article['Location Tags'].map((label)=><Tag key={label} type='Location'>{label}</Tag>)}
-      </div>
-      <div className={ArticleStyles.IframeContainer}>
-        <h3>Read more at <span>{article && article.Publisher}</span></h3>
-        <iframe className={ArticleStyles.Iframe} title={"Test Article"} src={article && article.URL}/>
-      </div>
-      <div className={ArticleStyles.RelatedStories}>
-        <h2>Read related stories</h2>
-        <ul>
-          {relatedArticles}
-        </ul>
-      </div>
-      <div className={ArticleStyles.Resources}>
-        <h2>Resources</h2>
-        <ul>
-          {resources}
-        </ul>
-      </div>
+      { article &&
+        <div className={ArticleStyles.ArticleContainer}>
+          <div className={ArticleStyles.HeadingContainer}>
+            <h2 className={ArticleStyles.Title}>
+              {article.Name}
+            </h2>
+            <div className={ArticleStyles.Close} onClick={appContext.closeArticle}>
+              <CloseIcon/>
+            </div>
+          </div>
+          <div className={ArticleStyles.SubheadingContainer}>
+            <h3 className={ArticleStyles.Subtitle}>
+              {calculateTimeSpan(article.Date)} · {calculateDistance(appContext.lat, appContext.lng, article.lat, article.lng)}
+            </h3>
+          </div>
+          <div className={ArticleStyles.TagsContainer}>
+            {(article['Incident type']) && article['Incident type'].map((label)=><Tag key={label} type='Incident'>{label}</Tag>)}
+            {(article['Location Tags']) && article['Location Tags'].map((label)=><Tag key={label} type='Location'>{label}</Tag>)}
+          </div>
+          <div className={ArticleStyles.SnippetContainer}>
+            <h3>
+              Read more at <a href="/">{article.Publisher}</a>
+            </h3>
+            <p>
+              { article['Snippet']}
+            </p>
+          </div>
+          <div className={ArticleStyles.RelatedStories}>
+            <h2>
+              Read related stories
+            </h2>
+            <ul>
+              {relatedArticles}
+            </ul>
+          </div>
+          <div className={ArticleStyles.Resources}>
+            <h2>
+              Resources
+            </h2>
+            <ul>
+              {resources}
+            </ul>
+          </div>
+        </div>
+      }
     </div>
    );
 }
