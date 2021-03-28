@@ -67,16 +67,23 @@
 }
 
 .PageSection > span {
-  padding-top:2px;
+  padding:5px 8px;
   margin:0px 4px;
+  border-radius: 8px;
   cursor:none;
 }
 
 .PageSection > span:hover {
-  color:var(--primary-color);color:var(--primary-color);
+  background-color: #F2F2F2;
   cursor:pointer;
 }
 
 .PageSection .Selected {
-  font-weight:900;
+  background-color: #F2F2F2;
+}
+
+.PageSection .Disabled {
+  background-color:rgba(0,0,0,0) !important;
+  color: #B4B4B4;
+  cursor:default !important;
 }
