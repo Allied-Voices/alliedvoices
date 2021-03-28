@@ -12,7 +12,27 @@ const SideBar = () => {
 
   const numberOfPages = (selectedPage, maxPage, onClick) => {
     let numbers = [];
-    for(let i = 1; i<=maxPage; i++){
+    let lastPageToDisplay;
+    let startingPage;
+
+    if (maxPage === 0 ) return numbers;
+
+    if(selectedPage < 3) {
+      startingPage = 1;
+      if(maxPage < 5){
+        lastPageToDisplay = maxPage
+      } else {
+        lastPageToDisplay = 5;
+      }
+    } else if(selectedPage > (maxPage - 3)) {
+      startingPage = maxPage-4;
+      lastPageToDisplay = maxPage;
+    } else {
+      startingPage = selectedPage-2;
+      lastPageToDisplay = selectedPage+2;
+    }
+
+    for(let i = startingPage; i<=lastPageToDisplay; i++){
       if(i===selectedPage){
         numbers.push(
           <span key={i} className={SideBarStyles.Selected} >{i}</span>
@@ -115,9 +135,13 @@ const SideBar = () => {
           <div>There are no records of articles</div>
         )}
       </div>
-      <div className={SideBarStyles.PageSection}>
-          {numberOfPages(appContext.pageNum, appContext.maxPageNum, appContext.selectPage)}
-      </div>
+      { !!appContext.maxPageNum && 
+        <div className={SideBarStyles.PageSection}>
+            <span className={appContext.pageNum === 1 ? SideBarStyles.Disabled : "" } onClick={appContext.goToPrevPage}>&lt;  Prev</span>
+            {numberOfPages(appContext.pageNum, appContext.maxPageNum, appContext.selectPage)}
+            <span className={appContext.pageNum === appContext.maxPageNum ? SideBarStyles.Disabled : "" } onClick={appContext.goToNextPage}>Next  &gt;</span>
+        </div>
+      }
     </div>
   );
 };
