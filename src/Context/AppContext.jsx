@@ -171,6 +171,52 @@ class AppContextProvider extends Component {
     );
   };
 
+  goToPrevPage = () => {
+    if(this.state.pageNum === 1) return;
+    this.setState(
+      {
+        pageNum: this.state.pageNum-1
+      },
+      () => {
+        getVoices(
+          this.state.lat,
+          this.state.lng,
+          this.state.pageNum,
+          this.state.filterOptions,
+          (voices, maxPageNum) => {
+            this.setState({
+              voices,
+              maxPageNum
+            });
+          }
+        );
+      }
+    )
+  };
+
+  goToNextPage = () => {
+    if(this.state.pageNum === this.state.maxPageNum) return;
+    this.setState(
+      {
+        pageNum: this.state.pageNum+1
+      },
+      () => {
+        getVoices(
+          this.state.lat,
+          this.state.lng,
+          this.state.pageNum,
+          this.state.filterOptions,
+          (voices, maxPageNum) => {
+            this.setState({
+              voices,
+              maxPageNum
+            });
+          }
+        );
+      }
+    )
+  }
+
   render() {
     return (
       <AppContext.Provider
@@ -180,7 +226,9 @@ class AppContextProvider extends Component {
           filterVoices: this.filterVoices,
           selectArticle: this.selectArticle,
           closeArticle: this.closeArticle,
-          selectPage: this.selectPage
+          selectPage: this.selectPage,
+          goToPrevPage: this.goToPrevPage,
+          goToNextPage: this.goToNextPage
         }}
       >
         {this.props.children}
