@@ -23,7 +23,7 @@ const Article = () => {
     resourceIndices = new Set(resourceIndices);
     resourceIndices.forEach((index)=>{
       let resource = appContext.resources.rows[index];
-      resources.push(<li><a href={resource.URL}>{resource.Name}</a></li>)
+      resources.push(<li key={resource.Name}><a href={resource.URL}>{resource.Name}</a></li>)
     })      
   }
 
@@ -57,6 +57,7 @@ const Article = () => {
           </div>
           <div className={ArticleStyles.ImageContainer}>
             {article.Image ? 
+            // eslint-disable-next-line jsx-a11y/img-redundant-alt
             <img className={ArticleStyles.Image} src={article.Image} alt="article image"/> :
             <div className={ArticleStyles.ImagePlaceHolder}>
               No Image Found
