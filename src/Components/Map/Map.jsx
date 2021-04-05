@@ -37,6 +37,7 @@ const Map = () => {
       setCoordinates({ lat: appContext.selectedLat, lng: appContext.selectedLng });
       zoom.current = determineLocationZoom(appContext.locationType);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng, mapRef]);
 
   const debouncedNewCoordinates = useDebounce(newCoordinates, 2000);
