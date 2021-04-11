@@ -83,7 +83,8 @@ class AppContextProvider extends Component {
         locationType: locationType,
         selectedLat: lat,
         selectedLng: lng,
-        pageNum: 1
+        pageNum: 1,
+        articleToggled: false
       },
       () => {
         getVoices(
