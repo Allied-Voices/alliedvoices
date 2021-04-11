@@ -23,7 +23,7 @@ const Article = () => {
     resourceIndices = new Set(resourceIndices);
     resourceIndices.forEach((index)=>{
       let resource = appContext.resources.rows[index];
-      resources.push(<li key={resource.Name}><a href={resource.URL}>{resource.Name}</a></li>)
+      resources.push(<li key={resource.Name}><a href={resource.URL} rel="noopener noreferrer" target="_blank">{resource.Name}</a></li>)
     })      
   }
 
