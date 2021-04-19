@@ -47,7 +47,7 @@ exports.handler = function (event, context, callback) {
   base('Articles').select({
 
     filterByFormula: filterString,
-    fields: ["Name", "lat", "lng", "Date", "Type", "Incident type", "Incident type copy", "Publisher", "URL", "Snippet", "Location Tags"],
+    fields: ["Name", "lat", "lng", "Date", "Type", "Incident type", "Incident type copy", "Publisher", "URL", "Snippet", "Location Tags", "Image"],
     view: "All users"
 
   }).eachPage(function page(records, fetchNextPage) {
@@ -55,13 +55,6 @@ exports.handler = function (event, context, callback) {
     records.forEach(function (record) {
 
       if(articleNum >= startingArticleNum && articleNum <= endingArticleNum){
-        if (record.fields['Incident type']) {
-          record.fields['Incident type'].forEach((type) => {
-            if (!data.articles[type]) data.articles[type] = [];
-            data.articles[type].push(data.articles.rows.length);
-          })
-        }
-
         data.articles.rows.push(record.fields);
       }
 

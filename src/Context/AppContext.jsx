@@ -9,6 +9,7 @@ class AppContextProvider extends Component {
     lat: 39,
     lng: -98,
     locations: [],
+    locationType: '',
     voices: { rows: [] },
     pageNum: 1,
     maxPageNum: 0,
@@ -29,12 +30,13 @@ class AppContextProvider extends Component {
 
   // Get Initial Location, Voices and Resources
   componentDidMount = async () => {
-    const { lat, lng, locations } = await getLocation();
+    const { lat, lng, locations, locationType } = await getLocation();
     this.setState(
       {
         lat: lat,
         lng: lng,
         locations: locations,
+        locationType: locationType,
         selectedLat: lat,
         selectedLng: lng,
       },
@@ -65,7 +67,7 @@ class AppContextProvider extends Component {
   // Update Location and Get New Voices
   updateLocation = async (newLocation) => {
     // Use Google Geocode to convert newLocation to coordinates, and to determine the town, city, and state name if user the user did not provide it.
-    const { lat, lng, locations } = await getGeocodeInformationFor(newLocation);
+    const { lat, lng, locations, locationType } = await getGeocodeInformationFor(newLocation);
 
     // Return if the newLocation is not recognized by a geocoder
     if (!lat || !lng || !locations) {
@@ -78,9 +80,11 @@ class AppContextProvider extends Component {
         lat: lat,
         lng: lng,
         locations: locations,
+        locationType: locationType,
         selectedLat: lat,
         selectedLng: lng,
-        pageNum: 1
+        pageNum: 1,
+        articleToggled: false
       },
       () => {
         getVoices(

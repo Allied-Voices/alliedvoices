@@ -4,6 +4,7 @@ import { Map as LeafletMap, TileLayer, ZoomControl, Marker, Popup } from 'react-
 import L from 'leaflet'
 import MapStyles from './MapStyles.module.css'
 import { AppContext } from '../../Context/AppContext'
+import determineLocationZoom from '../../utils/locationTypes'
 
 const gdMarker = new L.Icon({
   iconUrl: '/assets/gd-marker.svg',
@@ -34,7 +35,9 @@ const Map = () => {
     setTimeout(()=>{window.leafletElement.invalidateSize()}, 450);
     if (coordinates.lat !== appContext.selectedLat && coordinates.lng !== appContext.selectedLng) {
       setCoordinates({ lat: appContext.selectedLat, lng: appContext.selectedLng });
+      zoom.current = determineLocationZoom(appContext.locationType);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coordinates.lat, coordinates.lng, appContext.selectedLat, appContext.selectedLng, mapRef]);
 
   const debouncedNewCoordinates = useDebounce(newCoordinates, 2000);

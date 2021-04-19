@@ -40,13 +40,15 @@ async function getGeocodeInformationFor(location, cb) {
          if(typeof(location) === "string"){
             return {
                ...responseData.results[0].geometry.location,
-               locations
+               locations,
+               locationType: responseData.results[0].types[0]
             }
          }else{
             return {
                lat: location.lat,
                lng: location.lng,
-               locations
+               locations,
+               locationType: responseData.results[0].types[0]
             }
          }
       }
