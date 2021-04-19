@@ -42,7 +42,10 @@
   width:95%;
   margin-bottom:16px;
   display:flex;
-  justify-content: space-between;
+}
+
+.FilterSection > div:not(:first-child) {
+  margin-left:5px;
 }
 
 .ArticleSection{
