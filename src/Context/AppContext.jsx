@@ -107,6 +107,8 @@ class AppContextProvider extends Component {
         });
       }
     );
+
+    return true;
   };
 
   selectArticle = (index) => {

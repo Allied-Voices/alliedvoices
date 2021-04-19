@@ -55,12 +55,7 @@ async function getGeocodeInformationFor(location, cb) {
       
    }else{
 
-      // Return null values
-      return{
-         lat:null,
-         lng:null,
-         locations:null
-      }
+      return false
 
    }
 }
