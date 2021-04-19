@@ -10,6 +10,10 @@
   background:rgba(239, 239, 239, 0.3);
 }
 
+.Error{
+  border:2px solid #ff5757;
+}
+
 .Input{
   border:0px;
   width:100%;
@@ -38,4 +42,11 @@
   filter:grayscale(1);
   opacity: 0;
   transition: 0.5s;
+}
+
+.ErrorText{
+  color: #ff5757;
+  font-size: 15px;
+  margin-left: 5px;
+  margin-top: 10px;
 }
