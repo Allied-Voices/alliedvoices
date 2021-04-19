@@ -73,7 +73,7 @@ const Map = () => {
       />
       <ZoomControl position="topright" />
       {appContext.voices.rows && appContext.voices.rows.map((voice, index) => (
-        <Marker key={`${index}-${voice.lat}-${voice.lng}`} position={[voice.lat, voice.lng]} icon={voice.Type === 'Good deed' ? gdMarker : incidentMarker}>
+        <Marker onclick={() => appContext.selectArticle(index)} key={`${index}-${voice.lat}-${voice.lng}`} position={[voice.lat, voice.lng]} icon={voice.Type === 'Good deed' ? gdMarker : incidentMarker}>
           <Popup>
             <strong>{voice.Name}</strong><br />
             <strong>Type: </strong>{voice.Type}<br />
