@@ -68,8 +68,8 @@ const Map = () => {
   return (
     <LeafletMap ref={mapRef} className={MapStyles.Map} center={[coordinates.lat, coordinates.lng]} zoom={zoom.current} zoomControl={false} onmousedown={handleMouseDown} onmoveend={handleMoveEnd} onzoomend={handleZoom}>
       <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&amp;copy <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
       />
       <ZoomControl position="topright" />
       {appContext.voices.rows && appContext.voices.rows.map((voice, index) => (
