@@ -9,7 +9,7 @@ import { calculateTimeSpan } from '../../utils/date'
 
 const Article = () => {
   const appContext = useContext(AppContext);
-  var article = appContext.selected >= 0 ? appContext.voices.rows[appContext.selected] : null;
+  var article = appContext.articleSelected >= 0 ? appContext.voices.rows[appContext.articleSelected] : null;
   var resources = null;
   
   if(article && article['Location Tags']){

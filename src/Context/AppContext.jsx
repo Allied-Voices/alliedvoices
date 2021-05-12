@@ -2,21 +2,23 @@ import React, { Component, createContext } from "react";
 import { getLocation } from "../utils/geolocationdb";
 import { getVoices, getResources } from "../utils/airtable";
 import { getGeocodeInformationFor } from "../utils/geocoder";
+import determineLocationZoom from '../utils/locationTypes'
 export const AppContext = createContext();
 
 class AppContextProvider extends Component {
   state = {
-    lat: 39,
-    lng: -98,
+    orgLat: 39,
+    orgLng: -98,
+    zoom: 1, 
     locations: [],
     locationType: '',
     voices: { rows: [] },
     pageNum: 1,
     maxPageNum: 0,
     resources: {},
-    selected: -1,
-    selectedLat: 39,
-    selectedLng: -98,
+    articleSelectedLat: 39,
+    articleSelectedLng:-98,
+    articleSelected: -1,
     articleToggled: false,
     filterOptions: {
       'Location Tags': [],
@@ -31,29 +33,24 @@ class AppContextProvider extends Component {
   // Get Initial Location, Voices and Resources
   componentDidMount = async () => {
     const { lat, lng, locations, locationType } = await getLocation();
+
+    let zoom = 13;
+
     this.setState(
       {
-        lat: lat,
-        lng: lng,
+        orgLat: lat,
+        orgLng: lng,
+        zoom: zoom,
         locations: locations,
         locationType: locationType,
-        selectedLat: lat,
-        selectedLng: lng,
       },
       () => {
-        getVoices(this.state.lat, this.state.lng, this.state.pageNum, (voices, maxPageNum) => {
+        getVoices(this.state.orgLat, this.state.orgLng, this.state.pageNum, (voices, maxPageNum) => {
           this.setState({
             voices,
             maxPageNum
           });
         });
-
-        // getVoices(40.73, -73.93, this.state.pageNum, (voices,  maxPageNum) => {
-        //   this.setState({
-        //     voices,
-        //     maxPageNum
-        //   })
-        // });
 
         getResources(this.state.locations, (resources) => {
           this.setState({
@@ -74,22 +71,23 @@ class AppContextProvider extends Component {
       return false;
     }
 
+    let zoom = determineLocationZoom(locationType);
+
     // Update State and then make calls to get new voices and resources
     this.setState(
       {
-        lat: lat,
-        lng: lng,
+        orgLat: lat,
+        orgLng: lng,
         locations: locations,
         locationType: locationType,
-        selectedLat: lat,
-        selectedLng: lng,
+        zoom: zoom,
         pageNum: 1,
         articleToggled: false
       },
       () => {
         getVoices(
-          this.state.lat,
-          this.state.lng,
+          this.state.orgLat,
+          this.state.orgLng,
           this.state.pageNum,
           this.state.filterOptions,
           (voices, maxPageNum) => {
@@ -111,12 +109,65 @@ class AppContextProvider extends Component {
     return true;
   };
 
+    // Update Location and Get New Voices
+    refreshLocation = async (newLocation, zoom) => {
+      // Use Google Geocode to convert newLocation to coordinates, and to determine the town, city, and state name if user the user did not provide it.
+      const { lat, lng } = await getGeocodeInformationFor(newLocation);
+  
+      // Return if the newLocation is not recognized by a geocoder
+      if (!lat || !lng ) {
+        return false;
+      }
+  
+      // Update State and then make calls to get new voices and resources
+      this.setState(
+        {
+          orgLat: lat,
+          orgLng: lng,
+          pageNum: 1,
+          zoom: zoom,
+        },
+        () => {
+          getVoices(
+            this.state.orgLat,
+            this.state.orgLng,
+            this.state.pageNum,
+            this.state.filterOptions,
+            (voices, maxPageNum) => {
+              if(maxPageNum){
+                this.setState({
+                  voices,
+                  maxPageNum,
+                  articleSelected: 0,
+                });
+              }else{
+                this.setState({
+                  voices,
+                  maxPageNum,
+                  articleSelected: -1,
+                  articleToggled: false,
+                });
+              }
+            }
+          );
+  
+          getResources(this.state.locations, (resources) => {
+            this.setState({
+              resources,
+            });
+          });
+        }
+      );
+  
+      return true;
+    };
+
   selectArticle = (index) => {
     if (index !== this.state.selected) {
       this.setState({
-        selected: index,
-        selectedLat: this.state.voices.rows[index].lat,
-        selectedLng: this.state.voices.rows[index].lng,
+        articleSelected: index,
+        articleSelectedLat: this.state.voices.rows[index].lat,
+        articleSelectedLng: this.state.voices.rows[index].lng,
         articleToggled: true,
       });
     }
@@ -125,7 +176,7 @@ class AppContextProvider extends Component {
   closeArticle = () => {
     this.setState({
       articleToggled:false,
-      selected: -1
+      articleSelected: -1
     });
   }
 
@@ -140,8 +191,8 @@ class AppContextProvider extends Component {
       },
       () => {
         getVoices(
-          this.state.lat,
-          this.state.lng,
+          this.state.orgLat,
+          this.state.orgLng,
           this.state.pageNum,
           this.state.filterOptions,
           (voices, maxPageNum) => {
@@ -162,8 +213,8 @@ class AppContextProvider extends Component {
       },
       () => {
         getVoices(
-          this.state.lat,
-          this.state.lng,
+          this.state.orgLat,
+          this.state.orgLng,
           this.state.pageNum,
           this.state.filterOptions,
           (voices, maxPageNum) => {
@@ -185,8 +236,8 @@ class AppContextProvider extends Component {
       },
       () => {
         getVoices(
-          this.state.lat,
-          this.state.lng,
+          this.state.orgLat,
+          this.state.orgLng,
           this.state.pageNum,
           this.state.filterOptions,
           (voices, maxPageNum) => {
@@ -208,8 +259,8 @@ class AppContextProvider extends Component {
       },
       () => {
         getVoices(
-          this.state.lat,
-          this.state.lng,
+          this.state.orgLat,
+          this.state.orgLng,
           this.state.pageNum,
           this.state.filterOptions,
           (voices, maxPageNum) => {
@@ -229,12 +280,13 @@ class AppContextProvider extends Component {
         value={{
           ...this.state,
           updateLocation: this.updateLocation,
+          refreshLocation: this.refreshLocation,
           filterVoices: this.filterVoices,
           selectArticle: this.selectArticle,
           closeArticle: this.closeArticle,
           selectPage: this.selectPage,
           goToPrevPage: this.goToPrevPage,
-          goToNextPage: this.goToNextPage
+          goToNextPage: this.goToNextPage,
         }}
       >
         {this.props.children}
