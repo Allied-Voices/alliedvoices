@@ -109,7 +109,7 @@ const SideBar = () => {
               publisher={voice.Publisher}
               type={voice.Type}
               onClick={() => appContext.selectArticle(index)}
-              selected={index === appContext.selected}
+              selected={index === appContext.articleSelected}
             />
           ))
         ) : (
