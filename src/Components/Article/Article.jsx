@@ -72,14 +72,14 @@ const Article = () => {
               <a href={article.URL} rel="noopener noreferrer" target="_blank">Read more on {article.Publisher}</a>
             </h3>
           </div>
-          <div className={ArticleStyles.Resources}>
+          {!!resources && <div className={ArticleStyles.Resources}>
             <h2>
               Resources
             </h2>
             <ul>
               {resources}
             </ul>
-          </div>
+          </div>}
         </div>
       }
     </div>
