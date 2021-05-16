@@ -12,7 +12,7 @@ function calculateDistance(originLat, originLng, lat, lng){
     d = "Unknown"
   }
 
-  return d + 'mi away';
+  return d + ' mi away';
 }
 
 export { calculateDistance }
