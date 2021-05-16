@@ -50,7 +50,7 @@ const Article = () => {
           </div>
           <div className={ArticleStyles.SubheadingContainer}>
             <h3 className={ArticleStyles.Subtitle}>
-              {calculateTimeSpan(article.Date)} · {calculateDistance(appContext.lat, appContext.lng, article.lat, article.lng)}
+              {calculateTimeSpan(article.Date)} · {calculateDistance(appContext.orgLat, appContext.orgLng, article.lat, article.lng)}
             </h3>
           </div>
           <div className={ArticleStyles.TagsContainer}>
