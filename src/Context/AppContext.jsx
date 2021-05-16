@@ -32,17 +32,18 @@ class AppContextProvider extends Component {
 
   // Get Initial Location, Voices and Resources
   componentDidMount = async () => {
-    const { lat, lng, locations, locationType } = await getLocation();
+    // For getting user's current location. Disabled for now.
+    // const { lat, lng, locations, locationType } = await getLocation();
 
     let zoom = 13;
 
     this.setState(
       {
-        orgLat: lat,
-        orgLng: lng,
+        orgLat: 40.7127753,
+        orgLng: -74.0059728,
         zoom: zoom,
-        locations: locations,
-        locationType: locationType,
+        locations: ["New York", "New York"],
+        locationType: "locality"
       },
       () => {
         getVoices(this.state.orgLat, this.state.orgLng, this.state.pageNum, (voices, maxPageNum) => {
