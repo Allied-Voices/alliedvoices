@@ -55,28 +55,9 @@ const SideBar = () => {
         </Link>
       </div>
       <div className={SideBarStyles.SearchSection}>
-        <Search placeholder={'Search for Voices'} filterFunction={appContext.filterVoices}/>
+        <Search placeholder={'Find voices in your area'} searchFunction={appContext.updateLocation}/>
       </div>
       <div className={SideBarStyles.FilterSection}>
-        <ButtonMenu
-          buttonLabel={"Location"}
-          includeSearch={true}
-          searchTitle="See Voices from a different location"
-          searchPlaceholder="Enter location here"
-          searchFunction={appContext.updateLocation}
-          optionsTitle="Select location type here"
-          options={[
-            "Public Space",
-            "Commute",
-            "Workplace",
-            "Home",
-            "Place of Worship",
-            "Online",
-          ]}
-          filterFunction={appContext.filterVoices}
-          clearFunction={appContext.clearVoices}
-          filterKey="Location Tags"
-        />
         <ButtonMenu
           buttonLabel="Type"
           optionsTitle="Filter by Content Type"
@@ -128,7 +109,7 @@ const SideBar = () => {
               publisher={voice.Publisher}
               type={voice.Type}
               onClick={() => appContext.selectArticle(index)}
-              selected={index === appContext.selected}
+              selected={index === appContext.articleSelected}
             />
           ))
         ) : (

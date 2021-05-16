@@ -9,7 +9,7 @@ import { calculateTimeSpan } from '../../utils/date'
 
 const Article = () => {
   const appContext = useContext(AppContext);
-  var article = appContext.selected >= 0 ? appContext.voices.rows[appContext.selected] : null;
+  var article = appContext.articleSelected >= 0 ? appContext.voices.rows[appContext.articleSelected] : null;
   var resources = null;
   
   if(article && article['Location Tags']){
@@ -72,14 +72,14 @@ const Article = () => {
               <a href={article.URL} rel="noopener noreferrer" target="_blank">Read more on {article.Publisher}</a>
             </h3>
           </div>
-          <div className={ArticleStyles.Resources}>
+          {!!resources && <div className={ArticleStyles.Resources}>
             <h2>
               Resources
             </h2>
             <ul>
               {resources}
             </ul>
-          </div>
+          </div>}
         </div>
       }
     </div>
