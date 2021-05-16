@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import SearchIcon from '../SearchIcon/SearchIcon';
 import LandingSearchStyles from './LandingSearch.module.css';
