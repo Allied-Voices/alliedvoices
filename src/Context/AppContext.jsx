@@ -163,13 +163,15 @@ class AppContextProvider extends Component {
     };
 
   selectArticle = (index) => {
-    if (index !== this.state.selected) {
+    if (index !== this.state.articleSelected) {
       this.setState({
         articleSelected: index,
         articleSelectedLat: this.state.voices.rows[index].lat,
         articleSelectedLng: this.state.voices.rows[index].lng,
         articleToggled: true,
       });
+    } else {
+      return false;
     }
   };
 
