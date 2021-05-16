@@ -15,11 +15,7 @@ const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, 
   
   // Determine distance
   var distanceMsg;
-  if (appContext) {
-    distanceMsg = calculateDistance(appContext.lat, appContext.lng, lat, lng)
-  } else {
-    distanceMsg = "Unknown"
-  }
+  distanceMsg = calculateDistance(appContext.orgLat, appContext.orgLng, lat, lng)
 
   return (
     <div className={`${SideBarArticleStyles.Container}` + (selected? ` ${SideBarArticleStyles.Selected}`:'')} onClick={onClick}>
