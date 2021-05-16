@@ -20,7 +20,6 @@ const Search = ({placeholder, searchFunction, filterFunction, disabled, ...props
     e.preventDefault();
     if(searchFunction){
       var locationFound = await searchFunction(text);
-      console.log(locationFound)
       if(!locationFound) {
         setIsError(true);
       }
