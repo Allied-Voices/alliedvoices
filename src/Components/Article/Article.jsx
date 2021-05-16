@@ -13,7 +13,6 @@ const Article = () => {
   var resources = null;
   
   if(article && article['Location Tags']){
-    resources = [];
     let resourceIndices = [];
     article['Location Tags'].forEach((location)=>{
       if(appContext['resources'][location]){
@@ -21,10 +20,13 @@ const Article = () => {
       }
     });
     resourceIndices = new Set(resourceIndices);
-    resourceIndices.forEach((index)=>{
-      let resource = appContext.resources.rows[index];
-      resources.push(<li key={resource.Name}><a href={resource.URL} rel="noopener noreferrer" target="_blank">{resource.Name}</a></li>)
-    })      
+    if(resourceIndices.size){
+      resources = [];
+      resourceIndices.forEach((index)=>{
+        let resource = appContext.resources.rows[index];
+        resources.push(<li key={resource.Name}><a href={resource.URL} rel="noopener noreferrer" target="_blank">{resource.Name}</a></li>)
+      })      
+    } 
   }
 
   var articleClass;
