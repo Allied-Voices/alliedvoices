@@ -2,8 +2,8 @@ import React, { useContext }  from 'react';
 import ArticleStyles from './Article.module.css'
 import { AppContext } from '../../Context/AppContext'
 import CloseIcon from '../CloseIcon/CloseIcon'
+import ArticleImage from '../ArticleImage/ArticleImage'
 import Tag from '../Tag/Tag';
-import Logo from '../Logo/Logo'
 import { calculateDistance }  from '../../utils/distance'
 import { calculateTimeSpan } from '../../utils/date'
 
@@ -58,13 +58,7 @@ const Article = () => {
             {(article['Location Tags']) && article['Location Tags'].map((label)=><Tag key={label} type='Location'>{label}</Tag>)}
           </div>
           <div className={ArticleStyles.ImageContainer}>
-            {article.Image ? 
-            // eslint-disable-next-line jsx-a11y/img-redundant-alt
-            <img className={ArticleStyles.Image} src={article.Image} alt="article image"/> :
-            <div className={ArticleStyles.ImagePlaceHolder}>
-              No Image Found
-              <Logo lg></Logo>
-            </div>}
+            <ArticleImage imageUrl={article.Image}></ArticleImage>
           </div>
           <div className={ArticleStyles.SnippetContainer}>
             <p>
