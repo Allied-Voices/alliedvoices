@@ -45,11 +45,10 @@ exports.handler = function (event, context, callback) {
   var articleNum = 0;
 
   base('Articles').select({
-
     filterByFormula: filterString,
     fields: ["Name", "lat", "lng", "Date", "Type", "Incident type", "Incident type copy", "Publisher", "URL", "Snippet", "Location Tags", "Image"],
+    sort: [{field: "Date", direction: "desc"}],
     view: "All users"
-
   }).eachPage(function page(records, fetchNextPage) {
     
     records.forEach(function (record) {
