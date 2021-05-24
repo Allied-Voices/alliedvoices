@@ -1,10 +1,14 @@
 .Container{
   background:white;
   box-sizing: border-box;
-  height:100vh;
-  width:0; 
+  position:absolute;
+  left:530px;
+  margin:15px;
+  z-index: 20;
+  height: 95vh;
+  box-shadow: 3px 3px 13px -9px rgba(0,0,0,0.96);
+  width:475px; 
   overflow-x:hidden;
-  transition: width 1s;
 }
 
 .ArticleContainer{
@@ -100,9 +104,9 @@
 }
 
 .Toggled{
-  width:475px;
+  display:block;
 }
 
 .Hidden{
-  width:0px;
+  display:none;
 }
