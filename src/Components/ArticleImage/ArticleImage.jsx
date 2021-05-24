@@ -1,17 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import ArticleImageStyles from './ArticleImage.module.css'
-import Logo from '../Logo/Logo'
+import React from 'react';
+import useArticleImage from './useArticleImage';
+import ArticleImageStyles from './ArticleImage.module.css';
+import Logo from '../Logo/Logo';
 
 const ArticleImage = ({imageUrl}) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  const setLoadingState = () => {
-    setIsImageLoaded(true);
-  };
-
-  useEffect(() => {
-    setIsImageLoaded(false);
-  },[imageUrl]);
+  const {isImageLoaded, setLoadingState} = useArticleImage(imageUrl);
 
   const Image = () => {
     const placeHolderStyle = !isImageLoaded ? ArticleImageStyles.ImagePlaceHolder : ArticleImageStyles.Hidden;

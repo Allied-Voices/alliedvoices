@@ -10,10 +10,6 @@ const Map = () => {
   const didClick = useRef(false);
 
   useEffect(() => {
-    setTimeout(()=>{mapRef.current.leafletElement.invalidateSize()}, 450);
-  }, [appContext.articleToggled, mapRef]);
-
-  useEffect(() => {
     mapRef.current.leafletElement.setView({lat:appContext.orgLat, lng:appContext.orgLng}, appContext.zoom);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appContext.orgLat, appContext.orgLng]);
