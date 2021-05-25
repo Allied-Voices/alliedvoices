@@ -7,7 +7,7 @@ import { AppContext } from '../../Context/AppContext';
 const LandingSearch = () => {
   let history = useHistory();
   const appContext = useContext(AppContext);
-  const [searchInput, setSearchInput] = useState("New York, New York");
+  const [searchInput, setSearchInput] = useState("New York");
   // For loading user's location. Disabled for now.
   // const didLoad = useRef(false);
 

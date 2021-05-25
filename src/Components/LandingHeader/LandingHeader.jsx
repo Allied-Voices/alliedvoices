@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../Logo/Logo";
-import LandingSearch from "../LandingSearch/LandingSearch";
+//import LandingSearch from "../LandingSearch/LandingSearch";
+import LandingNewYorkButton from "../LandingNewYorkButton/LandingNewYorkButton";
 import LandingHeaderStyles from "./LandingHeader.module.css";
 
 const LandingHeader = () => {
@@ -14,8 +15,9 @@ const LandingHeader = () => {
       </div>
 
       <div className={LandingHeaderStyles.SearchSection}>
-        <LandingSearch />
-        {/* <Link to=''>
+        <LandingNewYorkButton />
+        {/*<LandingSearch />
+         <Link to=''>
             <button className={LandingHeaderStyles.Button}>
           <span>Enter Site </span>
           <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
