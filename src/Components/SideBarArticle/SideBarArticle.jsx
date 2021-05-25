@@ -1,21 +1,17 @@
 import React, { useContext } from 'react';
 import Logo from '../Logo/Logo';
-import { AppContext } from '../../Context/AppContext'
-import SideBarArticleStyles from './SideBarArticleStyles.module.css'
-import GoodDeedHeart from '../../Images/GoodDeedHeart.svg'
-import IncidentHeart from '../../Images/IncidentHeart.svg'
-import { calculateDistance }  from '../../utils/distance'
-import { calculateTimeSpan } from '../../utils/date'
+import { AppContext } from '../../Context/AppContext';
+import SideBarArticleStyles from './SideBarArticleStyles.module.css';
+import GoodDeedHeart from '../../Images/GoodDeedHeart.svg';
+import IncidentHeart from '../../Images/IncidentHeart.svg';
+import useDistMsgCreator from '../../CustomHooks/use-dist-msg-creator';
+import { calculateTimeSpan } from '../../utils/date';
 
 const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, img, type, onClick, selected }) => {
-
-  const appContext = useContext(AppContext)
-
-  const dateMsg = calculateTimeSpan(date)
-  
-  // Determine distance
-  var distanceMsg;
-  distanceMsg = calculateDistance(appContext.orgLat, appContext.orgLng, lat, lng)
+  const appContext = useContext(AppContext);
+  const { createDistMsg } = useDistMsgCreator(); 
+  const dateMsg = calculateTimeSpan(date);
+  const distanceMsg = createDistMsg(appContext.orgLat, appContext.orgLng, lat, lng);
 
   return (
     <div className={`${SideBarArticleStyles.Container}` + (selected? ` ${SideBarArticleStyles.Selected}`:'')} onClick={onClick}>
@@ -29,7 +25,7 @@ const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, 
         <h4>{heading}</h4>
         <div className={SideBarArticleStyles.subHeading}>
           {type === "Good deed" ? <img src={GoodDeedHeart} alt='Good deed heart' /> : <img src={IncidentHeart} alt='Good deed heart'/>}
-          <p>{dateMsg} · {distanceMsg} · {publisher}</p>
+          <p>{dateMsg} {distanceMsg && "· " + distanceMsg} · {publisher}</p>
         </div>
       </div>
     </div>

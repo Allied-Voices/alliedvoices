@@ -4,12 +4,14 @@ import { AppContext } from '../../Context/AppContext'
 import CloseIcon from '../CloseIcon/CloseIcon'
 import ArticleImage from '../ArticleImage/ArticleImage'
 import Tag from '../Tag/Tag';
-import { calculateDistance }  from '../../utils/distance'
+import useDistMsgCreator from '../../CustomHooks/use-dist-msg-creator';
 import { calculateTimeSpan } from '../../utils/date'
 
 const Article = () => {
   const appContext = useContext(AppContext);
   var article = appContext.articleSelected >= 0 ? appContext.voices.rows[appContext.articleSelected] : null;
+  const { createDistMsg } = useDistMsgCreator(); 
+  const distanceMsg = article && createDistMsg(appContext.orgLat, appContext.orgLng, article.lat, article.lng);
   var resources = null;
   
   if(article && article['Location Tags']){
@@ -50,7 +52,7 @@ const Article = () => {
           </div>
           <div className={ArticleStyles.SubheadingContainer}>
             <h3 className={ArticleStyles.Subtitle}>
-              {calculateTimeSpan(article.Date)} · {calculateDistance(appContext.orgLat, appContext.orgLng, article.lat, article.lng)}
+              {calculateTimeSpan(article.Date)}{distanceMsg && " ·  " + distanceMsg}
             </h3>
           </div>
           <div className={ArticleStyles.TagsContainer}>
