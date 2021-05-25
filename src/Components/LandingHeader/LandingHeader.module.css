@@ -17,6 +17,10 @@
   margin-bottom: 35px;
 }
 
+.Name h3{
+  font-size: 18px;
+}
+
 .SearchSection{
   justify-content: center;
   align-items: center;
