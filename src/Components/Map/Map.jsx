@@ -16,12 +16,18 @@ const Map = () => {
 
   useEffect(() => {
     const zoom = mapRef.current.leafletElement.getZoom();
+    const east_bound = mapRef.current.leafletElement.getBounds().getEast();
+    const west_bound = mapRef.current.leafletElement.getBounds().getWest();
+    const pixelSize = mapRef.current.leafletElement.getSize();
+    const bounds_pixel_ratio = (east_bound - west_bound)/pixelSize.x;
+    const x_coordinate = appContext.articleToggled ? appContext.articleSelectedLng - (bounds_pixel_ratio * 245) : appContext.articleSelectedLng
     let mapCurrentPosition = mapRef.current.leafletElement.getCenter();
     if((Math.abs(mapCurrentPosition.lat  - appContext.articleSelectedLat) < 0.02 || Math.abs(mapCurrentPosition.lng  - appContext.articleSelectedLng) < 0.02)){
-      mapRef.current.leafletElement.panTo ({lat:appContext.articleSelectedLat, lng:appContext.articleSelectedLng}, zoom);
+      mapRef.current.leafletElement.panTo ({lat:appContext.articleSelectedLat, lng:x_coordinate}, zoom);
     }else{
-      mapRef.current.leafletElement.flyTo ({lat:appContext.articleSelectedLat, lng:appContext.articleSelectedLng}, zoom);
+      mapRef.current.leafletElement.flyTo ({lat:appContext.articleSelectedLat, lng:x_coordinate}, zoom);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appContext.articleSelectedLat, appContext.articleSelectedLng]);
 
   useEffect(() => {
