@@ -10,26 +10,28 @@ import SideBarStyles from "./SideBar.module.css";
 const SideBar = () => {
   const appContext = useContext(AppContext);
 
-  const numberOfPages = (selectedPage, maxPage, onClick) => {
+  const createPageNumbers = (selectedPage, maxPage, onClick) => {
     let numbers = [];
     let lastPageToDisplay;
     let startingPage;
 
     if (maxPage === 0 ) return numbers;
 
-    if(selectedPage < 3) {
+    if(maxPage <= 5) {
       startingPage = 1;
-      if(maxPage < 5){
-        lastPageToDisplay = maxPage
-      } else {
+      lastPageToDisplay = maxPage;
+    }else{
+      if(selectedPage < 3){
+        startingPage = 1;
         lastPageToDisplay = 5;
       }
-    } else if(selectedPage > (maxPage - 3)) {
-      startingPage = maxPage-4;
-      lastPageToDisplay = maxPage;
-    } else {
-      startingPage = selectedPage-2;
-      lastPageToDisplay = selectedPage+2;
+      else if(selectedPage >= 3 && selectedPage <= (maxPage - 3)){
+        startingPage = selectedPage - 2;
+        lastPageToDisplay = selectedPage + 2;
+      }else{
+        startingPage = maxPage - 4;
+        lastPageToDisplay = maxPage;
+      }
     }
 
     for(let i = startingPage; i<=lastPageToDisplay; i++){
@@ -44,6 +46,16 @@ const SideBar = () => {
       }
     }
     return numbers;
+  };
+
+  const renderPagination = (selectedPage, maxPage, selectPage, onClickPrevPage, onClickNextPage) => {
+    return (
+      <>
+        <span className={selectedPage === 1 ? SideBarStyles.Disabled : "" } onClick={onClickPrevPage}>&lt;  Prev</span>
+          {createPageNumbers(selectedPage, maxPage, selectPage)}
+        <span className={selectedPage === maxPage ? SideBarStyles.Disabled : "" } onClick={onClickNextPage}>Next  &gt;</span>
+      </>
+    );
   };
 
   return (
@@ -118,9 +130,7 @@ const SideBar = () => {
       </div>
       { !!appContext.maxPageNum && 
         <div className={SideBarStyles.PageSection}>
-            <span className={appContext.pageNum === 1 ? SideBarStyles.Disabled : "" } onClick={appContext.goToPrevPage}>&lt;  Prev</span>
-            {numberOfPages(appContext.pageNum, appContext.maxPageNum, appContext.selectPage)}
-            <span className={appContext.pageNum === appContext.maxPageNum ? SideBarStyles.Disabled : "" } onClick={appContext.goToNextPage}>Next  &gt;</span>
+          {renderPagination(appContext.pageNum, appContext.maxPageNum, appContext.selectPage, appContext.goToPrevPage, appContext.goToNextPage)}
         </div>
       }
     </div>
