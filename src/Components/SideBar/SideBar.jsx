@@ -69,46 +69,46 @@ const SideBar = () => {
       <div className={SideBarStyles.SearchSection}>
         <Search placeholder={'Find voices in your area'} searchFunction={appContext.updateLocation}/>
       </div>
-      <div className={SideBarStyles.FilterSection}>
-        <ButtonMenu
-          buttonLabel="Type"
-          optionsTitle="Filter by Content Type"
-          options={["Race-related incident", "Opinion", "Good deed"]}
-          filterFunction={appContext.filterVoices}
-          clearFunction={appContext.clearVoices}
-          filterKey="Type"
-        />
-        <ButtonMenu
-          buttonLabel="Source"
-          optionsTitle="Filter by Source"
-          options={[
-            "News",
-            "Reporting Center",
-            "Social Media",
-            "User Submissions",
-          ]}
-          filterFunction={appContext.filterVoices}
-          clearFunction={appContext.clearVoices}
-          filterKey="Content Type"
-        />
-        <ButtonMenu
-          buttonLabel="Incident Tags"
-          optionsTitle="Filter by Incident Tags"
-          options={["Physical", "Verbal", "Vandalism"]}
-          filterFunction={appContext.filterVoices}
-          clearFunction={appContext.clearVoices}
-          filterKey="Incident type"
-        />
-        <ButtonMenu
-          buttonLabel="Race"
-          optionsTitle="Filter by Race"
-          options={["Asian", "Black"]}
-          filterFunction={appContext.filterVoices}
-          clearFunction={appContext.clearVoices}
-          filterKey="Race"
-        />
-      </div>
       <div className={SideBarStyles.ArticleSection}>
+        <div className={SideBarStyles.FilterSection}>
+          <ButtonMenu
+            buttonLabel="Type"
+            optionsTitle="Filter by Content Type"
+            options={["Race-related incident", "Opinion", "Good deed"]}
+            filterFunction={appContext.filterVoices}
+            clearFunction={appContext.clearVoices}
+            filterKey="Type"
+          />
+          <ButtonMenu
+            buttonLabel="Source"
+            optionsTitle="Filter by Source"
+            options={[
+              "News",
+              "Reporting Center",
+              "Social Media",
+              "User Submissions",
+            ]}
+            filterFunction={appContext.filterVoices}
+            clearFunction={appContext.clearVoices}
+            filterKey="Content Type"
+          />
+          <ButtonMenu
+            buttonLabel="Incident Tags"
+            optionsTitle="Filter by Incident Tags"
+            options={["Physical", "Verbal", "Vandalism"]}
+            filterFunction={appContext.filterVoices}
+            clearFunction={appContext.clearVoices}
+            filterKey="Incident type"
+          />
+          <ButtonMenu
+            buttonLabel="Race"
+            optionsTitle="Filter by Race"
+            options={["Asian", "Black"]}
+            filterFunction={appContext.filterVoices}
+            clearFunction={appContext.clearVoices}
+            filterKey="Race"
+          />
+        </div>
         {appContext.voices.rows.length ? (
           appContext.voices.rows.map((voice, index) => (
             <SideBarArticle
@@ -127,12 +127,12 @@ const SideBar = () => {
         ) : (
           <div>There are no records of articles</div>
         )}
-      </div>
-      { !!appContext.maxPageNum && 
+        { !!appContext.maxPageNum && 
         <div className={SideBarStyles.PageSection}>
           {renderPagination(appContext.pageNum, appContext.maxPageNum, appContext.selectPage, appContext.goToPrevPage, appContext.goToNextPage)}
         </div>
-      }
+        }
+      </div>
     </div>
   );
 };
