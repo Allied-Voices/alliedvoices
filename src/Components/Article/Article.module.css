@@ -2,10 +2,9 @@
   background:white;
   box-sizing: border-box;
   position:absolute;
-  left:530px;
-  margin:15px;
+  left:525px;
   z-index: 20;
-  height: 95vh;
+  height: 100vh;
   box-shadow: 3px 3px 13px -9px rgba(0,0,0,0.96);
   width:475px; 
   overflow-x:hidden;
