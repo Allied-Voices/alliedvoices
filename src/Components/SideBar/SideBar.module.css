@@ -57,7 +57,7 @@
   padding-right:30px;
 }
 
-.ArticleSection > div {
+.ArticleSection > div:not(:first-child) {
   margin:0 0;
 }
 
