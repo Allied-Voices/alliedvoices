@@ -17,40 +17,40 @@ const AvMarker = ({voice, index, icon, ...props}) => {
   const gdMarker = new L.Icon({
     iconUrl: '/assets/gd-marker.svg',
     iconRetinaUrl: '/assets/gd-marker.svg',
-    iconSize: [25, 25],
-    iconAnchor: [13, 25],
-    popupAnchor: [0, -25],
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [-1, -9],
   });
   
   const gdMarkerSelected = new L.Icon({
     iconUrl: '/assets/gd-marker.svg',
     iconRetinaUrl: '/assets/gd-marker.svg',
-    iconSize: [25, 25],
-    iconAnchor: [23, 35],
-    popupAnchor: [0, -25],
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [-2, -14],
   });
   
   const incidentMarker = new L.Icon({
     iconUrl: '/assets/incident-marker.svg',
     iconRetinaUrl: '/assets/incident-marker.svg',
-    iconSize: [25, 23],
-    iconAnchor: [13, 23],
-    popupAnchor: [0, -23],
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [-1, -9],
   });
   
   const incidentMarkerSelected = new L.Icon({
     iconUrl: '/assets/incident-marker.svg',
     iconRetinaUrl: '/assets/incident-marker.svg',
-    iconSize: [35, 33],
-    iconAnchor: [13, 23],
-    popupAnchor: [0, -23],
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [-2, -14],
   });
 
   const determineMarkerIcon = (voiceType, index) => {
     if (index === appContext.articleSelected) {
-      return voiceType === 'Good deed' ? gdMarkerSelected : incidentMarkerSelected;
+      return (Array.isArray(voiceType) && voiceType[0] === 'Good deed') ? gdMarkerSelected : incidentMarkerSelected;
     } else {
-      return voiceType === 'Good deed' ? gdMarker : incidentMarker;
+      return (Array.isArray(voiceType) && voiceType[0] === 'Good deed')  ? gdMarker : incidentMarker;
     }
   };
 
