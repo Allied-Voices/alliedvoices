@@ -24,7 +24,7 @@ const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, 
       <div className={SideBarArticleStyles.Text}>
         <h4>{heading}</h4>
         <div className={SideBarArticleStyles.subHeading}>
-          {type === "Good deed" ? <img src={GoodDeedHeart} alt='Good deed heart' /> : <img src={IncidentHeart} alt='Good deed heart'/>}
+          {(Array.isArray(type) && type[0] === 'Good deed') ? <img src={GoodDeedHeart} alt='Good deed heart' /> : <img src={IncidentHeart} alt='Good deed heart'/>}
           <p>{dateMsg} {distanceMsg && "· " + distanceMsg} · {publisher}</p>
         </div>
       </div>
