@@ -3,7 +3,6 @@ import ArticleStyles from './Article.module.css'
 import { AppContext } from '../../Context/AppContext'
 import CloseIcon from '../CloseIcon/CloseIcon'
 import ArticleImage from '../ArticleImage/ArticleImage'
-import Tag from '../Tag/Tag';
 import useDistMsgCreator from '../../CustomHooks/use-dist-msg-creator';
 import { calculateTimeSpan } from '../../utils/date'
 import ArticleResourceTile from '../ArticleResourceTile/ArticleResourceTile';
@@ -56,10 +55,10 @@ const Article = () => {
               {calculateTimeSpan(article.Date)}{distanceMsg && " ·  " + distanceMsg}
             </h3>
           </div>
-          <div className={ArticleStyles.TagsContainer}>
+          {/* <div className={ArticleStyles.TagsContainer}>
             {(article['Incident Type']) && article['Incident Type'].map((label)=><Tag key={label} type='Incident'>{label}</Tag>)}
             {(article['Location Tags']) && article['Location Tags'].map((label)=><Tag key={label} type='Location'>{label}</Tag>)}
-          </div>
+          </div> */}
           <div className={ArticleStyles.ImageContainer}>
             <ArticleImage imageUrl={article.Image}></ArticleImage>
           </div>
