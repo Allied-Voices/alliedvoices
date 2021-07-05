@@ -19,7 +19,7 @@ exports.handler = function (event, context, callback) {
 
   base('Resources (for Live Site)').select({
     filterByFormula: filterString,
-    fields: ["Name", "URL", "Location Tags for Relevancy", "Tags for Relevancy"],
+    fields: ["Name", "Resource Owner", "Image", "URL", "Location Tags for Relevancy", "Tags for Relevancy"],
   }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function (record) {
       record.fields['Location Tags for Relevancy'].forEach((tag) => {
