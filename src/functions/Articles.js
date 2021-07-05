@@ -14,7 +14,7 @@ exports.handler = function (event, context, callback) {
     filterString += `FIND("${searchValue}", {Name}), 
       FIND("${searchValue}", {Type}), 
       FIND("${searchValue}", {Severity}), 
-      FIND("${searchValue}", {Incident type}), 
+      FIND("${searchValue}", {Incident Type}), 
       FIND("${searchValue}", {Race}), 
       FIND("${searchValue}", {Type}), 
       FIND("${searchValue}", {Location Tags})), `
@@ -46,7 +46,7 @@ exports.handler = function (event, context, callback) {
 
   base('Articles').select({
     filterByFormula: filterString,
-    fields: ["Name", "lat", "lng", "Date", "Type", "Incident type", "Incident type copy", "Publisher", "URL", "Snippet", "Location Tags", "Image"],
+    fields: ["Name", "lat", "lng", "Date", "Type", "Incident Type", "Publisher", "URL", "Summary", "Location Tags", "Image"],
     sort: [{field: "Date", direction: "desc"}],
     view: "All users"
   }).eachPage(function page(records, fetchNextPage) {
