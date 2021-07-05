@@ -6,6 +6,7 @@ import ArticleImage from '../ArticleImage/ArticleImage'
 import Tag from '../Tag/Tag';
 import useDistMsgCreator from '../../CustomHooks/use-dist-msg-creator';
 import { calculateTimeSpan } from '../../utils/date'
+import ArticleResourceTile from '../ArticleResourceTile/ArticleResourceTile';
 
 const Article = () => {
   const appContext = useContext(AppContext);
@@ -26,7 +27,7 @@ const Article = () => {
       resources = [];
       resourceIndices.forEach((index)=>{
         let resource = appContext.resources.rows[index];
-        resources.push(<li key={resource.Name}><a href={resource.URL} rel="noopener noreferrer" target="_blank">{resource.Name}</a></li>)
+        resources.push(<ArticleResourceTile resource={resource}/>)
       })      
     } 
   }
