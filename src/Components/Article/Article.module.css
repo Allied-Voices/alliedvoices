@@ -69,15 +69,15 @@
   margin-top:10px
 }
 
-.SnippetContainer{
+.SummaryContainer{
   font-size:16px;
 }
 
-.SnippetContainer p{
+.SummaryContainer p{
   line-height: 25px;
 }
 
-.SnippetContainer a{
+.SummaryContainer a{
   display:block;
   margin-bottom:20px;
   margin-top:20px;

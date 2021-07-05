@@ -25,7 +25,7 @@ class AppContextProvider extends Component {
       'Race': [],
       'Type': [],
       'Content Type': [],
-      'Incident type': [],
+      'Incident Type': [],
       'Search': []
     }
   }
