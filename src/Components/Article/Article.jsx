@@ -57,15 +57,15 @@ const Article = () => {
             </h3>
           </div>
           <div className={ArticleStyles.TagsContainer}>
-            {(article['Incident type']) && article['Incident type'].map((label)=><Tag key={label} type='Incident'>{label}</Tag>)}
+            {(article['Incident Type']) && article['Incident Type'].map((label)=><Tag key={label} type='Incident'>{label}</Tag>)}
             {(article['Location Tags']) && article['Location Tags'].map((label)=><Tag key={label} type='Location'>{label}</Tag>)}
           </div>
           <div className={ArticleStyles.ImageContainer}>
             <ArticleImage imageUrl={article.Image}></ArticleImage>
           </div>
-          <div className={ArticleStyles.SnippetContainer}>
+          <div className={ArticleStyles.SummaryContainer}>
             <p>
-              { article['Snippet']}
+              { article['Summary']}
             </p>
             <h3>
               <a href={article.URL} rel="noopener noreferrer" target="_blank">Read more on {article.Publisher}</a>
