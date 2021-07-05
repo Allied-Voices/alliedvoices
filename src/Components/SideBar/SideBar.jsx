@@ -79,7 +79,7 @@ const SideBar = () => {
             clearFunction={appContext.clearVoices}
             filterKey="Type"
           />
-          <ButtonMenu
+          {/* <ButtonMenu
             buttonLabel="Source"
             optionsTitle="Filter by Source"
             options={[
@@ -91,23 +91,23 @@ const SideBar = () => {
             filterFunction={appContext.filterVoices}
             clearFunction={appContext.clearVoices}
             filterKey="Content Type"
-          />
-          <ButtonMenu
+          /> */}
+          {/* <ButtonMenu
             buttonLabel="Incident Tags"
             optionsTitle="Filter by Incident Tags"
             options={["Physical", "Verbal", "Vandalism"]}
             filterFunction={appContext.filterVoices}
             clearFunction={appContext.clearVoices}
             filterKey="Incident type"
-          />
-          <ButtonMenu
+          /> */}
+          {/* <ButtonMenu
             buttonLabel="Race"
             optionsTitle="Filter by Race"
             options={["Asian", "Black"]}
             filterFunction={appContext.filterVoices}
             clearFunction={appContext.clearVoices}
             filterKey="Race"
-          />
+          /> */}
         </div>
         {appContext.voices.rows.length ? (
           appContext.voices.rows.map((voice, index) => (
