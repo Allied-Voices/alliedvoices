@@ -48,9 +48,9 @@ const AvMarker = ({voice, index, icon, ...props}) => {
 
   const determineMarkerIcon = (voiceType, index) => {
     if (index === appContext.articleSelected) {
-      return (Array.isArray(voiceType) && voiceType[0] === 'Good deed') ? gdMarkerSelected : incidentMarkerSelected;
+      return (voiceType === 'Act of Allyship' || voiceType === 'Empowering Stories') ? gdMarkerSelected : incidentMarkerSelected;
     } else {
-      return (Array.isArray(voiceType) && voiceType[0] === 'Good deed')  ? gdMarker : incidentMarker;
+      return (voiceType === 'Act of Allyship' || voiceType === 'Empowering Stories')  ? gdMarker : incidentMarker;
     }
   };
 
