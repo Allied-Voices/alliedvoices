@@ -125,7 +125,7 @@ const SideBar = () => {
             />
           ))
         ) : (
-          <div>There are no records of articles</div>
+          <div>Loading articles...</div>
         )}
         { !!appContext.maxPageNum && 
         <div className={SideBarStyles.PageSection}>
