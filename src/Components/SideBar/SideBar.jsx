@@ -74,7 +74,7 @@ const SideBar = () => {
           <ButtonMenu
             buttonLabel="Content Type"
             optionsTitle="Filter by Content Type"
-            options={["Incident Report", "Empowering Stories", "Acts of Allyship"]}
+            options={["Incidents", "Acts of Allyship", "Stories of Empowerment", "General News", "Resources"]}
             filterFunction={appContext.filterVoices}
             clearFunction={appContext.clearVoices}
             filterKey="Type"
