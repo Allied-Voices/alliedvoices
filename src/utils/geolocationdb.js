@@ -1,7 +1,7 @@
 var BASE_URL = 'https://geolocation-db.com/json/7733a990-ebd4-11ea-b9a6-2955706ddbf3'
 
 if (process.env.NODE_ENV === "production") {
-  BASE_URL = 'https://ipinfo.io?token=c61770f410d81b'
+  BASE_URL = 'https://ipinfo.io?token=dd95044cbae546'
 }
 
 async function getLocation(cb) {
