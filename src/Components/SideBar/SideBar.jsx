@@ -72,9 +72,9 @@ const SideBar = () => {
       <div className={SideBarStyles.ArticleSection}>
         <div className={SideBarStyles.FilterSection}>
           <ButtonMenu
-            buttonLabel="Type"
+            buttonLabel="Content Type"
             optionsTitle="Filter by Content Type"
-            options={["Race-related incident", "Opinion", "Good deed"]}
+            options={["Incidents", "Acts of Allyship", "Stories of Empowerment", "General News", "Resources"]}
             filterFunction={appContext.filterVoices}
             clearFunction={appContext.clearVoices}
             filterKey="Type"
