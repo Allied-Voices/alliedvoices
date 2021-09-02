@@ -47,11 +47,12 @@ const AvMarker = ({voice, index, icon, ...props}) => {
   });
 
   const determineMarkerIcon = (voiceType, index) => {
-    if (index === appContext.articleSelected) {
-      return (voiceType === 'Act of Allyship' || voiceType === 'Empowering Stories') ? gdMarkerSelected : incidentMarkerSelected;
-    } else {
-      return (voiceType === 'Act of Allyship' || voiceType === 'Empowering Stories')  ? gdMarker : incidentMarker;
+    if(voiceType === 'Acts of Allyship' || voiceType === 'Stories of Empowerment' || voiceType === 'Resources'){
+      return (index === appContext.articleSelected) ? gdMarkerSelected : gdMarker ;
     }
+    else 
+    return (index === appContext.articleSelected) ?incidentMarkerSelected:incidentMarker;
+   
   };
 
   return (
