@@ -17,12 +17,12 @@ exports.handler = function (event, context, callback) {
   })
   filterString = `OR(${filterString})`
 
-  base('Resources (for Live Site)').select({
+  base('FINAL Resources').select({
     filterByFormula: filterString,
-    fields: ["Name", "Resource Owner", "Image", "URL", "Location Tags for Relevancy", "Tags for Relevancy"],
+    fields: ["URL", "Title", "Summary", "Image", "Tags", "Location", "Notes"],
   }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function (record) {
-      record.fields['Location Tags for Relevancy'].forEach((tag) => {
+      record.fields['Tags'].forEach((tag) => {
         if (!data[tag]) data[tag] = [];
         data[tag].push(data.rows.length)
       })
