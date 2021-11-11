@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
-import LandingPage from './Pages/LandingPage/LandingPage'
+import { Switch, Route } from 'react-router-dom';
+import LandingPage2 from './Pages/LandingPage/LandingPage2';
 import MapPage from './Pages/MapPage/MapPage';
-import AppContextProvider from './Context/AppContext'
+import AppContextProvider from './Context/AppContext';
 import './Style/Global.css';
 
 class App extends Component {
@@ -10,11 +10,11 @@ class App extends Component {
     return (
       <AppContextProvider>
         <Switch>
-          <Route exact path="/map">
+          <Route exact path='/map'>
             <MapPage />
           </Route>
-          <Route path="/">
-            <LandingPage />
+          <Route path='/'>
+            <LandingPage2 />
           </Route>
         </Switch>
       </AppContextProvider>
