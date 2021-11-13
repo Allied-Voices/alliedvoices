@@ -21,14 +21,22 @@ exports.handler = function (event, context, callback) {
     filterByFormula: filterString,
     fields: ["URL", "Title", "Summary", "Image", "Tags", "Location", "Notes"],
   }).eachPage(function page(records, fetchNextPage) {
-    records.forEach(function (record) {
-      record.fields['Tags'].forEach((tag) => {
-        if (!data[tag]) data[tag] = [];
-        data[tag].push(data.rows.length)
-      })
-      data.rows.push(record.fields);
+    records.forEach(function(record) {
+      try {
+        record.fields['Tags'].forEach((tag) => {
+          if (!data[tag]) data[tag] = [];
+          data[tag].push(data.rows.length);
+        })
+        data.rows.push(record.fields);
+      } catch (err) {
+        console.error(err);
+      }
     });
-    fetchNextPage();
+    try {
+      fetchNextPage();
+    } catch {
+      return;
+    }
   }, function done(err) {
     if (err) { console.error(err); return; }
     callback(null, {
