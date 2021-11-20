@@ -15,7 +15,40 @@ exports.handler = function (event, context, callback) {
     if (index !== 0) {
       filterString += ', ';
     }
+<<<<<<< HEAD
     filterString += `FIND(LOWER('${location}'), LOWER({Location}))`;
+=======
+    filterString += `FIND(LOWER('${location}'), LOWER({Location}))`
+  })
+  filterString = `OR(${filterString})`
+
+  base('FINAL Resources').select({
+    filterByFormula: filterString,
+    fields: ["URL", "Title", "Summary", "Image", "Tags", "Location", "Notes"],
+  }).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      try {
+        record.fields['Tags'].forEach((tag) => {
+          if (!data[tag]) data[tag] = [];
+          data[tag].push(data.rows.length);
+        })
+        data.rows.push(record.fields);
+      } catch (err) {
+        console.error(err);
+      }
+    });
+    try {
+      fetchNextPage();
+    } catch {
+      return;
+    }
+  }, function done(err) {
+    if (err) { console.error(err); return; }
+    callback(null, {
+      statusCode: 200,
+      body: JSON.stringify(data)
+    });
+>>>>>>> 2a00f9779c921c55f4a0a04a2d6b8ff678dcf4bf
   });
   filterString = `OR(${filterString})`;
 
