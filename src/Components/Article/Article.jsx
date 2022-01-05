@@ -13,20 +13,73 @@ const Article = () => {
   const { createDistMsg } = useDistMsgCreator(); 
   const distanceMsg = article && createDistMsg(appContext.orgLat, appContext.orgLng, article.lat, article.lng);
   var resources = null;
+  var articleSelectedTags=[]
+  var airtableTags=["Type","Race","Location Tags","Incident Type"]
   
-  if(article && article['Location Tags']){
-    let resourceIndices = [];
-    article['Location Tags'].forEach((location)=>{
-      if(appContext['resources'][location]){
-        resourceIndices = [...resourceIndices, ...appContext['resources'][location]];
+  
+  if(article /*&& article['Incident Type']*/){
+    airtableTags.forEach(tag=>{
+      if(article[tag]){
+        // if there is more than one tag, we need to convert it to strings for saving inside the array
+        if(article[tag]){
+          // if there is more than one tag, we need to convert it to strings for saving inside the array
+          Array.isArray(article[tag])?articleSelectedTags.push(...article[tag]):articleSelectedTags.push(article[tag])
+        }
+        
       }
+      
+    })
+    
+    articleSelectedTags=articleSelectedTags.map(element=>{
+      if(element==="Physical"){
+        return "Microaggression"
+      }
+      else if(element==="Verbal"){
+        return "Macroaggression"
+      }
+      else return element;
+    })
+    let resourceIndices = [];
+    //console.log(articleSelectedTags)
+    articleSelectedTags.forEach((location)=>{
+     
+      if(appContext['resources'][location]){
+        
+        resourceIndices = [...resourceIndices, ...appContext['resources'][location]].map((value) => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value).slice(0,2)
+
+     
+     
+      }
+     
     });
+    
+   
+  
+    if(resourceIndices.length<2){
+      let n=Object.keys(appContext['resources'])
+      let n1=Math.floor(Math.random() * n.length)
+      let n2=Math.floor(Math.random() * n.length)
+      while(n1===n2){
+        n2=Math.floor(Math.random() * n.length)
+      }
+      resourceIndices=[n1,n2]
+    }
+  
+    
+   
+    
+   
     resourceIndices = new Set(resourceIndices);
     if(resourceIndices.size){
       resources = [];
       resourceIndices.forEach((index)=>{
         let resource = appContext.resources.rows[index];
-        resources.push(<ArticleResourceTile resource={resource}/>)
+       
+        resources.push(<ArticleResourceTile resource={resource} key={index}/>)
+        
+      
       })      
     } 
   }
