@@ -74,12 +74,7 @@
 }
 
 .SummaryContainer p{
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
   line-height: 25px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .SummaryContainer a{

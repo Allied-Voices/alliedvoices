@@ -17,26 +17,18 @@ exports.handler = function (event, context, callback) {
   })
   filterString = `OR(${filterString})`
 
-  base('FINAL Resources').select({
+  base('Resources (for Live Site)').select({
     filterByFormula: filterString,
-    fields: ["URL", "Title", "Organization", "Image", "Tags"],
+    fields: ["Name", "Resource Owner", "Image", "URL", "Location Tags for Relevancy", "Tags for Relevancy"],
   }).eachPage(function page(records, fetchNextPage) {
-    records.forEach(function(record) {
-      try {
-        record.fields['Tags'].forEach((tag) => {
-          if (!data[tag]) data[tag] = [];
-          data[tag].push(data.rows.length);
-        })
-        data.rows.push(record.fields);
-      } catch (err) {
-        console.error(err);
-      }
+    records.forEach(function (record) {
+      record.fields['Location Tags for Relevancy'].forEach((tag) => {
+        if (!data[tag]) data[tag] = [];
+        data[tag].push(data.rows.length)
+      })
+      data.rows.push(record.fields);
     });
-    try {
-      fetchNextPage();
-    } catch {
-      return;
-    }
+    fetchNextPage();
   }, function done(err) {
     if (err) { console.error(err); return; }
     callback(null, {

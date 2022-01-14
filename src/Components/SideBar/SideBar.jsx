@@ -58,66 +58,6 @@ const SideBar = () => {
     );
   };
 
-  const renderArticles = (voices) => (
-    voices.map((voice, index) => (
-      <SideBarArticle
-        key={index}
-        index={index}
-        heading={voice.Name}
-        date={voice.Date}
-        lat={voice.lat}
-        lng={voice.lng}
-        publisher={voice.Publisher}
-        type={voice.Type}
-        onClick={() => appContext.selectArticle(index)}
-        selected={index === appContext.articleSelected}
-      />
-    ))
-  )
-  
-  const renderSections = (voices) => {
-    if (voices.length) {
-      // j is the index of the first article that was published more than a week ago
-      let j = 0;
-      for (let i = 0; i < voices.length; i++) {
-        let diff = Date.now() - Date.parse(voices[i].Date);
-        // 7 d = 604800000 ms
-        if (diff > 604800000) {
-          j = i;
-          break;
-        }
-      }
-      if (j === 0) {
-        return (
-          renderArticles(voices)
-        );
-      } else {
-        if (appContext.pageNum === 1) {
-          return (
-            <div>
-              <div className={SideBarStyles.Header}>
-                <h2>Past 7 Days</h2>
-                {renderArticles(voices.slice(0, j))}
-              </div>
-              <div className={SideBarStyles.Header}>
-                <h2>More Stories</h2>
-                {renderArticles(voices.slice(j))}
-              </div>
-            </div>
-          );
-        } else {
-          return (
-            renderArticles(voices)
-          );
-        }
-      }
-    } else {
-      return (
-        <div>There are no articles.</div>
-      );
-    }
-  };
-
   return (
     <div className={SideBarStyles.Container}>
       <div className={SideBarStyles.Header}>
@@ -169,7 +109,24 @@ const SideBar = () => {
             filterKey="Race"
           /> */}
         </div>
-        {renderSections(appContext.voices.rows)}
+        {appContext.voices.rows.length ? (
+          appContext.voices.rows.map((voice, index) => (
+            <SideBarArticle
+              key={index}
+              index={index}
+              heading={voice.Name}
+              date={voice.Date}
+              lat={voice.lat}
+              lng={voice.lng}
+              publisher={voice.Publisher}
+              type={voice.Type}
+              onClick={() => appContext.selectArticle(index)}
+              selected={index === appContext.articleSelected}
+            />
+          ))
+        ) : (
+          <div>There are no records of articles</div>
+        )}
         { !!appContext.maxPageNum && 
         <div className={SideBarStyles.PageSection}>
           {renderPagination(appContext.pageNum, appContext.maxPageNum, appContext.selectPage, appContext.goToPrevPage, appContext.goToNextPage)}
