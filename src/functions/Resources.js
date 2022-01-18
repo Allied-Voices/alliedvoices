@@ -19,7 +19,7 @@ exports.handler = function (event, context, callback) {
 
   base('FINAL Resources').select({
     filterByFormula: filterString,
-    fields: ["URL", "Title", "Summary", "Image", "Tags", "Location", "Notes"],
+    fields: ["URL", "Title", "Organization", "Image", "Tags"],
   }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function(record) {
       try {
