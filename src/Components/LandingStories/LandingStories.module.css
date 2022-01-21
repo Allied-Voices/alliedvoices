@@ -1,8 +1,3 @@
-.StoryContainer {
-  display: flex;
-  margin-left: 160px;
-  margin-right: 160px;
-}
 .StoryText {
   font-size: 1rem;
   line-height: 26px;
@@ -17,6 +12,6 @@
 }
 .StoryImg {
   border-radius: 8px;
-  /* width: 365px;
-    height: 245px; */
+  width: 25.4vw;
+  height: 245px;
 }

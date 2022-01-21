@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import LandingPage2 from './Pages/LandingPage/LandingPage2';
+import LandingPage from './Pages/LandingPage/LandingPage';
 import MapPage from './Pages/MapPage/MapPage';
 import AppContextProvider from './Context/AppContext';
 import './Style/Global.css';
@@ -14,7 +14,7 @@ class App extends Component {
             <MapPage />
           </Route>
           <Route path='/'>
-            <LandingPage2 />
+            <LandingPage />
           </Route>
         </Switch>
       </AppContextProvider>

@@ -51,14 +51,15 @@ class AppContextProvider extends Component {
             voices,
             maxPageNum
           });
+          console.log(this.state.voices)
         });
 
         getResources(this.state.locations, (resources) => {
           this.setState({
             resources,
           });
-        });
-      }
+          console.log(this.state.resources)});
+      },
     );
   };
 
@@ -103,6 +104,7 @@ class AppContextProvider extends Component {
           this.setState({
             resources,
           });
+          console.log('Updated after =' + this.state.resources);
         });
       }
     );
