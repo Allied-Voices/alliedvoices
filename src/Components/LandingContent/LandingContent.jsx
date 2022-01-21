@@ -134,21 +134,21 @@ const LandingHeader2 = () => {
             <img
               className={LandingContentStyles.FooterImg}
               src={Linkedin}
-              alt='Linkedin Image'
+              alt='Linkedin'
             ></img>
           </a>
           <a href='https://www.facebook.com/alliedvoicesglobal/'>
             <img
               className={LandingContentStyles.FooterImg}
               src={Facebook}
-              alt='Facebook Image'
+              alt='Facebook'
             ></img>
           </a>
           <a href='https://www.instagram.com/alliedvoicesglobal/'>
             <img
               className={LandingContentStyles.FooterImg}
               src={Instagram}
-              alt='Instagram Image'
+              alt='Instagram'
             ></img>
           </a>
         </div>

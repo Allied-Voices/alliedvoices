@@ -80,6 +80,7 @@
   display: flex;
   margin-top: 2.875rem;
   margin-bottom: 48px;
+  width: 100%;
 }
 .ContributeBox {
   display: flex;
