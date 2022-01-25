@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Logo from '../Logo/Logo';
 import LandingStoriesStyles from './LandingStories.module.css';
 
 
