@@ -13,7 +13,7 @@ import LandingResources from '../LandingResources/LandingResources';
 const LandingHeader2 = () => {
   const appContext = useContext(AppContext);
   const { goToMap } = useLandingNewYorkButton();
-  // Randomizer for grabbing articles
+  // Randomizer for grabbing articles and resources
   function getRandom(arr, n) {
     var result = new Array(n),
       len = arr.length,
