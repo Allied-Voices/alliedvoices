@@ -113,7 +113,7 @@ const SideBar = () => {
       }
     } else {
       return (
-        <div>There are no articles.</div>
+        <div>Loading articles...</div>
       );
     }
   };
