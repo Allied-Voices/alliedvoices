@@ -61,7 +61,7 @@ const Article = () => {
       }
     });
     // If there are not related resources
-    if (resourceIndices.length < 2) {
+    /*if (resourceIndices.length < 2) {
       let n = Object.keys(appContext["resources"]);
       let n1 = Math.floor(Math.random() * n.length);
       let n2 = Math.floor(Math.random() * n.length);
@@ -69,7 +69,7 @@ const Article = () => {
         n2 = Math.floor(Math.random() * n.length);
       }
       resourceIndices = [n1, n2];
-    }
+    }*/
 
     resourceIndices = new Set(resourceIndices);
     if (resourceIndices.size) {
