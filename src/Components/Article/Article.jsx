@@ -51,7 +51,7 @@ const Article = () => {
     // If there are related resources
     let resourceIndices = [];
     articleSelectedTags.forEach((tags) => {
-      console.log(appContext["resources"]);
+      
       if (appContext["resources"][tags]) {
         function shuffle(array) {
           let currentIndex = array.length,

@@ -71,6 +71,7 @@ const SideBar = () => {
         type={voice.Type}
         onClick={() => appContext.selectArticle(index)}
         selected={index === appContext.articleSelected}
+        
       />
     ))
   )
