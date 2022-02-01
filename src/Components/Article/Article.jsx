@@ -44,7 +44,7 @@ const Article = () => {
       if (element === "Physical") {
         return "Macroaggression";
       } else if (element === "Verbal") {
-        return "Microaggresion";
+        return "Microaggression";
       } else return element;
     });
   
