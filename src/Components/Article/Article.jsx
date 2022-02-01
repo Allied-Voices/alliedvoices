@@ -39,7 +39,7 @@ const Article = () => {
       }
     });
     // Convert some tags
-   
+
     articleSelectedTags = articleSelectedTags.map((element) => {
       if (element === "Physical") {
         return "Macroaggression";
@@ -47,39 +47,39 @@ const Article = () => {
         return "Microaggresion";
       } else return element;
     });
-    console.log(articleSelectedTags)
-    console.log()
+  
     // If there are related resources
     let resourceIndices = [];
     articleSelectedTags.forEach((tags) => {
-      console.log(appContext["resources"])
+      console.log(appContext["resources"]);
       if (appContext["resources"][tags]) {
         function shuffle(array) {
-          let currentIndex = array.length,  randomIndex;
-        
+          let currentIndex = array.length,
+            randomIndex;
+
           // While there remain elements to shuffle...
           while (currentIndex !== 0) {
-        
             // Pick a remaining element...
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
-        
+
             // And swap it with the current element.
             [array[currentIndex], array[randomIndex]] = [
-              array[randomIndex], array[currentIndex]];
+              array[randomIndex],
+              array[currentIndex],
+            ];
           }
-        
+
           return array;
         }
-       
+
         resourceIndices = shuffle([
           ...resourceIndices,
           ...appContext["resources"][tags],
-        ]).slice(0, 2)
-
+        ]).slice(0, 2);
       }
     });
-    console.log("resourcesindicase",resourceIndices)
+    
     // If there are not related resources
     /*if (resourceIndices.length < 2) {
       let n = Object.keys(appContext["resources"]);
