@@ -10,8 +10,8 @@ import ArticleResourceTile from "../ArticleResourceTile/ArticleResourceTile";
 const Article = () => {
   const appContext = useContext(AppContext);
   var article =
-    appContext.articleSelected >= 0
-      ? appContext.voices.rows[appContext.articleSelected]
+    appContext.articleSelected !== -1
+      ? appContext.voices.rows.find(voice => voice.id === appContext.articleSelected)
       : null;
   const { createDistMsg } = useDistMsgCreator();
   const distanceMsg =
