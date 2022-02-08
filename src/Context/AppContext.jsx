@@ -163,12 +163,13 @@ class AppContextProvider extends Component {
       return true;
     };
 
-  selectArticle = (index) => {
-    if (index !== this.state.articleSelected) {
+  selectArticle = (id) => {
+    if (id !== this.state.articleSelected) {
+      let article = this.state.voices.rows.find(voice => voice.id === id);
       this.setState({
-        articleSelected: index,
-        articleSelectedLat: this.state.voices.rows[index].lat,
-        articleSelectedLng: this.state.voices.rows[index].lng,
+        articleSelected: id,
+        articleSelectedLat: article.lat,
+        articleSelectedLng: article.lng,
         articleToggled: true,
       });
     } else {
