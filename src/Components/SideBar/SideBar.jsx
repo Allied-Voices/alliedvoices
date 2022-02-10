@@ -89,27 +89,24 @@ const SideBar = () => {
       }
       if (j === 0) {
         return (
-          renderArticles(voices)
+          <div className={SideBarStyles.Header}>
+            <h2>More Stories</h2>
+            {renderArticles(voices)}
+          </div>
         );
       } else {
-        if (appContext.pageNum === 1) {
-          return (
-            <div>
-              <div className={SideBarStyles.Header}>
-                <h2>Past 7 Days</h2>
-                {renderArticles(voices.slice(0, j))}
-              </div>
-              <div className={SideBarStyles.Header}>
-                <h2>More Stories</h2>
-                {renderArticles(voices.slice(j))}
-              </div>
+        return (
+          <div>
+            <div className={SideBarStyles.Header}>
+              <h2>Past 7 Days</h2>
+              {renderArticles(voices.slice(0, j))}
             </div>
-          );
-        } else {
-          return (
-            renderArticles(voices)
-          );
-        }
+            <div className={SideBarStyles.Header}>
+              <h2>More Stories</h2>
+              {renderArticles(voices.slice(j))}
+            </div>
+          </div>
+        );
       }
     } else {
       return (
