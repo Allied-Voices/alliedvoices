@@ -8,7 +8,7 @@ const AvMarker = ({voice, index, icon, ...props}) => {
   const markerRef = useRef();
 
   useEffect(() => {
-    if(index === appContext.articleSelected){
+    if(voice.id === appContext.articleSelected){
       markerRef.current.leafletElement.openPopup();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,21 +46,22 @@ const AvMarker = ({voice, index, icon, ...props}) => {
     popupAnchor: [-2, -14],
   });
 
-  const determineMarkerIcon = (voiceType, index) => {
+  const determineMarkerIcon = (voiceType, voiceId) => {
     if(voiceType === 'Acts of Allyship' || voiceType === 'Stories of Empowerment' || voiceType === 'Resources'){
-      return (index === appContext.articleSelected) ? gdMarkerSelected : gdMarker ;
+      return (voiceId === appContext.articleSelected) ? gdMarkerSelected : gdMarker ;
     }
     else 
-    return (index === appContext.articleSelected) ?incidentMarkerSelected:incidentMarker;
+    return (voiceId === appContext.articleSelected) ?incidentMarkerSelected:incidentMarker;
    
   };
 
   return (
     <Marker
     ref = {markerRef}
-    onclick={() => appContext.selectArticle(index)} key={`${index}-${voice.lat}-${voice.lng}`} 
+    onclick={() => appContext.selectArticle(voice.id)} 
+    key={`${voice.id}-${voice.lat}-${voice.lng}`} 
     position={[voice.lat, voice.lng]} 
-    icon={determineMarkerIcon(voice.Type, index)}>
+    icon={determineMarkerIcon(voice.Type, voice.id)}>
       <Popup>
         <strong>{voice.Name}</strong><br />
         <strong>Type: </strong>{voice.Type}<br />
