@@ -1,4 +1,7 @@
 /* All Styles were written for 1440 width. not responsive */
+a {
+  text-decoration: none;
+}
 .HeaderContainer {
   background: #f9f7f1;
   width: 100%;
@@ -14,7 +17,7 @@
   font-size: 1rem;
 }
 .LogoAbout {
-  margin-top: 2rem;
+  margin-top: 2.219rem;
   margin-right: 10rem;
   font-size: 0.75rem;
 }
@@ -159,9 +162,15 @@
   display: flex;
   align-items: center;
   margin-right: 160px;
+  margin-top: 12px;
 }
 
 .FooterImg {
   margin-right: 10px;
   margin-bottom: 15px;
+}
+
+.FooterLinkedIn {
+  margin-bottom: 15px;
+  width: 60%;
 }

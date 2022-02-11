@@ -1,6 +1,6 @@
 import React, { Component, createContext } from "react";
 //import { getLocation } from "../utils/geolocationdb";
-import { getVoices, getResources } from "../utils/airtable";
+import { getVoices, getResources, getAllies } from "../utils/airtable";
 import { getGeocodeInformationFor } from "../utils/geocoder";
 import determineLocationZoom from '../utils/locationTypes'
 export const AppContext = createContext();
@@ -16,6 +16,7 @@ class AppContextProvider extends Component {
     pageNum: 1,
     maxPageNum: 0,
     resources: {},
+    allies: {},
     articleSelectedLat: 39,
     articleSelectedLng:-98,
     articleSelected: -1,
@@ -59,6 +60,12 @@ class AppContextProvider extends Component {
             resources,
           });
           console.log(this.state.resources)});
+
+          getAllies((allies) => {
+            this.setState({
+              allies,
+            });
+            console.log(this.state.allies)});
       },
     );
   };

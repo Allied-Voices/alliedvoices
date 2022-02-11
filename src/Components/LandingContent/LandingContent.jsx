@@ -133,7 +133,7 @@ const LandingHeader2 = () => {
         <div className={LandingContentStyles.FooterSocial}>
           <a href='https://www.linkedin.com/company/allied-voices/'>
             <img
-              className={LandingContentStyles.FooterImg}
+              className={LandingContentStyles.FooterLinkedIn}
               src={Linkedin}
               alt='Linkedin'
             ></img>

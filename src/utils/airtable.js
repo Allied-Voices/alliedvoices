@@ -54,4 +54,17 @@ async function getResources(locations, cb) {
   }
 }
 
-export { getVoices, getResources };
+async function getAllies(cb) {
+  const ATresponse = await fetch(BASE_URL + `/Allies?`, {
+    methods: 'GET',
+  });
+  const ATresponseData = await ATresponse.json();
+
+  if (cb) {
+    cb(ATresponseData);
+  } else {
+    return ATresponseData;
+  }
+}
+
+export { getVoices, getResources, getAllies };
