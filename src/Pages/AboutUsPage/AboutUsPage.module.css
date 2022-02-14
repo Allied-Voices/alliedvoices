@@ -49,3 +49,15 @@
 	justify-items: start;
 	margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+	.People {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 576px) {
+	.People {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
