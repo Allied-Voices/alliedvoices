@@ -58,52 +58,36 @@ exports.handler = function (event, context, callback) {
   var endingArticleNum = startingArticleNum + 10;
   var articleNum = 0;
 
-  base('Articles')
-    .select({
-      filterByFormula: filterString,
-      fields: [
-        'Name',
-        'lat',
-        'lng',
-        'Date',
-        'Type',
-        'Incident Type',
-        'Publisher',
-        'URL',
-        'Summary',
-        'Location Tags',
-        'Image',
-      ],
-      sort: [{ field: 'Date', direction: 'desc' }],
-      view: 'All users',
-    })
-    .eachPage(
-      function page(records, fetchNextPage) {
-        records.forEach(function (record) {
-          try {
-            if (
-              articleNum >= startingArticleNum &&
-              articleNum <= endingArticleNum
-            ) {
-              data.articles.rows.push(record.fields);
-            }
 
-            articleNum++;
-          } catch {
-            console.error(err);
-          }
-        });
-        try {
-          fetchNextPage();
-        } catch {
-          return;
-        }
-      },
-      function done(err) {
-        if (err) {
-          console.error(err);
-          return;
-        }
+  base('Articles').select({
+    filterByFormula: filterString,
+    fields: ["id", "Name", "lat", "lng", "Date", "Type", "Incident Type", "Publisher", "URL", "Summary", "Location Tags", "Image"],
+    sort: [{field: "Date", direction: "desc"}],
+    view: "All users"
+  }).eachPage(function page(records, fetchNextPage) {
+    
+    records.forEach(function (record) {
+
+      if(articleNum >= startingArticleNum && articleNum <= endingArticleNum){
+        data.articles.rows.push(record.fields);
+      }
+
+      articleNum++;
+
+    });
+
+    fetchNextPage();
+
+  }, function done(err) {
+
+    if (err) { console.error(err); return; }
+
+    data.totalPages = articleNum % 10 === 0 ? (articleNum/10) : Math.floor(articleNum/10) + 1;
+
+    callback(null, {
+      statusCode: 200,
+      body: JSON.stringify(data)
+    });
 
         data.totalPages =
           articleNum % 10 === 0
