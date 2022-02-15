@@ -84,10 +84,9 @@ const Map = () => {
         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
       />
       <ZoomControl position="topright" />
-      {appContext.voices.rows &&
-        appContext.voices.rows.map((voice, index) => (
-          <AvMarker key={index} voice={voice} index={index}></AvMarker>
-        ))}
+
+      {appContext.voices.rows && appContext.voices.rows.map((voice, index) => <AvMarker key={voice.id} voice={voice} index={index}></AvMarker>)}
+
     </LeafletMap>
   );
 };

@@ -46,7 +46,7 @@ exports.handler = function (event, context, callback) {
 
   base('Articles').select({
     filterByFormula: filterString,
-    fields: ["Name", "lat", "lng", "Date", "Type", "Incident Type", "Publisher", "URL", "Summary", "Location Tags", "Image"],
+    fields: ["id", "Name", "lat", "lng", "Date", "Type", "Incident Type", "Publisher", "URL", "Summary", "Location Tags", "Image"],
     sort: [{field: "Date", direction: "desc"}],
     view: "All users"
   }).eachPage(function page(records, fetchNextPage) {
