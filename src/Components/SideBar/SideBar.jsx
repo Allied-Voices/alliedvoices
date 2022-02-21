@@ -78,23 +78,22 @@ const SideBar = () => {
   const renderSections = (voices) => {
     if (voices.length) {
       // j is the index of the first article that was published more than a week ago
-      let j = 0;
-      for (let i = 0; i < voices.length; i++) {
-        let diff = Date.now() - Date.parse(voices[i].Date);
+      const olderThan7Days = (voice) => {
+        let diff = Date.now() - Date.parse(voice.Date);
         // 7 d = 604800000 ms
-        if (diff > 604800000) {
-          j = i;
-          break;
-        }
-      }
-      if (j === 0) {
+        return diff > 604800000;
+      };
+      let j = voices.findIndex(olderThan7Days);
+      let firstOlderArticleId = null;
+      if (j === -1) {
         return (
           <div className={SideBarStyles.Header}>
-            <h2>More Stories</h2>
+            <h2>Past 7 Days</h2>
             {renderArticles(voices)}
           </div>
         );
-      } else {
+      } else if (j > 0) {
+        firstOlderArticleId = voices[j].id;
         return (
           <div>
             <div className={SideBarStyles.Header}>
@@ -105,6 +104,13 @@ const SideBar = () => {
               <h2>More Stories</h2>
               {renderArticles(voices.slice(j))}
             </div>
+          </div>
+        );
+      } else {
+        return (
+          <div className={SideBarStyles.Header}>
+            {!firstOlderArticleId || firstOlderArticleId !== voices[0].id ? null : <h2>More Stories</h2>}
+            {renderArticles(voices)}
           </div>
         );
       }
