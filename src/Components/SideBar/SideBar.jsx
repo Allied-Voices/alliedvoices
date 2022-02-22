@@ -69,8 +69,10 @@ const SideBar = () => {
         lng={voice.lng}
         publisher={voice.Publisher}
         type={voice.Type}
+
         onClick={() => appContext.selectArticle(voice.id)}
         selected={voice.id === appContext.articleSelected}
+
       />
     ))
   )
