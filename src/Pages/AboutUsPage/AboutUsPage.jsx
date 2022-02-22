@@ -46,8 +46,8 @@ const AboutUsPage = () => {
 		<div className={AboutUsPageStyles.Container}>
 
 			<nav className={AboutUsPageStyles.Nav}>
-				<a href="/">Allied Voices</a>
-				<a href="/about-us">About us</a>
+				<a className={AboutUsPageStyles.Link} href="/">Allied Voices</a>
+				<a className={AboutUsPageStyles.Link} href="/about-us">About us</a>
 			</nav>
 
 			<section className={AboutUsPageStyles.Section}>

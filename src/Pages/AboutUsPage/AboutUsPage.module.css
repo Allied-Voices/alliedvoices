@@ -1,7 +1,7 @@
 .Container {
 	color: black;
 	font-family: "Hind";
-	padding: 2rem;
+	padding: 2rem 6rem;
 }
 
 .Nav {
@@ -10,17 +10,17 @@
 	margin-bottom: 2rem;
 }
 
-.Nav a {
+.Link {
 	color: black;
 	text-decoration: none;
 }
 
 .Section {
-	margin: 3rem 0;
+	margin: 4rem 0;
 }
 
 .Header {
-	margin-left: 0;
+	margin: 1rem 0;
 }
 
 .Community {
@@ -32,13 +32,14 @@
 }
 
 .Image {
+	border-radius: 1rem;
 	height: auto;
 	max-width: 100%;
 }
 
 .Paragraph {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	line-height: 2rem;
+	margin: 1rem 0;
 	text-align: justify;
 }
 
@@ -57,7 +58,11 @@
 }
 
 @media (max-width: 576px) {
+	.Community {
+		grid-template-columns: 1fr;
+	}
+
 	.People {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr;
 	}
 }
