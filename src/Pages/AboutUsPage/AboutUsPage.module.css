@@ -19,7 +19,7 @@
 	margin: 4rem 0;
 }
 
-.Header {
+.Heading {
 	margin: 1rem 0;
 }
 
@@ -37,9 +37,15 @@
 	max-width: 100%;
 }
 
-.Paragraph {
-	line-height: 2rem;
+.Caption {
+	line-height: 1rem;
 	margin: 1rem 0;
+	text-align: left;
+}
+
+.Story {
+	line-height: 2rem;
+	margin: 2rem 0;
 	text-align: justify;
 }
 

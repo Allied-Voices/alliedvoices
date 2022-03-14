@@ -36,8 +36,8 @@ const AboutUsPage = () => {
 		return group.map(person =>
 			<div key={person.id}>
 				<img className={AboutUsPageStyles.Image} src={person.img} alt="" />
-				<p className={AboutUsPageStyles.Paragraph}>{person.firstName} {person.lastName}</p>
-				<p className={AboutUsPageStyles.Paragraph}>{person.position}</p>
+				<p className={AboutUsPageStyles.Caption}><strong>{person.firstName} {person.lastName}</strong></p>
+				<p className={AboutUsPageStyles.Caption}>{person.position}</p>
 			</div>
 		);
 	}
@@ -46,41 +46,41 @@ const AboutUsPage = () => {
 		<div className={AboutUsPageStyles.Container}>
 
 			<nav className={AboutUsPageStyles.Nav}>
-				<a className={AboutUsPageStyles.Link} href="/">Allied Voices</a>
+				<a className={AboutUsPageStyles.Link} href="/"><strong>Allied Voices</strong></a>
 				<a className={AboutUsPageStyles.Link} href="/about-us">About us</a>
 			</nav>
 
 			<section className={AboutUsPageStyles.Section}>
-				<h2 className={AboutUsPageStyles.Header}>Building friendlier and healthier communities by...</h2>
+				<h2 className={AboutUsPageStyles.Heading}>Building friendlier and healthier communities by...</h2>
 				<div className={AboutUsPageStyles.Community}>
 					<div>
 						<img className={AboutUsPageStyles.Image} src={Visibility} alt="" />
-						<p>Bringing visibility to racism</p>
+						<p className={AboutUsPageStyles.Caption}>Bringing visibility to racism</p>
 					</div>
 					<div>
 						<img className={AboutUsPageStyles.Image} src={Heroes} alt="" />
-						<p>Highlighting the heroes who are fighting racism</p>
+						<p className={AboutUsPageStyles.Caption}>Highlighting the heroes who are fighting racism</p>
 					</div>
 					<div>
 						<img className={AboutUsPageStyles.Image} src={Allies} alt="" />
-						<p>Providing opportunities to practice allyship</p>
+						<p className={AboutUsPageStyles.Caption}>Providing opportunities to practice allyship</p>
 					</div>
 				</div>
 			</section>
 			
 			<section className={AboutUsPageStyles.Section}>
-				<h2 className={AboutUsPageStyles.Header}>Our story</h2>
-				<p className={AboutUsPageStyles.Paragraph}>On April 3rd, 2020, a team of five came together from across the world to figure out how to protect vulnerable populations in the midst of a worldwide pandemic. While other teams at the MIT COVID-19 hackathon focused on the health-related impacts of COVID-19, our team looked at the social impacts of the pandemic. Having witnessed the rise in race-related incidents and the growing fear in the community, we felt compelled to address the deep-rooted, yet under-addressed, issue of racism. We created a platform to bring visibility to racism, as well as to showcase acts of solidarity and provide resources for education. Our goal was simple: inspire acts of allyship through conversation. After all, protests change policies, but conversations heal communities.</p>
-				<p className={AboutUsPageStyles.Paragraph}>Allied Voices is an award-winning organization with mentors from the Massachusetts Institute of Technology (MIT) and Boston Consulting Group (BCG). We have given talks at Austin Design Week, UX Camp Chicago, and New Services for the New Normal. In just the past year, our team has grown to over ten people, and we’re constantly on the search for new team members to bring Allied Voices to the next level.</p>
+				<h2 className={AboutUsPageStyles.Heading}>Our story</h2>
+				<p className={AboutUsPageStyles.Story}>On April 3rd, 2020, a team of five came together from across the world to figure out how to protect vulnerable populations in the midst of a worldwide pandemic. While other teams at the MIT COVID-19 hackathon focused on the health-related impacts of COVID-19, our team looked at the social impacts of the pandemic. Having witnessed the rise in race-related incidents and the growing fear in the community, we felt compelled to address the deep-rooted, yet under-addressed, issue of racism. We created a platform to bring visibility to racism, as well as to showcase acts of solidarity and provide resources for education. Our goal was simple: inspire acts of allyship through conversation. After all, protests change policies, but conversations heal communities.</p>
+				<p className={AboutUsPageStyles.Story}>Allied Voices is an award-winning organization with mentors from the Massachusetts Institute of Technology (MIT) and Boston Consulting Group (BCG). We have given talks at Austin Design Week, UX Camp Chicago, and New Services for the New Normal. In just the past year, our team has grown to over ten people, and we're constantly on the search for new team members to bring Allied Voices to the next level.</p>
 			</section>
 
 			<section className={AboutUsPageStyles.Section}>
-				<h2 className={AboutUsPageStyles.Header}>Meet the team</h2>
+				<h2 className={AboutUsPageStyles.Heading}>Meet the team</h2>
 				<div className={AboutUsPageStyles.People}>{renderGroup(team)}</div>
 			</section>
 
 			<section className={AboutUsPageStyles.Section}>
-				<h2 className={AboutUsPageStyles.Header}>Alumni</h2>
+				<h2 className={AboutUsPageStyles.Heading}>Alumni</h2>
 				<div className={AboutUsPageStyles.People}>{renderGroup(alumni)}</div>
 			</section>
 
