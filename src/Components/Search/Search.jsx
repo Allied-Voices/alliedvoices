@@ -46,7 +46,7 @@ const Search = ({placeholder, searchFunction, filterFunction, disabled, ...props
       </form>
       { isError && 
         <p className={SearchStyles.ErrorText}>
-          Could not find this location, try again.
+          Please enter a valid address.
         </p>
       }
     </>
