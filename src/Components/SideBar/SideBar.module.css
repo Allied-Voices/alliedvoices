@@ -1,25 +1,20 @@
 .Container{
   background:white;
   box-sizing: border-box;
+ 
+  /*box-shadow: 0 -2px 4px 0 ;*/
+  /* This is not working in Mozilla */
+  border-right: rgba(0 0 0 /0.1) ridge 2px;
+  padding:11px 19px 0 0px;
   width: 525px;
-  box-shadow: 0 -2px 4px 0 rgba(0,0,0,0.25);
-  padding:19px;
-  height:100%;
   z-index:100;
   display:flex;
   flex-direction: column;
 }
 
-@media only screen and (max-width: 1300px){
-  .Container{
-    width:39%;
-  }
-}
 
-@media only screen and (max-width:720px){
-  .Container{
-    width:100%
-  }
+@media only screen and (max-width: 1300px){
+
 }
 
 .Header{
@@ -31,30 +26,42 @@
   align-items: center;
   text-decoration: none;
   color:black;
+ 
 }
 
-.SearchSection{
-  width:95%;
-  margin-bottom:16px;
-}
 
-.FilterSection{
-  width:95%;
-  margin-bottom:16px;
-  display:flex;
-}
-
-.FilterSection > div:not(:first-child) {
-  margin-left:5px;
-}
 
 .ArticleSection{
-  width:95%;
+  
   display:flex;
   flex-direction: column;
   flex-grow: 1;
   overflow-y: scroll;
   padding-right:30px;
+  margin-left: 19px;
+  
+}
+/* width */
+.ArticleSection::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 30px;
+}
+
+/* Track */
+.ArticleSection::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 30px;
+}
+ 
+/* Handle */
+.ArticleSection::-webkit-scrollbar-thumb {
+  background: rgba(0 0 0 /0.1); 
+  border-radius: 30px;
+}
+
+/* Handle on hover */
+.ArticleSection::-webkit-scrollbar-thumb:hover {
+  background: #B4B4B4;
 }
 
 .ArticleSection > div:not(:first-child) {
@@ -62,11 +69,18 @@
 }
 
 .PageSection {
-  padding:10px 0;
+  height: 55px;
+  width: 475px;
+  position: relative;
   font-size:18px;
   display:flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+ 
+  
+  
+  
+  
 }
 
 .PageSection > span {
@@ -74,6 +88,7 @@
   margin:0px 4px;
   border-radius: 8px;
   cursor:none;
+  
 }
 
 .PageSection > span:hover {
@@ -89,4 +104,20 @@
   background-color:rgba(0,0,0,0) !important;
   color: #B4B4B4;
   cursor:default !important;
+}
+
+@media only screen and (max-width:720px){
+  .Container{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    width:100%;
+    height: 30vh;
+   
+
+  }
+  .PageSection{
+    height: 10vh;
+    width: 100%;
+    padding: 17px 0;
+  }
 }

@@ -4,6 +4,7 @@
   padding:9px 10px;
   display:flex;
   align-items: center;
+  background-color:white ;
 }
 
 .Disabled{
@@ -20,6 +21,7 @@
   width:100%;
   font-size:16px;
   outline: none;
+ 
 }
 
 .Input::placeholder{
@@ -50,4 +52,8 @@
   font-size: 15px;
   margin-left: 5px;
   margin-top: 10px;
+}
+@media only screen and (max-width:720px){
+
+
 }

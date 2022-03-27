@@ -23,7 +23,7 @@ const ArticleImage = ({imageUrl}) => {
     return (
       <div className={ArticleImageStyles.ImagePlaceHolder}>
         No Image Found
-        <Logo lg></Logo>
+        <Logo ></Logo>
       </div>
     )
   };

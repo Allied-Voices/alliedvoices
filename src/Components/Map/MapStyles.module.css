@@ -1,4 +1,25 @@
 .Map{
   z-index:1;
-  flex-grow:1;
+  height: 100vh;
+  grid-row: 1/3;
+   grid-column: 2;
+ 
+  
+  
+}
+@media only screen and (max-width:720px){
+  .Map{
+   z-index: 10; 
+    width: 100vw;
+   border-bottom: rgba(0 0 0 /0.1) ridge 1px;
+   border-top:rgba(0 0 0 /0.1) ridge 1px;
+  height: 70vh;
+   grid-column: 1/2;
+   grid-row: 1/2;
+  
+  }
+  .ZoomControl{
+   
+  }
+
 }

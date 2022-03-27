@@ -7,14 +7,14 @@ import IncidentHeart from '../../Images/IncidentHeart.svg';
 import useDistMsgCreator from '../../CustomHooks/use-dist-msg-creator';
 import { calculateTimeSpan } from '../../utils/date';
 
-const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, img, type, onClick, selected }) => {
+const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, img, type, onClick, onDoubleClick,selected }) => {
   const appContext = useContext(AppContext);
   const { createDistMsg } = useDistMsgCreator(); 
   const dateMsg = calculateTimeSpan(date);
   const distanceMsg = createDistMsg(appContext.orgLat, appContext.orgLng, lat, lng);
 
   return (
-    <div className={`${SideBarArticleStyles.Container}` + (selected? ` ${SideBarArticleStyles.Selected}`:'')} onClick={onClick}>
+    <div className={`${SideBarArticleStyles.Container}` + (selected? ` ${SideBarArticleStyles.Selected}`:'')} onClick={onClick} onDoubleClick={onDoubleClick}>
       <div className={SideBarArticleStyles.ImgContainer}>
         {img ?
           <img src={img} alt={`${heading}`} /> :

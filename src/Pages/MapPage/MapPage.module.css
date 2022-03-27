@@ -1,11 +1,24 @@
 .Container{
-  display:flex;
+  display:grid;
   height:100vh;
   z-index:-1000;
+  grid-template-columns:525px minmax(0, 1fr);
+  grid-template-rows: 194px minmax(0, 1fr);
+  width: 100vw;
+  overflow:auto;
+  
+  
 }
 
 @media only screen and (max-width:720px){
   .Container{
-    flex-direction:column-reverse;
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 70vh 30vh;
+    height:100vh;
+   
+    
+    
+   
   }
 }

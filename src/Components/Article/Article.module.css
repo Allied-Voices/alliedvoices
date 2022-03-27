@@ -3,10 +3,11 @@
   box-sizing: border-box;
   position:absolute;
   left:525px;
+  width: 475px;
   z-index: 20;
   height: 100vh;
   box-shadow: 3px 3px 13px -9px rgba(0,0,0,0.96);
-  width:475px; 
+  
   overflow-x:hidden;
 }
 
@@ -113,4 +114,29 @@
 
 .Hidden{
   display:none;
+}
+@media only screen and (max-width:720px){
+  .Container{
+    
+    order: 4;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 100000;
+    height: 100vh;
+    
+    
+
+  }
+  .ArticleContainer{
+   margin: 0;
+   padding: 20px;
+   width: 100%;
+  }
+  .HeadingContainer > .Close{
+  
+  }
+  .SummaryContainer{
+    width:100%;
+  }
 }
