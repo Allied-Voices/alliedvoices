@@ -18,8 +18,11 @@
    grid-row: 1/2;
   
   }
-  .ZoomControl{
-   
-  }
+  
 
 }
+@media only screen 
+  and (min-device-width: 721px) 
+  and (max-device-width: 1024px) {
+    
+  }
