@@ -85,7 +85,12 @@ const Map = () => {
       />
       <ZoomControl position="topright" />
 
-      {appContext.voices.rows && appContext.voices.rows.map((voice, index) => <AvMarker key={voice.id} voice={voice} index={index}></AvMarker>)}
+      {appContext.voices.rows && appContext.voices.rows.map((voice, index) => {
+        if (!voice.City) {
+          return <AvMarker key={voice.id} voice={voice} index={index}></AvMarker>;
+        }
+        return null;
+      })}
 
     </LeafletMap>
   );
