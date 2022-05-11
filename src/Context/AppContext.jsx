@@ -1,8 +1,6 @@
 import React, { Component, createContext } from "react";
 //import { getLocation } from "../utils/geolocationdb";
 import { getVoices, getResources, getAllArticles } from "../utils/airtable";
-import { getGeocodeInformationFor } from "../utils/geocoder";
-import { getVoices, getResources } from "../utils/airtable";
 import axios from "axios";
 import determineLocationZoom from '../utils/locationTypes'
 export const AppContext = createContext();
