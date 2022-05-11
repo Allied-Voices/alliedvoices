@@ -11,10 +11,10 @@ exports.handler = function (event, context, callback) {
 
   var filterString = '';
 
-  base('Stories of Allyship')
+  base('Articles')
     .select({
       filterByFormula: filterString,
-      fields: ['Name', 'Publisher', 'URL', 'Description'],
+      fields: ['Name', 'Publisher', 'URL', 'Summary', 'Image', 'Type'],
     })
     .eachPage(
       function page(records, fetchNextPage) {

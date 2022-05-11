@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import LandingContentStyles from './LandingContent.module.css';
-import LandingHero from '../../Images/LandingMap.png';
+import LandingHero from '../../Images/LandingMap2.png';
 import Linkedin from '../../Images/Linkedin.png';
 import Facebook from '../../Images/Facebook.png';
 import Instagram from '../../Images/Instagram.png';
@@ -10,7 +10,7 @@ import { AppContext } from '../../Context/AppContext';
 import LandingStories from '../LandingStories/LandingStories';
 import LandingResources from '../LandingResources/LandingResources';
 
-const LandingHeader2 = () => {
+const LandingHeader = () => {
   const appContext = useContext(AppContext);
   const { goToMap } = useLandingNewYorkButton();
   // Randomizer for grabbing articles and resources
@@ -40,9 +40,8 @@ const LandingHeader2 = () => {
               Navigate your racial landscape
             </h2>
             <p className={LandingContentStyles.HeaderPara}>
-              Lorem Ipsum has been the industry's standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book
+            Explore our beta of New York City. Read race-related incidents and stories of allyship in the area. Learn how heroes and communities are rising up against racism. 
+            Access resources on allyship and join the conversation.
             </p>
             <button
               className={LandingContentStyles.HeaderBtn}
@@ -65,18 +64,18 @@ const LandingHeader2 = () => {
           Read stories of allyship
         </h2>
         <div className={LandingContentStyles.StoryContainer}>
-          {appContext.voices.rows.length ? (
-            getRandom(appContext.voices.rows, 3).map((voice, index) => (
+          {appContext.articles.rows.length ? (
+           getRandom(appContext.articles.rows.filter((article) => article.Type === "Stories of Empowerment" || article.Type === "Acts of Allyship" && article.Image), 3).map((article, index) => (
               <LandingStories
                 key={index}
                 index={index}
-                heading={voice.Name}
-                image={voice.Image}
-                url={voice.URL}
+                heading={article.Name}
+                image={article.Image}
+                url={article.URL}
               />
             ))
           ) : (
-            <div>No articles found</div>
+            <div>No resources found</div>
           )}
         </div>
       </div>
@@ -110,13 +109,13 @@ const LandingHeader2 = () => {
         </h2>
         <div className={LandingContentStyles.ResourceBox}>
           {appContext.voices.rows.length ? (
-            getRandom(appContext.resources.rows, 4).map((resource, index) => (
+           getRandom(appContext.voices.rows.filter((voices) => voices.Image), 4).map((voices, index) => (
               <LandingResources
                 key={index}
                 index={index}
-                heading={resource.Title}
-                image={resource.Image}
-                url={resource.URL}
+                heading={voices.Name}
+                image={voices.Image}
+                url={voices.URL}
               />
             ))
           ) : (
@@ -158,4 +157,4 @@ const LandingHeader2 = () => {
   );
 };
 
-export default LandingHeader2;
+export default LandingHeader;
