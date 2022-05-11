@@ -6,13 +6,8 @@ exports.handler = function (event, context, callback) {
     process.env.AIRTABLE_BASE_ID
   );
 
-  const {
-    lat,
-    lng,
-    pageNum,
-    search,
-    ...filterOptions
-  } = event.queryStringParameters;
+  const { lat, lng, pageNum, search, ...filterOptions } =
+    event.queryStringParameters;
 
   var filterString = 'AND(';
 
@@ -62,9 +57,11 @@ exports.handler = function (event, context, callback) {
     .select({
       filterByFormula: filterString,
       fields: [
+        'id',
         'Name',
         'lat',
         'lng',
+        'City',
         'Date',
         'Type',
         'Incident Type',
@@ -80,30 +77,33 @@ exports.handler = function (event, context, callback) {
     .eachPage(
       function page(records, fetchNextPage) {
         records.forEach(function (record) {
-          try {
-            if (
-              articleNum >= startingArticleNum &&
-              articleNum <= endingArticleNum
-            ) {
-              data.articles.rows.push(record.fields);
-            }
-
-            articleNum++;
-          } catch {
-            console.error(err);
+          if (
+            articleNum >= startingArticleNum &&
+            articleNum <= endingArticleNum
+          ) {
+            data.articles.rows.push(record.fields);
           }
+
+          articleNum++;
         });
-        try {
-          fetchNextPage();
-        } catch {
-          return;
-        }
+
+        fetchNextPage();
       },
       function done(err) {
         if (err) {
           console.error(err);
           return;
         }
+
+        data.totalPages =
+          articleNum % 10 === 0
+            ? articleNum / 10
+            : Math.floor(articleNum / 10) + 1;
+
+        callback(null, {
+          statusCode: 200,
+          body: JSON.stringify(data),
+        });
 
         data.totalPages =
           articleNum % 10 === 0

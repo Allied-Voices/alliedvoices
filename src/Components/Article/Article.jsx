@@ -10,8 +10,8 @@ import ArticleResourceTile from "../ArticleResourceTile/ArticleResourceTile";
 const Article = () => {
   const appContext = useContext(AppContext);
   var article =
-    appContext.articleSelected >= 0
-      ? appContext.voices.rows[appContext.articleSelected]
+    appContext.articleSelected !== -1
+      ? appContext.voices.rows.find(voice => voice.id === appContext.articleSelected)
       : null;
   const { createDistMsg } = useDistMsgCreator();
   const distanceMsg =
@@ -39,29 +39,49 @@ const Article = () => {
       }
     });
     // Convert some tags
+
     articleSelectedTags = articleSelectedTags.map((element) => {
       if (element === "Physical") {
-        return "Microaggression";
-      } else if (element === "Verbal") {
         return "Macroaggression";
+      } else if (element === "Verbal") {
+        return "Microaggression";
       } else return element;
     });
+  
     // If there are related resources
     let resourceIndices = [];
     articleSelectedTags.forEach((tags) => {
+      
       if (appContext["resources"][tags]) {
-        resourceIndices = [
+        function shuffle(array) {
+          let currentIndex = array.length,
+            randomIndex;
+
+          // While there remain elements to shuffle...
+          while (currentIndex !== 0) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+              array[randomIndex],
+              array[currentIndex],
+            ];
+          }
+
+          return array;
+        }
+
+        resourceIndices = shuffle([
           ...resourceIndices,
           ...appContext["resources"][tags],
-        ]
-          .map((value) => ({ value, sort: Math.random() }))
-          .sort((a, b) => a.sort - b.sort)
-          .map(({ value }) => value)
-          .slice(0, 2);
+        ]).slice(0, 2);
       }
     });
+    
     // If there are not related resources
-    if (resourceIndices.length < 2) {
+    /*if (resourceIndices.length < 2) {
       let n = Object.keys(appContext["resources"]);
       let n1 = Math.floor(Math.random() * n.length);
       let n2 = Math.floor(Math.random() * n.length);
@@ -69,7 +89,7 @@ const Article = () => {
         n2 = Math.floor(Math.random() * n.length);
       }
       resourceIndices = [n1, n2];
-    }
+    }*/
 
     resourceIndices = new Set(resourceIndices);
     if (resourceIndices.size) {

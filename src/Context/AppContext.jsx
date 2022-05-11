@@ -2,6 +2,8 @@ import React, { Component, createContext } from "react";
 //import { getLocation } from "../utils/geolocationdb";
 import { getVoices, getResources, getAllArticles } from "../utils/airtable";
 import { getGeocodeInformationFor } from "../utils/geocoder";
+import { getVoices, getResources } from "../utils/airtable";
+import axios from "axios";
 import determineLocationZoom from '../utils/locationTypes'
 export const AppContext = createContext();
 
@@ -73,12 +75,19 @@ class AppContextProvider extends Component {
   // Update Location and Get New Voices
   updateLocation = async (newLocation) => {
     // Use Google Geocode to convert newLocation to coordinates, and to determine the town, city, and state name if user the user did not provide it.
-    const { lat, lng, locations, locationType } = await getGeocodeInformationFor(newLocation);
-
-    // Return if the newLocation is not recognized by a geocoder
-    if (!lat || !lng || !locations) {
+    let res;
+    
+    try {
+      res = await axios({
+        method: 'post',
+        url: '/.netlify/functions/geocode',
+        data: newLocation
+      });
+    } catch (e) {
       return false;
     }
+
+    const { lat, lng, locations, locationType } = res.data;
 
     let zoom = determineLocationZoom(locationType);
 
@@ -122,12 +131,19 @@ class AppContextProvider extends Component {
     // Update Location and Get New Voices
     refreshLocation = async (newLocation, zoom) => {
       // Use Google Geocode to convert newLocation to coordinates, and to determine the town, city, and state name if user the user did not provide it.
-      const { lat, lng } = await getGeocodeInformationFor(newLocation);
-  
-      // Return if the newLocation is not recognized by a geocoder
-      if (!lat || !lng ) {
+      let res;
+      
+      try {
+        res = await axios({
+          method: 'post',
+          url: '/.netlify/functions/geocode',
+          data: newLocation
+        });
+      } catch (e) {
         return false;
       }
+      
+      const { lat, lng } = res.data;
   
       // Update State and then make calls to get new voices and resources
       this.setState(
@@ -172,12 +188,13 @@ class AppContextProvider extends Component {
       return true;
     };
 
-  selectArticle = (index) => {
-    if (index !== this.state.articleSelected) {
+  selectArticle = (id) => {
+    if (id !== this.state.articleSelected) {
+      let article = this.state.voices.rows.find(voice => voice.id === id);
       this.setState({
-        articleSelected: index,
-        articleSelectedLat: this.state.voices.rows[index].lat,
-        articleSelectedLng: this.state.voices.rows[index].lng,
+        articleSelected: id,
+        articleSelectedLat: article.lat,
+        articleSelectedLng: article.lng,
         articleToggled: true,
       });
     } else {
