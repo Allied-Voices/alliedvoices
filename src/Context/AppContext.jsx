@@ -16,7 +16,7 @@ class AppContextProvider extends Component {
     articles: { rows: [] },
     pageNum: 1,
     maxPageNum: 0,
-    resources: {},
+    resources: { rows:[] },
     articleSelectedLat: 39,
     articleSelectedLng:-98,
     articleSelected: -1,

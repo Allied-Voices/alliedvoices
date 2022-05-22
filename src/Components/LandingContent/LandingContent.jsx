@@ -108,14 +108,14 @@ const LandingHeader = () => {
           Access curated resources
         </h2>
         <div className={LandingContentStyles.ResourceBox}>
-          {appContext.voices.rows.length ? (
-           getRandom(appContext.voices.rows.filter((voices) => voices.Image), 4).map((voices, index) => (
+          {appContext.resources.rows.length ? (
+            getRandom(appContext.resources.rows, 4).map((resources, index) => (
               <LandingResources
                 key={index}
                 index={index}
-                heading={voices.Name}
-                image={voices.Image}
-                url={voices.URL}
+                heading={resources.Title}
+                image={resources.Image}
+                url={resources.URL}
               />
             ))
           ) : (
