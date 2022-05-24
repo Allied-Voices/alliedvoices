@@ -67,7 +67,7 @@ const SideBar = () => {
         type={voice.Type}
         onClick={() => {
           // Some spagetti code here :)
-          if(window.innerWidth<721){
+          if(window.innerWidth<1281){
             
               if(!appContext.articleFirstClick&&!appContext.articleSecondClick){
                 return appContext.firstClickArticle(voice.id) 

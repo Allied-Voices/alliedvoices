@@ -57,3 +57,24 @@
   min-height:55px;
   min-width:55px;
 }
+
+@media only screen and (max-width:1280px)
+and (min-width:1024px)
+and (min-height:897px){
+
+  .Container{
+    margin: 20px 15px;
+  }
+}
+@media only screen and (max-width:1023px)
+and (min-height:897px){
+
+  .Container{
+   
+ 
+    
+    
+
+  }
+  
+}

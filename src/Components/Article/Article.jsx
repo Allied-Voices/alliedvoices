@@ -104,9 +104,11 @@ const Article = () => {
 // Responsive Article classing
   let articleClass;
   
-  if(window.innerWidth<721){
+  if(window.innerWidth<1281){
   if (appContext.articleToggled){
+   
    if(appContext.articleSecondClick){
+     
     articleClass = ArticleStyles.Toggled
     appContext.articleSecondClick=false
     appContext.articleFirstClick=false
@@ -114,12 +116,12 @@ const Article = () => {
   }
   else{
     articleClass = ArticleStyles.Hidden;
-   
+    console.log(appContext.articleSecondClick)
   }
     
   } else {
     articleClass = ArticleStyles.Hidden;
-   
+  
   }
 }
 else{
