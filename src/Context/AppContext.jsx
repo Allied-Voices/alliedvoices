@@ -1,6 +1,6 @@
 import React, { Component, createContext } from "react";
 //import { getLocation } from "../utils/geolocationdb";
-import { getVoices, getResources } from "../utils/airtable";
+import { getVoices, getResources, getAllArticles } from "../utils/airtable";
 import axios from "axios";
 import determineLocationZoom from '../utils/locationTypes'
 export const AppContext = createContext();
@@ -13,9 +13,10 @@ class AppContextProvider extends Component {
     locations: [],
     locationType: '',
     voices: { rows: [] },
+    articles: { rows: [] },
     pageNum: 1,
     maxPageNum: 0,
-    resources: {},
+    resources: { rows:[] },
     articleSelectedLat: 39,
     articleSelectedLng:-98,
     articleSelected: -1,
@@ -51,14 +52,21 @@ class AppContextProvider extends Component {
             voices,
             maxPageNum
           });
+          console.log(this.state.voices)
         });
 
         getResources(this.state.locations, (resources) => {
           this.setState({
             resources,
           });
-        });
-      }
+          console.log(this.state.resources)});
+
+          getAllArticles((articles) => {
+            this.setState({
+              articles,
+            });
+            console.log(this.state.articles)});
+      },
     );
   };
 
@@ -110,6 +118,7 @@ class AppContextProvider extends Component {
           this.setState({
             resources,
           });
+          console.log('Updated after =' + this.state.resources);
         });
       }
     );

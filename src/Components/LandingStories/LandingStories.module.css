@@ -1,0 +1,17 @@
+.StoryText {
+  font-size: 1rem;
+  line-height: 26px;
+  font-style: normal;
+  font-weight: normal;
+  color: #000000;
+}
+.StoryDiv {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.75rem;
+}
+.StoryImg {
+  border-radius: 8px;
+  width: 25.4vw;
+  height: 245px;
+}

@@ -1,49 +1,176 @@
-
-.Container{
-  width: 33%;
-  min-width:250px;
-  margin:0 32px;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+/* All Styles were written for 1440 width. not responsive */
+a {
+  text-decoration: none;
 }
-
-.Images{
-  padding:0 36px;
-  width:100%;
-  height:250px;
-  margin-top: 50px;
+.HeaderContainer {
+  background: #f9f7f1;
+  width: 100%;
+  height: 648px;
+}
+.Header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+.Logo {
+  margin-top: 2rem;
+  margin-left: 10rem;
+  font-size: 1rem;
+}
+.LogoAbout {
+  margin-top: 2.219rem;
+  margin-right: 10rem;
+  font-size: 0.75rem;
+}
+.HeaderDiv {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3.5rem;
+}
+.HeaderLeft {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rem;
+}
+.HeaderTitle {
+  font-size: 3rem;
+  margin: 0;
+  line-height: 3.625rem;
+  width: 90%;
+}
+.HeaderPara {
+  font-size: 1rem;
+  margin-top: 1rem;
+  line-height: 1.625rem;
+  width: 85%;
+}
+.HeaderBtn {
+  color: #f9f7f1;
+  background: black;
+  width: 11.063rem;
+  height: 72px;
+  font-size: 24px;
+  border-radius: 8px;
+  outline: none;
+  margin-top: 5.625rem;
+}
+.HeaderBtn:hover {
+  cursor: pointer;
+}
+.HeaderRight {
+  display: flex;
+  flex-direction: column;
+  margin-right: 8.688rem;
+}
+.Hero {
+}
+.AllyContainer {
+  margin-top: 2.5rem;
+  width: 100%;
+}
+.AllyTitle {
+  font-size: 24px;
+  line-height: 29px;
+  margin-bottom: 1rem;
+  margin-left: 10rem;
+}
+.StoryContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: 160px;
+  margin-right: 160px;
+}
+.ContributeContainer {
+  display: flex;
+  margin-top: 2.875rem;
+  margin-bottom: 48px;
+  width: 100%;
+}
+.ContributeBox {
+  display: flex;
+  background: #171717;
+  border-radius: 8px;
+  height: 393px;
+  width: 65vw;
+  margin-left: 10rem;
+}
+.ContributeBoxDiv {
+}
+.ContributeTitle {
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 43px;
+  color: #ffffff;
+  margin: 80px 212px 4px 94px;
+  width: 242px;
+  height: 87px;
+}
+.ContributeDesc {
+  width: 271px;
+  height: 52px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #ffffff;
+  margin-left: 94px;
+}
+.ContributeBtn {
+  display: flex;
+  background: #ffffff;
+  border-radius: 8px;
+  width: 77px;
+  height: 37px;
+  margin-left: 94px;
+  margin-top: 32px;
+  align-items: center;
+  justify-content: center;
 }
 
-.Contents{
-  width:100%;
-  margin-top: 80px;
+.ContributeBtnText {
+  font-size: 12px;
+  line-height: 40px;
+}
+.ContributeImg {
+  border-radius: 8px;
+  width: 148%;
+  height: 393px;
+}
+.ResourceBox {
+  display: flex;
+  margin-left: 160px;
+  margin-right: 160px;
+}
+.Footer {
+  height: 131px;
+  background: #f9f7f1;
+  margin-top: 72px;
+  display: flex;
+  justify-content: space-between;
+}
+.FooterAllied {
+  display: flex;
+  align-items: center;
+  margin-left: 160px;
+  text-align: center;
+}
+.FooterAlliedText {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 19px;
 }
 
-.Body{
-  line-height: 180%;
-  font-size: 14pt;
+.FooterSocial {
+  display: flex;
+  align-items: center;
+  margin-right: 160px;
+  margin-top: 12px;
 }
 
-.Title{
-  font-size:14pt;
-  font-weight:700;
-  margin-bottom: 30px;
+.FooterImg {
+  margin-right: 10px;
+  margin-bottom: 15px;
 }
 
-.p span {
-  display: block;
-}
-
-@media only screen and (max-width:900px){
-  .Container{
-    width:80%;
-    margin-bottom:100px;
-  }
-
-  .Contents{
-    margin-top: 40px;
-  }
+.FooterLinkedIn {
+  margin-bottom: 15px;
+  width: 60%;
 }
