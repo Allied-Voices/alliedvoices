@@ -1,7 +1,7 @@
 import React, { Component, createContext } from "react";
 //import { getLocation } from "../utils/geolocationdb";
-import { getVoices, getResources } from "../utils/airtable";
-import { getGeocodeInformationFor } from "../utils/geocoder";
+import { getVoices, getResources, getAllArticles } from "../utils/airtable";
+import axios from "axios";
 import determineLocationZoom from '../utils/locationTypes'
 export const AppContext = createContext();
 
@@ -13,9 +13,10 @@ class AppContextProvider extends Component {
     locations: [],
     locationType: '',
     voices: { rows: [] },
+    articles: { rows: [] },
     pageNum: 1,
     maxPageNum: 0,
-    resources: {},
+    resources: { rows:[] },
     articleSelectedLat: 39,
     articleSelectedLng:-98,
     articleSelected: -1,
@@ -53,26 +54,40 @@ class AppContextProvider extends Component {
             voices,
             maxPageNum
           });
+          console.log(this.state.voices)
         });
 
         getResources(this.state.locations, (resources) => {
           this.setState({
             resources,
           });
-        });
-      }
+          console.log(this.state.resources)});
+
+          getAllArticles((articles) => {
+            this.setState({
+              articles,
+            });
+            console.log(this.state.articles)});
+      },
     );
   };
 
   // Update Location and Get New Voices
   updateLocation = async (newLocation) => {
     // Use Google Geocode to convert newLocation to coordinates, and to determine the town, city, and state name if user the user did not provide it.
-    const { lat, lng, locations, locationType } = await getGeocodeInformationFor(newLocation);
-
-    // Return if the newLocation is not recognized by a geocoder
-    if (!lat || !lng || !locations) {
+    let res;
+    
+    try {
+      res = await axios({
+        method: 'post',
+        url: '/.netlify/functions/geocode',
+        data: newLocation
+      });
+    } catch (e) {
       return false;
     }
+
+    const { lat, lng, locations, locationType } = res.data;
 
     let zoom = determineLocationZoom(locationType);
 
@@ -105,6 +120,7 @@ class AppContextProvider extends Component {
           this.setState({
             resources,
           });
+          console.log('Updated after =' + this.state.resources);
         });
       }
     );
@@ -115,12 +131,19 @@ class AppContextProvider extends Component {
     // Update Location and Get New Voices
     refreshLocation = async (newLocation, zoom) => {
       // Use Google Geocode to convert newLocation to coordinates, and to determine the town, city, and state name if user the user did not provide it.
-      const { lat, lng } = await getGeocodeInformationFor(newLocation);
-  
-      // Return if the newLocation is not recognized by a geocoder
-      if (!lat || !lng ) {
+      let res;
+      
+      try {
+        res = await axios({
+          method: 'post',
+          url: '/.netlify/functions/geocode',
+          data: newLocation
+        });
+      } catch (e) {
         return false;
       }
+      
+      const { lat, lng } = res.data;
   
       // Update State and then make calls to get new voices and resources
       this.setState(
