@@ -21,6 +21,8 @@ class AppContextProvider extends Component {
     articleSelectedLng:-98,
     articleSelected: -1,
     articleToggled: false,
+    articleFirstClick:false,
+    articleSecondClick:false,
     filterOptions: {
       'Location Tags': [],
       'Race': [],
@@ -199,11 +201,42 @@ class AppContextProvider extends Component {
       return false;
     }
   };
-
+  //Responsive hooks
+  firstClickArticle= (id) => {
+    if (id !== this.state.articleSelected) {
+      let article = this.state.voices.rows.find(voice => voice.id === id);
+      this.setState({
+        articleSelected: id,
+        articleSelectedLat: article.lat,
+        articleSelectedLng: article.lng,
+        articleToggled: true,
+        articleFirstClick: true,
+        articleSecondClick:false,
+        
+      });
+    } else {
+      return false;
+    }
+  };
+  secondClickArticle= () => {
+     
+        this.setState({
+         
+         
+          articleSecondClick:true,
+        });
+      
+    };
+  
+  
+  
+//=============================
   closeArticle = () => {
     this.setState({
       articleToggled:false,
-      articleSelected: -1
+      articleSelected: -1,
+      articleFirstClick: false,
+      articleSecondClick:false,
     });
   }
 
@@ -310,10 +343,13 @@ class AppContextProvider extends Component {
           refreshLocation: this.refreshLocation,
           filterVoices: this.filterVoices,
           selectArticle: this.selectArticle,
+          firstClickArticle:this.firstClickArticle,
+          secondClickArticle:this.secondClickArticle,
           closeArticle: this.closeArticle,
           selectPage: this.selectPage,
           goToPrevPage: this.goToPrevPage,
           goToNextPage: this.goToNextPage,
+
         }}
       >
         {this.props.children}

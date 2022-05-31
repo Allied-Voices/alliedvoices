@@ -1,8 +1,4 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import Logo from "../Logo/Logo";
-import Search from "../Search/Search";
-import ButtonMenu from "../ButtonMenu/ButtonMenu";
 import { AppContext } from "../../Context/AppContext";
 import SideBarArticle from "../SideBarArticle/SideBarArticle";
 import SideBarStyles from "./SideBar.module.css";
@@ -57,7 +53,7 @@ const SideBar = () => {
       </>
     );
   };
-
+ 
   const renderArticles = (voices) => (
     voices.map((voice, index) => (
       <SideBarArticle
@@ -69,10 +65,32 @@ const SideBar = () => {
         lng={voice.lng}
         publisher={voice.Publisher}
         type={voice.Type}
-
-        onClick={() => appContext.selectArticle(voice.id)}
+        onClick={() => {
+          // Some spagetti code here :)
+          if(window.innerWidth<1281){
+            
+              if(!appContext.articleFirstClick&&!appContext.articleSecondClick){
+                return appContext.firstClickArticle(voice.id) 
+              }
+              else if(appContext.articleFirstClick &&voice.id === appContext.articleSelected){
+                
+                return appContext.secondClickArticle()
+              }
+              else if(!appContext.articleFirstClick &&voice.id === appContext.articleSelected){
+                return appContext.secondClickArticle()
+              }
+              else{
+                return appContext.firstClickArticle(voice.id) 
+              }
+            
+          }
+          else{
+           
+            return appContext.selectArticle(voice.id)
+          }
+        }}
+        //onClick={() => appContext.selectArticle(voice.id)}
         selected={voice.id === appContext.articleSelected}
-
       />
     ))
   )
@@ -96,26 +114,26 @@ const SideBar = () => {
         );
       } else if (j > 0) {
         firstOlderArticleId = voices[j].id;
-        return (
-          <div>
-            <div className={SideBarStyles.Header}>
-              <h2>Past 7 Days</h2>
-              {renderArticles(voices.slice(0, j))}
+          return (
+            <div>
+              <div className={SideBarStyles.Header}>
+                <h2>Past 7 Days</h2>
+                {renderArticles(voices.slice(0, j))}
+              </div>
+              <div className={SideBarStyles.Header}>
+                <h2>More Stories</h2>
+                {renderArticles(voices.slice(j))}
+              </div>
             </div>
+          );
+        } else {
+          return (
             <div className={SideBarStyles.Header}>
-              <h2>More Stories</h2>
-              {renderArticles(voices.slice(j))}
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <div className={SideBarStyles.Header}>
             {!firstOlderArticleId || firstOlderArticleId !== voices[0].id ? null : <h2>More Stories</h2>}
             {renderArticles(voices)}
           </div>
-        );
-      }
+          );
+        }
     } else {
       return (
         <div>Loading articles...</div>
@@ -125,62 +143,15 @@ const SideBar = () => {
 
   return (
     <div className={SideBarStyles.Container}>
-      <div className={SideBarStyles.Header}>
-        <Link to="/">
-          <Logo primary width="42" height="40" />
-          <h3>Allied Voices</h3>
-        </Link>
-      </div>
-      <div className={SideBarStyles.SearchSection}>
-        <Search placeholder={'Find voices in your area'} searchFunction={appContext.updateLocation}/>
-      </div>
       <div className={SideBarStyles.ArticleSection}>
-        <div className={SideBarStyles.FilterSection}>
-          <ButtonMenu
-            buttonLabel="Content Type"
-            optionsTitle="Filter by Content Type"
-            options={["Incidents", "Acts of Allyship", "Stories of Empowerment", "General News", "Resources"]}
-            filterFunction={appContext.filterVoices}
-            clearFunction={appContext.clearVoices}
-            filterKey="Type"
-          />
-          {/* <ButtonMenu
-            buttonLabel="Source"
-            optionsTitle="Filter by Source"
-            options={[
-              "News",
-              "Reporting Center",
-              "Social Media",
-              "User Submissions",
-            ]}
-            filterFunction={appContext.filterVoices}
-            clearFunction={appContext.clearVoices}
-            filterKey="Content Type"
-          /> */}
-          {/* <ButtonMenu
-            buttonLabel="Incident Tags"
-            optionsTitle="Filter by Incident Tags"
-            options={["Physical", "Verbal", "Vandalism"]}
-            filterFunction={appContext.filterVoices}
-            clearFunction={appContext.clearVoices}
-            filterKey="Incident type"
-          /> */}
-          {/* <ButtonMenu
-            buttonLabel="Race"
-            optionsTitle="Filter by Race"
-            options={["Asian", "Black"]}
-            filterFunction={appContext.filterVoices}
-            clearFunction={appContext.clearVoices}
-            filterKey="Race"
-          /> */}
-        </div>
         {renderSections(appContext.voices.rows)}
-        { !!appContext.maxPageNum && 
+       
+      </div>
+      { !!appContext.maxPageNum && 
         <div className={SideBarStyles.PageSection}>
           {renderPagination(appContext.pageNum, appContext.maxPageNum, appContext.selectPage, appContext.goToPrevPage, appContext.goToNextPage)}
         </div>
         }
-      </div>
     </div>
   );
 };

@@ -101,14 +101,34 @@ const Article = () => {
       });
     }
   }
+// Responsive Article classing
+  let articleClass;
+  
+  if(window.innerWidth<1281){
+  if (appContext.articleToggled){
+   
+   if(appContext.articleSecondClick){
+     
+    articleClass = ArticleStyles.Toggled
+    appContext.articleSecondClick=false
+    appContext.articleFirstClick=false
 
-  var articleClass;
-  if (appContext.articleToggled) {
-    articleClass = ArticleStyles.Toggled;
+  }
+  else{
+    articleClass = ArticleStyles.Hidden;
+    console.log(appContext.articleSecondClick)
+  }
+    
   } else {
     articleClass = ArticleStyles.Hidden;
+  
   }
-
+}
+else{
+  articleClass=appContext.articleToggled?ArticleStyles.Toggled:ArticleStyles.Hidden;
+}
+ 
+/////
   return (
     <div className={`${ArticleStyles.Container} ${articleClass}`}>
       {article && (

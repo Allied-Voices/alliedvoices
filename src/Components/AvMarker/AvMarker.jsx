@@ -63,7 +63,7 @@ const AvMarker = ({voice, index, icon, ...props}) => {
     position={[voice.lat, voice.lng]} 
     icon={determineMarkerIcon(voice.Type, voice.id)}>
       <Popup>
-        <strong>{voice.Name}</strong><br />
+        <strong>{voice.Name}</strong><br/>
         <strong>Type: </strong>{voice.Type}<br />
       </Popup>
     </Marker>
