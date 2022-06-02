@@ -5,13 +5,21 @@
   font-weight: normal;
   color: #000000;
 }
+.StoryImgContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:black;
+  border-radius:10px;
+}
 .StoryDiv {
   display: flex;
   flex-direction: column;
   margin-right: 0.75rem;
+
 }
 .StoryImg {
   border-radius: 8px;
   width: 25.4vw;
-  height: 245px;
+  max-height: 245px;
 }

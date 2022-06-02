@@ -1,15 +1,19 @@
 /* All Styles were written for 1440 width. not responsive */
+/* This is like construct a building and hoping there will be no earthquake */
+
 a {
   text-decoration: none;
 }
+
 .HeaderContainer {
   background: #f9f7f1;
-  width: 100%;
-  height: 648px;
+  width: 100vw;
+  height: 58vh;
 }
 .Header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 .Logo {
   margin-top: 2rem;
@@ -17,7 +21,7 @@ a {
   font-size: 1rem;
 }
 .LogoAbout {
-  margin-top: 2.219rem;
+  margin-top: 2rem;
   margin-right: 10rem;
   font-size: 0.75rem;
 }
@@ -63,27 +67,38 @@ a {
 }
 .Hero {
 }
+
+.Part2Container{
+  display: flex;
+  flex-direction: column;
+  padding:0 10rem; ;
+  justify-content: center;
+  align-items: center;
+  flex-wrap:nowrap;
+}
 .AllyContainer {
   margin-top: 2.5rem;
   width: 100%;
+  height:48vh;
+  
 }
 .AllyTitle {
   font-size: 24px;
   line-height: 29px;
   margin-bottom: 1rem;
-  margin-left: 10rem;
+  
+  
 }
 .StoryContainer {
   display: flex;
   flex-direction: row;
-  margin-left: 160px;
-  margin-right: 160px;
+  
+
 }
 .ContributeContainer {
   display: flex;
-  margin-top: 2.875rem;
   margin-bottom: 48px;
-  width: 100%;
+  
 }
 .ContributeBox {
   display: flex;
@@ -91,7 +106,7 @@ a {
   border-radius: 8px;
   height: 393px;
   width: 65vw;
-  margin-left: 10rem;
+  
 }
 .ContributeBoxDiv {
 }
@@ -130,13 +145,16 @@ a {
 }
 .ContributeImg {
   border-radius: 8px;
-  width: 148%;
+  width: 100%;
   height: 393px;
+}
+.ResourceContainer{
+  display: flex;
+  flex-direction: column;
 }
 .ResourceBox {
   display: flex;
-  margin-left: 160px;
-  margin-right: 160px;
+ 
 }
 .Footer {
   height: 131px;
@@ -173,4 +191,21 @@ a {
 .FooterLinkedIn {
   margin-bottom: 15px;
   width: 60%;
+}
+
+/* Responsive design */
+@media only screen and (max-width:480px){
+  .HeaderContainer {
+    display: flex;
+    width: 100vw;
+    justify-content:center;
+    
+  }
+  .Hero{
+    display: none;
+    
+  }
+  Header{
+    width: 100vw;
+  }
 }

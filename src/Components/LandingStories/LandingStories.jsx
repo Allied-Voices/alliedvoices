@@ -6,7 +6,8 @@ const LandingStories = React.memo(({ heading, image, url}) => {
     return (
 <div className={LandingStoriesStyles.StoryDiv}>
     <a href={url}>
-<img className={LandingStoriesStyles.StoryImg} src={image} alt="News Story"></img>
+    <div className={LandingStoriesStyles.StoryImgContainer}><img className={LandingStoriesStyles.StoryImg} src={image} alt="News Story"></img></div>
+
 <p className={LandingStoriesStyles.StoryText}>{heading}</p>
 </a> 
 </div>

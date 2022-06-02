@@ -28,7 +28,7 @@ const LandingHeader = () => {
     return result;
   }
   return (
-    <div>
+    <div className={LandingContentStyles.LandingPageContainer}>
       <div className={LandingContentStyles.HeaderContainer}>
         <div className={LandingContentStyles.Header}>
           <h2 className={LandingContentStyles.Logo}>Allied Voices</h2>
@@ -59,6 +59,7 @@ const LandingHeader = () => {
           </div>
         </div>
       </div>
+      <div className={LandingContentStyles.Part2Container}>
       <div className={LandingContentStyles.AllyContainer}>
         <h2 className={LandingContentStyles.AllyTitle}>
           Read stories of allyship
@@ -122,6 +123,7 @@ const LandingHeader = () => {
             <div>No resources found</div>
           )}
         </div>
+      </div>
       </div>
       <div className={LandingContentStyles.Footer}>
         <div className={LandingContentStyles.FooterAllied}>
