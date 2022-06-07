@@ -4,7 +4,7 @@ import LandingHero from '../../Images/LandingMap2.png';
 import Linkedin from '../../Images/Linkedin.png';
 import Facebook from '../../Images/Facebook.png';
 import Instagram from '../../Images/Instagram.png';
-import Contribute from '../../Images/Contribute.png';
+import Contribute from '../../Images/contribute2.jpg';
 import useLandingNewYorkButton from './useLandingNewYorkButton';
 import { AppContext } from '../../Context/AppContext';
 import LandingStories from '../LandingStories/LandingStories';
@@ -81,7 +81,7 @@ const LandingHeader = () => {
         </div>
       </div>
       <div className={LandingContentStyles.ContributeContainer}>
-        <div className={LandingContentStyles.ContributeBox}>
+        
           <div className={LandingContentStyles.ContributeBoxDiv}>
             <h2 className={LandingContentStyles.ContributeTitle}>
               Contribute your own story
@@ -102,7 +102,7 @@ const LandingHeader = () => {
               alt='Contribute'
             ></img>
           </div>
-        </div>
+        
       </div>
       <div className={LandingContentStyles.ResourceContainer}>
         <h2 className={LandingContentStyles.AllyTitle}>

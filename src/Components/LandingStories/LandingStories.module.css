@@ -4,22 +4,32 @@
   font-style: normal;
   font-weight: normal;
   color: #000000;
+  padding:10px;
+  
+}
+.StoryDiv a{
+  
 }
 .StoryImgContainer{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:black;
+  background:black;
   border-radius:10px;
+  
 }
 .StoryDiv {
   display: flex;
   flex-direction: column;
-  margin-right: 0.75rem;
+ max-width: 25vw;
+ margin:0.75rem;
+ 
+ 
 
 }
 .StoryImg {
   border-radius: 8px;
-  width: 25.4vw;
+  max-width: 25vw;
   max-height: 245px;
+  
 }

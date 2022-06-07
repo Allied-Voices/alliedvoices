@@ -1,7 +1,8 @@
 .ResourceDiv {
   display: flex;
   flex-direction: column;
-  margin-right: 0.75rem;
+  margin: 10px 0.5rem;
+  align-items: center;
 }
 .ResourceText {
   margin-top: 8px;
@@ -10,9 +11,16 @@
   font-size: 20px;
   line-height: 24px;
   color: #000000;
+  padding: 0 10px;
+  text-align: center;
 }
 .ResourceImg {
   border-radius: 8px;
-  width: 18.86vw;
+  width: 18vw;
   height: 182px;
+}
+.ResourceImgContainer{
+  display: flex;
+  justify-content: center;
+  background-color:black;
 }

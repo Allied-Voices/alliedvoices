@@ -5,7 +5,10 @@ const LandingResources = React.memo(({ heading, image, url}) => {
     return (
         <div className={LandingResourceStyles.ResourceDiv}>
                 <a href={url}>
+        <div className={LandingResourceStyles.ResourceImgContainer}>
         <img className={LandingResourceStyles.ResourceImg} src={image} alt="Learning Resource"></img> 
+        </div>
+        
         <p className={LandingResourceStyles.ResourceText}>{heading}</p> 
         </a> 
         </div>
