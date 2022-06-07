@@ -32,7 +32,7 @@ const LandingHeader = () => {
       <div className={LandingContentStyles.HeaderContainer}>
         <div className={LandingContentStyles.Header}>
           <h2 className={LandingContentStyles.Logo}>Allied Voices</h2>
-          <p className={LandingContentStyles.LogoAbout}>About Us</p>
+          <h3 className={LandingContentStyles.LogoAbout}>About Us</h3>
         </div>
         <div className={LandingContentStyles.HeaderDiv}>
           <div className={LandingContentStyles.HeaderLeft}>
