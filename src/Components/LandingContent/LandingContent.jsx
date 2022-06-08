@@ -4,7 +4,7 @@ import LandingHero from '../../Images/LandingMap2.png';
 import Linkedin from '../../Images/Linkedin.png';
 import Facebook from '../../Images/Facebook.png';
 import Instagram from '../../Images/Instagram.png';
-import Contribute from '../../Images/contribute2.jpg';
+import Contribute from '../../Images/Contribute.png';
 import useLandingNewYorkButton from './useLandingNewYorkButton';
 import { AppContext } from '../../Context/AppContext';
 import LandingStories from '../LandingStories/LandingStories';
@@ -15,24 +15,26 @@ const LandingHeader = () => {
   const { goToMap } = useLandingNewYorkButton();
   // Randomizer for grabbing articles and resources
   function getRandom(arr, n) {
-    var result = new Array(n),
+    let result = new Array(n),
       len = arr.length,
       taken = new Array(len);
     if (n > len)
       throw new RangeError('getRandom: more elements taken than available');
     while (n--) {
-      var x = Math.floor(Math.random() * len);
+      let x = Math.floor(Math.random() * len);
       result[n] = arr[x in taken ? taken[x] : x];
       taken[x] = --len in taken ? taken[len] : len;
     }
     return result;
   }
+  
+  let howManyResources=()=>window.innerWidth<1024? 3 : 4;
   return (
     <div className={LandingContentStyles.LandingPageContainer}>
       <div className={LandingContentStyles.HeaderContainer}>
         <div className={LandingContentStyles.Header}>
-          <h2 className={LandingContentStyles.Logo}>Allied Voices</h2>
-          <h3 className={LandingContentStyles.LogoAbout}>About Us</h3>
+          <h2 className={LandingContentStyles.Logo}><a href="/">Allied Voices</a></h2>
+          <h3 className={LandingContentStyles.LogoAbout}><a href="/about-us">About Us</a></h3>
         </div>
         <div className={LandingContentStyles.HeaderDiv}>
           <div className={LandingContentStyles.HeaderLeft}>
@@ -110,7 +112,7 @@ const LandingHeader = () => {
         </h2>
         <div className={LandingContentStyles.ResourceBox}>
           {appContext.resources.rows.length ? (
-            getRandom(appContext.resources.rows, 4).map((resources, index) => (
+            getRandom(appContext.resources.rows, howManyResources()).map((resources, index) => (
               <LandingResources
                 key={index}
                 index={index}

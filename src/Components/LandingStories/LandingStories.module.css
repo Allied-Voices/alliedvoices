@@ -21,53 +21,59 @@
 .StoryDiv {
   display: flex;
   flex-direction: column;
- max-width: 25vw;
- margin:0.75rem;
- 
+ width: 27vw;
+
  
 
 }
 .StoryImg {
   border-radius: 8px;
-  max-width: 25vw;
-  max-height: 245px;
+  max-width: 27vw;
+  height: 200px;
   
 }
-@media only screen and (max-width:768px){
+@media only screen and (max-width:767px){
  
   .StoryText {
     font-size: 0.8rem;
     line-height: 20px;
-    font-style: normal;
-    font-weight: normal;
-    color: #000000;
-    padding:10px;
     text-align: center;
-    
-    
+     
   }
-  .StoryDiv a{
-    
-  }
-  .StoryImgContainer{
-  
-    
-    
-  }
+ 
   .StoryDiv {
     display: flex;
     flex-direction: column;
    max-width: 100vw;
    margin:0.75rem;
-   
-   
-  
   }
   .StoryImg {
     
     max-width: 80vw;
     max-height:20vh;
-    
   }
    
   }
+  @media only screen and (max-width:1023px) and (min-width:768px) {
+    .StoryImg {
+      border-radius: 8px;
+      max-width: 30vw;
+      height: 150px;
+    }
+    .StoryDiv {
+      
+     margin: 2rem;
+    }
+
+      }
+@media only screen and (max-width:1200px) and (min-width:1024px) {
+  
+  .StoryImg {
+    
+    max-width: 30vw;
+    height: 200px;
+    
+  }
+
+  }
+      

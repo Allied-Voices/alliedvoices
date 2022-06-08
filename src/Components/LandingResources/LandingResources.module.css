@@ -23,4 +23,40 @@
   display: flex;
   justify-content: center;
   background-color:black;
+  border-radius:8px
 }
+@media only screen and (max-width:767px){
+  
+  .ResourceImg {
+    
+    width: 80vw;
+    
+  }
+  .ResourceText {
+    
+    font-size: 15px;
+    line-height: 24px;
+
+  }
+   
+  }
+  @media only screen and (max-width:1023px) and (min-width:768px) {
+   
+    .ResourceDiv {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0.5rem;
+      align-items: center;
+    }
+    .ResourceText {
+      font-size: 20px;
+      line-height: 24px;
+  
+    }
+    .ResourceImg {
+      border-radius: 8px;
+      width: 30vw;
+      height: 150px;
+    }
+   
+    }
