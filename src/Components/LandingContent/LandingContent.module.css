@@ -206,6 +206,7 @@ a {
 @media only screen and (max-width:767px){
   .HeaderContainer {
   height:530px;
+  padding-bottom: 0;
    
   }
   .Header {
@@ -233,6 +234,7 @@ a {
     margin-left: 0;
     justify-content: center;
     align-items: center;
+    margin-top:5vh;
   }
   .HeaderTitle {
     font-size: 2rem;
@@ -269,8 +271,12 @@ a {
     
   }
   .AllyContainer {
-    
-   
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+   margin: 2.5rem 0;
     
   }
   .AllyTitle {
@@ -293,6 +299,7 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
+    padding:20px;
     
   }
   
@@ -320,6 +327,8 @@ a {
     color: #ffffff;
     margin-left: 0;
     margin-top:1rem;
+    padding:0 1vw;
+    text-align: center;
   }
   .ContributeBtn {
     display: flex;
@@ -383,17 +392,18 @@ a {
 @media only screen and (max-width:1023px) and (min-width:768px) {
   .HeaderContainer {
      height:600px;
+     padding-bottom: 0;
     }
     .Header {
       
-      justify-content: space-around;
+      justify-content: space-between;
       
     }
     .Logo {
-      margin-left: 0;
+      margin-left: 10vw;
     }
     .LogoAbout {
-      margin-right: 0;
+      margin-right: 10vw;
     }
     .HeaderDiv {
       display: flex;
@@ -411,6 +421,8 @@ a {
     .HeaderTitle {
       margin: 0;
       text-align: center;
+      width:70%;
+      line-height:5rem;
     }
     .Hero {
      display:none;
@@ -419,6 +431,11 @@ a {
       text-align: center;
       
     }
+    
+    .AllyContainer{
+      width: 100vw;
+    }
+
     .StoryContainer {
       display: flex;
       flex-direction: row;
@@ -498,31 +515,33 @@ a {
       height: 100px;
       margin-top: 2rem;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
     .FooterAllied {
       display: flex;
       align-items: center;
       margin-left: 0;
       text-align: center;
+      margin-left: 10vw;
     }
     .FooterAlliedText {
       font-style: normal;
       font-weight: normal;
       font-size: 12px;
       line-height: 19px;
+     
     }
     
     .FooterSocial {
      
-      margin-right: 0;
+      margin-right: 10vw;
       
     }
   }
   @media only screen and (max-width:1200px) and (min-width:1024px) {
     .HeaderContainer {
     
-      height: 50vh;
+      height: 520px;
     }
     .Header {
       display: flex;

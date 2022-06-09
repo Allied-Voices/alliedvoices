@@ -17,7 +17,7 @@
 .ResourceImg {
   border-radius: 8px;
   width: 18vw;
-  height: 182px;
+  height: 175px;
 }
 .ResourceImgContainer{
   display: flex;
@@ -29,8 +29,14 @@
   
   .ResourceImg {
     
-    width: 80vw;
+    width:70vw;
+
     
+  }
+  .ResourceImgContainer{
+    width: 70vw;
+  }
+  .ResourceDiv {
   }
   .ResourceText {
     

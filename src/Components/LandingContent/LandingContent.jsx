@@ -4,7 +4,7 @@ import LandingHero from '../../Images/LandingMap2.png';
 import Linkedin from '../../Images/Linkedin.png';
 import Facebook from '../../Images/Facebook.png';
 import Instagram from '../../Images/Instagram.png';
-import Contribute from '../../Images/Contribute.png';
+import Contribute from '../../Images/Contribute3.png';
 import useLandingNewYorkButton from './useLandingNewYorkButton';
 import { AppContext } from '../../Context/AppContext';
 import LandingStories from '../LandingStories/LandingStories';
