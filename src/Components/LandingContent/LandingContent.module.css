@@ -1,9 +1,13 @@
 
 .LandingPageContainer{
   overflow-x: hidden;
+
  
 }
 
+.LandingPageContainer::-webkit-scrollbar{
+  width:50px;
+}
 a {
   text-decoration: none;
 }
@@ -162,6 +166,7 @@ a {
 .ResourceBox {
   display: flex;
   justify-content: center;
+  
   
  
 }

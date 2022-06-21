@@ -7,7 +7,7 @@ import IncidentHeart from '../../Images/IncidentHeart.svg';
 import useDistMsgCreator from '../../CustomHooks/use-dist-msg-creator';
 import { calculateTimeSpan } from '../../utils/date';
 
-const SideBarArticle = React.memo(({ index, heading, date, lat, lng, publisher, img, type, onClick, onDoubleClick,selected }) => {
+const SideBarArticle = React.memo(({heading, date, lat, lng, publisher, img, type, onClick, onDoubleClick,selected }) => {
   const appContext = useContext(AppContext);
   const { createDistMsg } = useDistMsgCreator(); 
   const dateMsg = calculateTimeSpan(date);

@@ -3,6 +3,7 @@
   flex-direction: column;
   margin: 10px 0.5rem;
   align-items: center;
+  
 }
 .ResourceText {
   margin-top: 8px;
@@ -16,14 +17,23 @@
 }
 .ResourceImg {
   border-radius: 8px;
-  width: 18vw;
-  height: 175px;
+  max-width: 250px;
+  max-height: 160px;
+  
+}
+.ResourceDiv a{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
 }
 .ResourceImgContainer{
   display: flex;
   justify-content: center;
   background-color:black;
-  border-radius:8px
+  border-radius:8px;
+  height: 160px;
+  width: 250px;
 }
 @media only screen and (max-width:767px){
   
@@ -64,5 +74,23 @@
       width: 30vw;
       height: 150px;
     }
+    .ResourceImgContainer{
+      
+      height: 150px;
+      width: 30vw;
+    }
    
+    }
+    @media only screen and  (min-width:1401px) {
+      .ResourceImg {
+        border-radius: 8px;
+        width: 20vw;
+        height: 150px;
+      }
+      .ResourceImgContainer{
+        
+        height: 150px;
+        width: 20vw;
+      }
+
     }

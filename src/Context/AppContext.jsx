@@ -277,10 +277,12 @@ class AppContextProvider extends Component {
           this.state.orgLng,
           this.state.pageNum,
           this.state.filterOptions,
+          
           (voices, maxPageNum) => {
             this.setState({
               voices,
-              maxPageNum
+              maxPageNum,
+              articleToggled: false
             });
           }
         );
@@ -303,7 +305,8 @@ class AppContextProvider extends Component {
           (voices, maxPageNum) => {
             this.setState({
               voices,
-              maxPageNum
+              maxPageNum,
+              articleToggled: false
             });
           }
         );
@@ -326,7 +329,9 @@ class AppContextProvider extends Component {
           (voices, maxPageNum) => {
             this.setState({
               voices,
-              maxPageNum
+              maxPageNum,
+              articleToggled: false
+              
             });
           }
         );
