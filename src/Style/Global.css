@@ -28,6 +28,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	
 }
 ol, ul {
 	list-style: none;
@@ -72,4 +73,39 @@ h4{
 	font-size:14px;
 	font-weight:400;
 }
+
+/* ::-webkit-scrollbar {
+	width: 13px;
+	
+	
+  }
+  ::-webkit-scrollbar-button {
+	
+  }
+  ::-webkit-scrollbar-thumb {
+	background: #f9f7f1;
+	border: 0px none #444141;
+	
+  }
+  ::-webkit-scrollbar-thumb:hover {
+	background: #666666;
+  }
+  ::-webkit-scrollbar-thumb:active {
+	background: #000000;
+  }
+  ::-webkit-scrollbar-track {
+	
+	border: 0px none #ffffff;
+	
+	
+  }
+  ::-webkit-scrollbar-track:hover {
+	
+  }
+  ::-webkit-scrollbar-track:active {
+	
+  }
+  ::-webkit-scrollbar-corner {
+	background: transparent; 
+  }*/
 

@@ -94,7 +94,12 @@ const LandingHeader = () => {
             <p className={LandingContentStyles.ContributeDesc}>
               Join our community, and share your own story.{' '}
             </p>
-            <button className={LandingContentStyles.ContributeBtn}>
+            <button className={LandingContentStyles.ContributeBtn}
+              type="button"
+            onClick={(e) => {
+            e.preventDefault();
+            window.open("https://airtable.com/shrage7xX1k04wiUO", "_blank");
+      }} >
               <span className={LandingContentStyles.ContributeBtnText}>
                 Contribute
               </span>
