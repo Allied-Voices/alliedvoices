@@ -1,0 +1,1 @@
+public park, street, streets, avenue, avenues, boulevard, playground, avenues
