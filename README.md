@@ -1,26 +1,33 @@
 # Allied Voices
 
-A web applicaion intended to help users navigate their racial landscape through data and positive resources.
+This web app is intended to help users navigate their racial landscapes through data and positive resources.
 
-The application uses React on the frontend and is deployed through Netlify. Data for Allied Voices is stored in [Airtables](https://airtable.com/tblQ7bsHsatEqVdV0/viwUWfuMz2txq5h50?blocks=bipaNlSeLZIeB6tl3).
+## Tech Stack
 
-## Development
+We are building the front-end with [React](https://reactjs.org/) and deploying it to [Netlify](https://www.netlify.com/). Data is stored on [Airtable](https://airtable.com/tblQ7bsHsatEqVdV0/viwUWfuMz2txq5h50?blocks=bipaNlSeLZIeB6tl3).
 
-To set up locally:
+## Getting Started
 
-1. Clone project
-2. npm install inside of the project
-3. To use serverless functions locally we need to use netlify dev. To do so, follow the prerequisites in the following guide: https://github.com/netlify/cli/blob/master/docs/netlify-dev.md. The step on linking the project to a siteID can be ignored.
-4. When running locally, the serverless functions will make requests to Airtable's endpoints. For this work, the following must be done:
-   a. Create .env file in the root of the AlliedVoices
-   b. Add AIRTABLE_API_KEY={Airtable API Key Goes Here} and AIRTABLE_BASE_ID={Base ID Goes here} to the .env file
-   c. Find the API Key and Base Id [here](https://airtable.com/appO27pGCbnEq4l31/api/docs#javascript/introduction) and add it to the statements in step b above accordingly.
-5. Run 'netlify dev' in the terminal to run the applcation locally.
+1. Clone this project and navigate to the project directory
 
-## Environment
+2. Install dependencies: `npm install`
 
-Allied Voices is currently deployed into two environments, staging, and production.
+3. Install git hooks: `npm run prepare`
 
-Staging can be found [here](https://alliedvoices-staging.netlify.app) and will be redeployed anytime a merge request is done on the staging branch.
+4. Set environment variables in an `.env` file in the root directory of the project
 
-Production can be found [here](https://www.alliedvoices.org) and will be redeployed anytime a merge request is done on the master branch.
+```
+AIRTABLE_API_KEY=(KEY)
+
+AIRTABLE_BASE_ID=(BASE_ID)
+```
+
+The [Airtable API](https://airtable.com/appO27pGCbnEq4l31/api/docs#javascript/introduction) for this project provides these values
+
+5. Run the app: `npx netlify dev`
+
+## Environments
+
+[Staging](https://alliedvoices-staging.netlify.app) will be redeployed any time a merge request is done on the `staging` branch.
+
+[Production](https://www.alliedvoices.org) will be redeployed any time a merge request is done on the `master` branch.
