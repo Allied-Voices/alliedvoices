@@ -1,24 +1,24 @@
-.Button{
-  background:white;
-  font-weight:400;
+.Button {
+  background: white;
+  font-weight: 400;
   padding: 10px 20px;
-  border:2px solid #DDDDDD;
-  border-radius:30px;
-  outline:none;
-  min-width:50px;
+  border: 2px solid #dddddd;
+  border-radius: 30px;
+  outline: none;
+  min-width: 50px;
 }
 
-.Alternative{
-  background:var(--primary-color);
-  color:white;
+.Alternative {
+  background: var(--primary-color);
+  color: white;
 }
 
-.Button:hover{
-  cursor:pointer;
+.Button:hover {
+  cursor: pointer;
   /* border-color:#000000; */
 }
 
-.Active{
-  background:#F4F4F4;
-  border-color:#000000;
+.Active {
+  background: #f4f4f4;
+  border-color: #000000;
 }

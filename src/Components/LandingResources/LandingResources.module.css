@@ -3,7 +3,6 @@
   flex-direction: column;
   margin: 10px 0.5rem;
   align-items: center;
-  
 }
 .ResourceText {
   margin-top: 8px;
@@ -19,78 +18,64 @@
   border-radius: 8px;
   max-width: 250px;
   max-height: 160px;
-  
 }
-.ResourceDiv a{
+.ResourceDiv a {
   display: flex;
   flex-direction: column;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
 }
-.ResourceImgContainer{
+.ResourceImgContainer {
   display: flex;
   justify-content: center;
-  background-color:black;
-  border-radius:8px;
+  background-color: black;
+  border-radius: 8px;
   height: 160px;
   width: 250px;
 }
-@media only screen and (max-width:767px){
-  
+@media only screen and (max-width: 767px) {
   .ResourceImg {
-    
-    width:70vw;
-
-    
+    width: 70vw;
   }
-  .ResourceImgContainer{
+  .ResourceImgContainer {
     width: 70vw;
   }
   .ResourceDiv {
   }
   .ResourceText {
-    
     font-size: 15px;
     line-height: 24px;
-
   }
-   
+}
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .ResourceDiv {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0.5rem;
+    align-items: center;
   }
-  @media only screen and (max-width:1023px) and (min-width:768px) {
-   
-    .ResourceDiv {
-      display: flex;
-      flex-direction: column;
-      margin: 10px 0.5rem;
-      align-items: center;
-    }
-    .ResourceText {
-      font-size: 20px;
-      line-height: 24px;
-  
-    }
-    .ResourceImg {
-      border-radius: 8px;
-      width: 30vw;
-      height: 150px;
-    }
-    .ResourceImgContainer{
-      
-      height: 150px;
-      width: 30vw;
-    }
-   
-    }
-    @media only screen and  (min-width:1401px) {
-      .ResourceImg {
-        border-radius: 8px;
-        width: 20vw;
-        height: 150px;
-      }
-      .ResourceImgContainer{
-        
-        height: 150px;
-        width: 20vw;
-      }
-
-    }
+  .ResourceText {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .ResourceImg {
+    border-radius: 8px;
+    width: 30vw;
+    height: 150px;
+  }
+  .ResourceImgContainer {
+    height: 150px;
+    width: 30vw;
+  }
+}
+@media only screen and (min-width: 1401px) {
+  .ResourceImg {
+    border-radius: 8px;
+    width: 20vw;
+    height: 150px;
+  }
+  .ResourceImgContainer {
+    height: 150px;
+    width: 20vw;
+  }
+}

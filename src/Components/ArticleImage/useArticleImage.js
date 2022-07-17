@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from "react";
 
 const useArticleImage = (imageUrl) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -9,7 +9,7 @@ const useArticleImage = (imageUrl) => {
 
   useEffect(() => {
     setIsImageLoaded(false);
-  },[imageUrl]);
+  }, [imageUrl]);
 
   return { isImageLoaded, setLoadingState };
 };

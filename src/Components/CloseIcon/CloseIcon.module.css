@@ -1,8 +1,8 @@
-.Container{
+.Container {
   fill: black;
 }
 
-.Container:hover{
+.Container:hover {
   fill: var(--primary-color);
-  cursor:pointer;
+  cursor: pointer;
 }

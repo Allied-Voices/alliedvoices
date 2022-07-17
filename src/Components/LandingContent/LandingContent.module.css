@@ -1,12 +1,9 @@
-
-.LandingPageContainer{
+.LandingPageContainer {
   overflow-x: hidden;
-
- 
 }
 
-.LandingPageContainer::-webkit-scrollbar{
-  width:50px;
+.LandingPageContainer::-webkit-scrollbar {
+  width: 50px;
 }
 a {
   text-decoration: none;
@@ -76,45 +73,36 @@ a {
 .Hero {
 }
 
-.Part2Container{
+.Part2Container {
   display: flex;
   flex-direction: column;
-  padding:0 9rem; ;
+  padding: 0 9rem;
   justify-content: center;
   align-items: center;
-  
 }
 .AllyContainer {
   margin-top: 2.5rem;
   width: 100%;
-  
-  
 }
 .AllyTitle {
   font-size: 24px;
   line-height: 29px;
   margin-bottom: 1rem;
-  
-  
 }
 .StoryContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 20px;
-  
-
 }
 .ContributeContainer {
   display: flex;
   background: #171717;
   border-radius: 8px;
   height: 400px;
- 
+
   justify-content: space-between;
   margin-top: 2.5rem;
-  
-  
 }
 
 .ContributeBoxDiv {
@@ -156,9 +144,8 @@ a {
   border-radius: 8px;
   width: 100%;
   height: 400px;
-  
 }
-.ResourceContainer{
+.ResourceContainer {
   display: flex;
   flex-direction: column;
   margin-top: 2.5rem;
@@ -166,9 +153,6 @@ a {
 .ResourceBox {
   display: flex;
   justify-content: center;
-  
-  
- 
 }
 .Footer {
   height: 131px;
@@ -208,16 +192,13 @@ a {
 }
 
 /* Responsive design */
-@media only screen and (max-width:767px){
+@media only screen and (max-width: 767px) {
   .HeaderContainer {
-  height:530px;
-  padding-bottom: 0;
-   
+    height: 530px;
+    padding-bottom: 0;
   }
   .Header {
-    
     justify-content: space-around;
-    
   }
   .Logo {
     margin-left: 0;
@@ -226,10 +207,9 @@ a {
     margin-right: 0;
   }
 
- 
   .HeaderDiv {
     display: block;
-   
+
     margin-top: 2.5rem;
     padding: 0 2rem;
   }
@@ -239,79 +219,65 @@ a {
     margin-left: 0;
     justify-content: center;
     align-items: center;
-    margin-top:5vh;
+    margin-top: 5vh;
   }
   .HeaderTitle {
     font-size: 2rem;
-   
+
     text-align: center;
-   
+
     width: 100%;
   }
   .HeaderPara {
-   
     white-space: normal;
     text-align: center;
     width: 100%;
-  
-    
   }
   .HeaderBtn {
-   
     width: 8rem;
     height: 4rem;
     font-size: 16px;
     outline: none;
-    margin-top:2rem;
+    margin-top: 2rem;
   }
 
   .HeaderRight {
     display: none;
   }
- 
-  
-  .Part2Container{
-    
 
-    
+  .Part2Container {
   }
   .AllyContainer {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    justify-content:center;
-    align-items:center;
-    width:100vw;
-   margin: 2.5rem 0;
-    
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    margin: 2.5rem 0;
   }
   .AllyTitle {
-  text-align: center;
-    
-    
+    text-align: center;
   }
   .StoryContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-  
   }
   .ContributeContainer {
     display: flex;
-  
+
     height: 40vh;
     width: 100vw;
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
-    padding:20px;
-    
+    padding: 20px;
   }
-  
+
   .ContributeBoxDiv {
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
   }
   .ContributeTitle {
@@ -331,8 +297,8 @@ a {
     line-height: 26px;
     color: #ffffff;
     margin-left: 0;
-    margin-top:1rem;
-    padding:0 1vw;
+    margin-top: 1rem;
+    padding: 0 1vw;
     text-align: center;
   }
   .ContributeBtn {
@@ -346,16 +312,15 @@ a {
     align-items: center;
     justify-content: center;
   }
-  
+
   .ContributeBtnText {
     font-size: 16px;
     line-height: 40px;
   }
   .ContributeImg {
-  display: none;
-    
+    display: none;
   }
-  .ResourceContainer{
+  .ResourceContainer {
     display: flex;
     flex-direction: column;
     margin-top: 2.5rem;
@@ -364,8 +329,6 @@ a {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
-   
   }
   .Footer {
     height: 100px;
@@ -385,298 +348,263 @@ a {
     font-size: 12px;
     line-height: 19px;
   }
-  
-  .FooterSocial {
-   
-    margin-right: 0;
-    
-  }
-  
- 
-}
-@media only screen and (max-width:1023px) and (min-width:768px) {
-  .HeaderContainer {
-     height:600px;
-     padding-bottom: 0;
-    }
-    .Header {
-      
-      justify-content: space-between;
-      
-    }
-    .Logo {
-      margin-left: 10vw;
-    }
-    .LogoAbout {
-      margin-right: 10vw;
-    }
-    .HeaderDiv {
-      display: flex;
-      flex-direction: column;
-      margin-top: 3.5rem;
-    }
-    .HeaderLeft {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-left:0;
-      padding: 0 5vw;
-    }
-    .HeaderTitle {
-      margin: 0;
-      text-align: center;
-      width:70%;
-      line-height:5rem;
-    }
-    .Hero {
-     display:none;
-    }
-    .AllyTitle {
-      text-align: center;
-      
-    }
-    
-    .AllyContainer{
-      width: 100vw;
-    }
 
-    .StoryContainer {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      
-    
-    }
-    .ContributeContainer {
-      display: flex;
-    
-      height: 30vh;
-      width: 80vw;
-      justify-content: center;
-      align-items: center;
-      margin-top: 1rem;
-      
-    }
-    
-    .ContributeBoxDiv {
-      display: flex;
-      flex-direction: column;
-      justify-content:center;
-      align-items: center;
-    }
-    .ContributeTitle {
-      font-weight: normal;
-      font-size: 36px;
-      line-height: 43px;
-      color: #ffffff;
-      margin: 0;
-      width: 242px;
-      height: auto;
-      text-align: center;
-    }
-    .ContributeDesc {
-      width: auto;
-      height: 52px;
-      font-size: 16px;
-      line-height: 26px;
-      color: #ffffff;
-      margin-left: 0;
-      margin-top:1rem;
-    }
-    .ContributeBtn {
-      display: flex;
-      background: #ffffff;
-      border-radius: 8px;
-      width: 10rem;
-      height: 4rem;
-      margin-left: 0;
-      margin-top: 32px;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .ContributeBtnText {
-      font-size: 20px;
-      line-height: 40px;
-    }
-    .ContributeImg {
+  .FooterSocial {
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .HeaderContainer {
+    height: 600px;
+    padding-bottom: 0;
+  }
+  .Header {
+    justify-content: space-between;
+  }
+  .Logo {
+    margin-left: 10vw;
+  }
+  .LogoAbout {
+    margin-right: 10vw;
+  }
+  .HeaderDiv {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3.5rem;
+  }
+  .HeaderLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+    padding: 0 5vw;
+  }
+  .HeaderTitle {
+    margin: 0;
+    text-align: center;
+    width: 70%;
+    line-height: 5rem;
+  }
+  .Hero {
     display: none;
-      
-    }
-    .ResourceContainer{
-      display: flex;
-      flex-direction: column;
-      margin-top: 2.5rem;
-    }
-    .ResourceBox {
-      display: flex;
-      justify-content: center;
-     
-      
-     
-    }
-    .Footer {
-      height: 100px;
-      margin-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-    }
-    .FooterAllied {
-      display: flex;
-      align-items: center;
-      margin-left: 0;
-      text-align: center;
-      margin-left: 10vw;
-    }
-    .FooterAlliedText {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 12px;
-      line-height: 19px;
-     
-    }
-    
-    .FooterSocial {
-     
-      margin-right: 10vw;
-      
-    }
   }
-  @media only screen and (max-width:1200px) and (min-width:1024px) {
-    .HeaderContainer {
-    
-      height: 520px;
-    }
-    .Header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    .Logo {
-      margin-left: 5rem;
-     
-    }
-    .LogoAbout { 
-      margin-right: 5rem;
-    }
-    
-    .HeaderLeft {
-      display: flex;
-      flex-direction: column;
-      margin-left: 0;
-      padding-left:5rem;
-      width: 50vw;
-    }
-    
-    
-   
-    .HeaderRight {
-      display: flex;
-      align-items: center;
-      margin: 0;
-      justify-content:center;
-     
-      width: 50vw;
-    }
-    .Hero {
-      width: 50vw;
-      padding-right: 3rem;
-    }
-    
-    .Part2Container{
-      display: flex;
-      flex-direction: column;
-      padding:0 8vw; ;
-      justify-content: center;
-      align-items: center;
-      
-    }
-    .AllyContainer {
-      margin-top: 2.5rem;
-      width: 100%;
-      
-      
-    }
-    .AllyTitle {
-      font-size: 24px;
-      line-height: 29px;
-      margin-bottom: 1rem;
-      
-      
-    }
-    .StoryContainer {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      
-    
-    }
-    .ContributeContainer {
-      display: flex;
-      background: #171717;
-      border-radius: 8px;
-      height: 400px;
-      width: 100vw;
-      justify-content: space-between;
-      margin-top: 2.5rem;
-      
-      
-    }
-    
-    .ContributeBoxDiv {
-      width: 40vw;
-    }
-    .ContributeTitle {
-      font-weight: normal;
-      font-size: 36px;
-      line-height: 43px;
-      color: #ffffff;
-      margin: 80px 212px 4px 94px;
-      width: 242px;
-      height: 87px;
-    }
-    .ContributeDesc {
-      width: 271px;
-      height: 52px;
-      font-size: 16px;
-      line-height: 26px;
-      color: #ffffff;
-      margin-left: 94px;
-    }
-    .ContributeBtn {
-      display: flex;
-      background: #ffffff;
-      border-radius: 8px;
-      width: 77px;
-      height: 37px;
-      margin-left: 94px;
-      margin-top: 32px;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .ContributeBtnText {
-      font-size: 12px;
-      line-height: 40px;
-    }
-    .ContributeImg {
-      border-radius: 8px;
-     
-      height: 400px;
-      
-    }
-    .ResourceContainer{
-      display: flex;
-      flex-direction: column;
-      margin-top: 2.5rem;
-    }
-    .ResourceBox {
-      display: flex;
-      justify-content: center;
-      
-     
-    }
- 
-    
+  .AllyTitle {
+    text-align: center;
   }
+
+  .AllyContainer {
+    width: 100vw;
+  }
+
+  .StoryContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .ContributeContainer {
+    display: flex;
+
+    height: 30vh;
+    width: 80vw;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .ContributeBoxDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .ContributeTitle {
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #ffffff;
+    margin: 0;
+    width: 242px;
+    height: auto;
+    text-align: center;
+  }
+  .ContributeDesc {
+    width: auto;
+    height: 52px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #ffffff;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  .ContributeBtn {
+    display: flex;
+    background: #ffffff;
+    border-radius: 8px;
+    width: 10rem;
+    height: 4rem;
+    margin-left: 0;
+    margin-top: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ContributeBtnText {
+    font-size: 20px;
+    line-height: 40px;
+  }
+  .ContributeImg {
+    display: none;
+  }
+  .ResourceContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+  }
+  .ResourceBox {
+    display: flex;
+    justify-content: center;
+  }
+  .Footer {
+    height: 100px;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .FooterAllied {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    text-align: center;
+    margin-left: 10vw;
+  }
+  .FooterAlliedText {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+  }
+
+  .FooterSocial {
+    margin-right: 10vw;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 1024px) {
+  .HeaderContainer {
+    height: 520px;
+  }
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .Logo {
+    margin-left: 5rem;
+  }
+  .LogoAbout {
+    margin-right: 5rem;
+  }
+
+  .HeaderLeft {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    padding-left: 5rem;
+    width: 50vw;
+  }
+
+  .HeaderRight {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: center;
+
+    width: 50vw;
+  }
+  .Hero {
+    width: 50vw;
+    padding-right: 3rem;
+  }
+
+  .Part2Container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 8vw;
+    justify-content: center;
+    align-items: center;
+  }
+  .AllyContainer {
+    margin-top: 2.5rem;
+    width: 100%;
+  }
+  .AllyTitle {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 1rem;
+  }
+  .StoryContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .ContributeContainer {
+    display: flex;
+    background: #171717;
+    border-radius: 8px;
+    height: 400px;
+    width: 100vw;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+  }
+
+  .ContributeBoxDiv {
+    width: 40vw;
+  }
+  .ContributeTitle {
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #ffffff;
+    margin: 80px 212px 4px 94px;
+    width: 242px;
+    height: 87px;
+  }
+  .ContributeDesc {
+    width: 271px;
+    height: 52px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #ffffff;
+    margin-left: 94px;
+  }
+  .ContributeBtn {
+    display: flex;
+    background: #ffffff;
+    border-radius: 8px;
+    width: 77px;
+    height: 37px;
+    margin-left: 94px;
+    margin-top: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ContributeBtnText {
+    font-size: 12px;
+    line-height: 40px;
+  }
+  .ContributeImg {
+    border-radius: 8px;
+
+    height: 400px;
+  }
+  .ResourceContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+  }
+  .ResourceBox {
+    display: flex;
+    justify-content: center;
+  }
+}

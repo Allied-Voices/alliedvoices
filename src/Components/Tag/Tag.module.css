@@ -1,14 +1,14 @@
-.Tag{
-  display:inline-block;
-  padding:4px 12px;
-  margin-right:8px;
-  border-radius:10px;
-  color:white;
+.Tag {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-right: 8px;
+  border-radius: 10px;
+  color: white;
 }
 
-.Tag>p{
-  font-size:13px;
+.Tag > p {
+  font-size: 13px;
   font-weight: 300;
-  margin:0px;
-  padding:0px;
+  margin: 0px;
+  padding: 0px;
 }

@@ -19,24 +19,26 @@ const Map = () => {
 
   useEffect(() => {
     const zoom = mapRef.current.leafletElement.getZoom();
-    
+
     const east_bound = mapRef.current.leafletElement.getBounds().getEast();
     const west_bound = mapRef.current.leafletElement.getBounds().getWest();
     const pixelSize = mapRef.current.leafletElement.getSize();
     const bounds_pixel_ratio = (east_bound - west_bound) / pixelSize.x;
     //small screen adjustment
-    const x_coordinate=window.innerWidth>1281
-    ? appContext.articleSelectedLng - bounds_pixel_ratio * 245
-    :appContext.articleSelectedLng
+    const x_coordinate =
+      window.innerWidth > 1281
+        ? appContext.articleSelectedLng - bounds_pixel_ratio * 245
+        : appContext.articleSelectedLng;
     //This part not working on second contidion
     /*const x_coordinate = appContext.articleToggled
       ? appContext.articleSelectedLng - bounds_pixel_ratio * 245
       : appContext.articleSelectedLng;
       */
     let mapCurrentPosition = mapRef.current.leafletElement.getCenter();
-   
+
     if (
-      Math.abs(mapCurrentPosition.lat - appContext.articleSelectedLat) <0.00002 ||
+      Math.abs(mapCurrentPosition.lat - appContext.articleSelectedLat) <
+        0.00002 ||
       Math.abs(mapCurrentPosition.lng - appContext.articleSelectedLng) < 0.00002
     ) {
       mapRef.current.leafletElement.panTo(
@@ -66,7 +68,6 @@ const Map = () => {
         Math.abs(mapCurrentPosition.lng - appContext.orgLng) > 0.25
       ) {
         const zoom = mapRef.current.leafletElement.getZoom();
-        
 
         appContext.refreshLocation(
           { lat: mapCurrentPosition.lat, lng: mapCurrentPosition.lng },
@@ -75,13 +76,12 @@ const Map = () => {
       }
     }
   };
- 
+
   const handleMouseDown = () => {
     didClick.current = true;
   };
 
   return (
-    
     <LeafletMap
       ref={mapRef}
       className={MapStyles.Map}
@@ -93,15 +93,19 @@ const Map = () => {
         attribution='&amp;copy <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
       />
-      <ZoomControl position={window.innerWidth>1279?"topright":"bottomleft"}/>
+      <ZoomControl
+        position={window.innerWidth > 1279 ? "topright" : "bottomleft"}
+      />
 
-      {appContext.voices.rows && appContext.voices.rows.map((voice, index) => {
-        if (!voice.City) {
-          return <AvMarker key={voice.id} voice={voice} index={index}></AvMarker>;
-        }
-        return null;
-      })}
-
+      {appContext.voices.rows &&
+        appContext.voices.rows.map((voice, index) => {
+          if (!voice.City) {
+            return (
+              <AvMarker key={voice.id} voice={voice} index={index}></AvMarker>
+            );
+          }
+          return null;
+        })}
     </LeafletMap>
   );
 };
