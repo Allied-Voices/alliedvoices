@@ -26,7 +26,7 @@
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ["react-app", "prettier"]
   },
   "browserslist": {
     "production": [
@@ -53,8 +53,10 @@
     "@storybook/node-logger": "^6.0.22",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.4.9",
+    "eslint-config-prettier": "^8.5.0",
     "netlify-cli": "^6.14.21",
     "postcss": "^8.1.0",
+    "prettier": "2.7.1",
     "react-is": "^16.13.1"
   }
 }
