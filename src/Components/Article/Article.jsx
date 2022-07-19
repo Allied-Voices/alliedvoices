@@ -11,7 +11,9 @@ const Article = () => {
   const appContext = useContext(AppContext);
   var article =
     appContext.articleSelected !== -1
-      ? appContext.voices.rows.find(voice => voice.id === appContext.articleSelected)
+      ? appContext.voices.rows.find(
+          (voice) => voice.id === appContext.articleSelected
+        )
       : null;
   const { createDistMsg } = useDistMsgCreator();
   const distanceMsg =
@@ -47,11 +49,10 @@ const Article = () => {
         return "Microaggression";
       } else return element;
     });
-  
+
     // If there are related resources
     let resourceIndices = [];
     articleSelectedTags.forEach((tags) => {
-      
       if (appContext["resources"][tags]) {
         function shuffle(array) {
           let currentIndex = array.length,
@@ -79,7 +80,7 @@ const Article = () => {
         ]).slice(0, 2);
       }
     });
-    
+
     // If there are not related resources
     /*if (resourceIndices.length < 2) {
       let n = Object.keys(appContext["resources"]);
@@ -101,34 +102,29 @@ const Article = () => {
       });
     }
   }
-// Responsive Article classing
+  // Responsive Article classing
   let articleClass;
-  
-  if(window.innerWidth<1281){
-  if (appContext.articleToggled){
-   
-   if(appContext.articleSecondClick){
-     
-    articleClass = ArticleStyles.Toggled
-    appContext.articleSecondClick=false
-    appContext.articleFirstClick=false
 
-  }
-  else{
-    articleClass = ArticleStyles.Hidden;
-    console.log(appContext.articleSecondClick)
-  }
-    
+  if (window.innerWidth < 1281) {
+    if (appContext.articleToggled) {
+      if (appContext.articleSecondClick) {
+        articleClass = ArticleStyles.Toggled;
+        appContext.articleSecondClick = false;
+        appContext.articleFirstClick = false;
+      } else {
+        articleClass = ArticleStyles.Hidden;
+        console.log(appContext.articleSecondClick);
+      }
+    } else {
+      articleClass = ArticleStyles.Hidden;
+    }
   } else {
-    articleClass = ArticleStyles.Hidden;
-  
+    articleClass = appContext.articleToggled
+      ? ArticleStyles.Toggled
+      : ArticleStyles.Hidden;
   }
-}
-else{
-  articleClass=appContext.articleToggled?ArticleStyles.Toggled:ArticleStyles.Hidden;
-}
- 
-/////
+
+  /////
   return (
     <div className={`${ArticleStyles.Container} ${articleClass}`}>
       {article && (

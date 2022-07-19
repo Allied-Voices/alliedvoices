@@ -1,59 +1,56 @@
-.Container{
-  border:2px solid #DDDDDD;
-  border-radius:25px;
-  padding:9px 10px;
-  display:flex;
+.Container {
+  border: 2px solid #dddddd;
+  border-radius: 25px;
+  padding: 9px 10px;
+  display: flex;
   align-items: center;
-  background-color:white ;
+  background-color: white;
 }
 
-.Disabled{
-  background:rgba(239, 239, 239, 0.3);
+.Disabled {
+  background: rgba(239, 239, 239, 0.3);
 }
 
-.Error{
-  border:2px solid #ff5757;
+.Error {
+  border: 2px solid #ff5757;
 }
 
-.Input{
-  margin-left:10px;
-  border:0px;
-  width:100%;
-  font-size:16px;
+.Input {
+  margin-left: 10px;
+  border: 0px;
+  width: 100%;
+  font-size: 16px;
   outline: none;
- 
 }
 
-.Input::placeholder{
-  color: #B4B4B4;
+.Input::placeholder {
+  color: #b4b4b4;
 }
 
-.ArrowContainer{
-  display:flex;
-  align-items:center;
-  cursor:pointer;
-  background:rgba(255,255,255,0);
-  outline:0;
-  border:0;
-  padding:0;
-  margin:0px;
+.ArrowContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0);
+  outline: 0;
+  border: 0;
+  padding: 0;
+  margin: 0px;
 }
 
-.Arrow{
-  margin-right:10px;
+.Arrow {
+  margin-right: 10px;
   transform: rotate(180deg);
-  filter:grayscale(1);
+  filter: grayscale(1);
   opacity: 0;
   transition: 0.5s;
 }
 
-.ErrorText{
+.ErrorText {
   color: #ff5757;
   font-size: 15px;
   margin-left: 5px;
   margin-top: 10px;
 }
-@media only screen and (max-width:720px){
-
-
+@media only screen and (max-width: 720px) {
 }

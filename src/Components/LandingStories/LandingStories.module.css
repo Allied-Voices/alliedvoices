@@ -4,82 +4,62 @@
   font-style: normal;
   font-weight: normal;
   color: #000000;
-  padding:10px;
-  
+  padding: 10px;
 }
-.StoryDiv a{
-  
+.StoryDiv a {
 }
-.StoryImgContainer{
+.StoryImgContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background:black;
-  border-radius:10px;
-  
+  background: black;
+  border-radius: 10px;
 }
 .StoryDiv {
   display: flex;
   flex-direction: column;
- width: 26vw;
-
- 
-
+  width: 26vw;
 }
 .StoryImg {
   border-radius: 8px;
   max-width: 26vw;
   height: 200px;
-  
 }
-@media only screen and (max-width:767px){
- 
+@media only screen and (max-width: 767px) {
   .StoryText {
     font-size: 0.8rem;
     line-height: 20px;
     text-align: center;
-     
   }
- 
+
   .StoryDiv {
     display: flex;
     flex-direction: column;
-   width: 70vw;
-   margin:2vw;
+    width: 70vw;
+    margin: 2vw;
   }
   .StoryImg {
-    
     max-width: 90vw;
-    max-height:20vh;
+    max-height: 20vh;
   }
-   
-  }
-  @media only screen and (max-width:1023px) and (min-width:768px) {
-    .StoryImg {
-      border-radius: 8px;
-      max-width: 30vw;
-      height: 150px;
-    }
-    .StoryDiv {
-      width:30vw;
-     margin: 0;
-    }
-
-      }
-@media only screen and (max-width:1200px) and (min-width:1024px) {
-  
+}
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
   .StoryImg {
-    
+    border-radius: 8px;
     max-width: 30vw;
-    height: 200px;
-    
+    height: 150px;
   }
   .StoryDiv {
-   margin: 20px;
-  
-   
-  
+    width: 30vw;
+    margin: 0;
   }
-
+}
+@media only screen and (max-width: 1200px) and (min-width: 1024px) {
+  .StoryImg {
+    max-width: 30vw;
+    height: 200px;
   }
-      
+  .StoryDiv {
+    margin: 20px;
+  }
+}

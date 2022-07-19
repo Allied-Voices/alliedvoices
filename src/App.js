@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import LandingPage from './Pages/LandingPage/LandingPage';
-import MapPage from './Pages/MapPage/MapPage';
-import AboutUsPage from './Pages/AboutUsPage/AboutUsPage';
-import AppContextProvider from './Context/AppContext';
-import './Style/Global.css';
+import React, { Component } from "react";
+import { Switch, Route } from "react-router-dom";
+import LandingPage from "./Pages/LandingPage/LandingPage";
+import MapPage from "./Pages/MapPage/MapPage";
+import AboutUsPage from "./Pages/AboutUsPage/AboutUsPage";
+import AppContextProvider from "./Context/AppContext";
+import "./Style/Global.css";
 
 class App extends Component {
   render() {
     return (
       <AppContextProvider>
         <Switch>
-          <Route exact path='/map'>
+          <Route exact path="/map">
             <MapPage />
           </Route>
-          <Route exact path='/about-us'>
+          <Route exact path="/about-us">
             <AboutUsPage />
           </Route>
-          <Route path='/'>
+          <Route path="/">
             <LandingPage />
           </Route>
         </Switch>

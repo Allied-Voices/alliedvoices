@@ -1,10 +1,10 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const useLandingNewYorkButton = () => {
   let history = useHistory();
 
   const goToMap = () => {
-    history.push('/map');
+    history.push("/map");
   };
 
   return { goToMap };

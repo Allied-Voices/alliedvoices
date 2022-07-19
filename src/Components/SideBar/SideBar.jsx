@@ -11,50 +11,74 @@ const SideBar = () => {
     let lastPageToDisplay;
     let startingPage;
 
-    if (maxPage === 0 ) return numbers;
+    if (maxPage === 0) return numbers;
 
-    if(maxPage <= 5) {
+    if (maxPage <= 5) {
       startingPage = 1;
       lastPageToDisplay = maxPage;
-    }else{
-      if(selectedPage < 3){
+    } else {
+      if (selectedPage < 3) {
         startingPage = 1;
         lastPageToDisplay = 5;
-      }
-      else if(selectedPage >= 3 && selectedPage <= (maxPage - 3)){
+      } else if (selectedPage >= 3 && selectedPage <= maxPage - 3) {
         startingPage = selectedPage - 2;
         lastPageToDisplay = selectedPage + 2;
-      }else{
+      } else {
         startingPage = maxPage - 4;
         lastPageToDisplay = maxPage;
       }
     }
 
-    for(let i = startingPage; i<=lastPageToDisplay; i++){
-      if(i===selectedPage){
+    for (let i = startingPage; i <= lastPageToDisplay; i++) {
+      if (i === selectedPage) {
         numbers.push(
-          <span key={i} className={SideBarStyles.Selected} >{i}</span>
-        )
-      }else{
+          <span key={i} className={SideBarStyles.Selected}>
+            {i}
+          </span>
+        );
+      } else {
         numbers.push(
-          <span key={i} onClick={()=>{onClick(i)}}>{i}</span>
-        )
+          <span
+            key={i}
+            onClick={() => {
+              onClick(i);
+            }}
+          >
+            {i}
+          </span>
+        );
       }
     }
     return numbers;
   };
 
-  const renderPagination = (selectedPage, maxPage, selectPage, onClickPrevPage, onClickNextPage) => {
+  const renderPagination = (
+    selectedPage,
+    maxPage,
+    selectPage,
+    onClickPrevPage,
+    onClickNextPage
+  ) => {
     return (
       <>
-        <span className={selectedPage === 1 ? SideBarStyles.Disabled : "" } onClick={onClickPrevPage}>&lt;  Prev</span>
-          {createPageNumbers(selectedPage, maxPage, selectPage)}
-        <span className={selectedPage === maxPage ? SideBarStyles.Disabled : "" } onClick={onClickNextPage}>Next  &gt;</span>
+        <span
+          className={selectedPage === 1 ? SideBarStyles.Disabled : ""}
+          onClick={onClickPrevPage}
+        >
+          &lt; Prev
+        </span>
+        {createPageNumbers(selectedPage, maxPage, selectPage)}
+        <span
+          className={selectedPage === maxPage ? SideBarStyles.Disabled : ""}
+          onClick={onClickNextPage}
+        >
+          Next &gt;
+        </span>
       </>
     );
   };
- 
-  const renderArticles = (voices) => (
+
+  const renderArticles = (voices) =>
     voices.map((voice, index) => (
       <SideBarArticle
         key={voice.id}
@@ -67,34 +91,34 @@ const SideBar = () => {
         type={voice.Type}
         onClick={() => {
           // Some spagetti code here :)
-          if(window.innerWidth<1281){
-            
-              if(!appContext.articleFirstClick&&!appContext.articleSecondClick){
-                return appContext.firstClickArticle(voice.id) 
-              }
-              else if(appContext.articleFirstClick &&voice.id === appContext.articleSelected){
-                
-                return appContext.secondClickArticle()
-              }
-              else if(!appContext.articleFirstClick &&voice.id === appContext.articleSelected){
-                return appContext.secondClickArticle()
-              }
-              else{
-                return appContext.firstClickArticle(voice.id) 
-              }
-            
-          }
-          else{
-           
-            return appContext.selectArticle(voice.id)
+          if (window.innerWidth < 1281) {
+            if (
+              !appContext.articleFirstClick &&
+              !appContext.articleSecondClick
+            ) {
+              return appContext.firstClickArticle(voice.id);
+            } else if (
+              appContext.articleFirstClick &&
+              voice.id === appContext.articleSelected
+            ) {
+              return appContext.secondClickArticle();
+            } else if (
+              !appContext.articleFirstClick &&
+              voice.id === appContext.articleSelected
+            ) {
+              return appContext.secondClickArticle();
+            } else {
+              return appContext.firstClickArticle(voice.id);
+            }
+          } else {
+            return appContext.selectArticle(voice.id);
           }
         }}
         //onClick={() => appContext.selectArticle(voice.id)}
         selected={voice.id === appContext.articleSelected}
       />
-    ))
-  )
-  
+    ));
+
   const renderSections = (voices) => {
     if (voices.length) {
       // j is the index of the first article that was published more than a week ago
@@ -114,30 +138,31 @@ const SideBar = () => {
         );
       } else if (j > 0) {
         firstOlderArticleId = voices[j].id;
-          return (
-            <div>
-              <div className={SideBarStyles.Header}>
-                <h2>Past 7 Days</h2>
-                {renderArticles(voices.slice(0, j))}
-              </div>
-              <div className={SideBarStyles.Header}>
-                <h2>More Stories</h2>
-                {renderArticles(voices.slice(j))}
-              </div>
-            </div>
-          );
-        } else {
-          return (
+        return (
+          <div>
             <div className={SideBarStyles.Header}>
-            {!firstOlderArticleId || firstOlderArticleId !== voices[0].id ? null : <h2>More Stories</h2>}
+              <h2>Past 7 Days</h2>
+              {renderArticles(voices.slice(0, j))}
+            </div>
+            <div className={SideBarStyles.Header}>
+              <h2>More Stories</h2>
+              {renderArticles(voices.slice(j))}
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div className={SideBarStyles.Header}>
+            {!firstOlderArticleId ||
+            firstOlderArticleId !== voices[0].id ? null : (
+              <h2>More Stories</h2>
+            )}
             {renderArticles(voices)}
           </div>
-          );
-        }
+        );
+      }
     } else {
-      return (
-        <div>Loading articles...</div>
-      );
+      return <div>Loading articles...</div>;
     }
   };
 
@@ -145,13 +170,18 @@ const SideBar = () => {
     <div className={SideBarStyles.Container}>
       <div className={SideBarStyles.ArticleSection}>
         {renderSections(appContext.voices.rows)}
-       
       </div>
-      { !!appContext.maxPageNum && 
+      {!!appContext.maxPageNum && (
         <div className={SideBarStyles.PageSection}>
-          {renderPagination(appContext.pageNum, appContext.maxPageNum, appContext.selectPage, appContext.goToPrevPage, appContext.goToNextPage)}
+          {renderPagination(
+            appContext.pageNum,
+            appContext.maxPageNum,
+            appContext.selectPage,
+            appContext.goToPrevPage,
+            appContext.goToNextPage
+          )}
         </div>
-        }
+      )}
     </div>
   );
 };

@@ -1,7 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 
 exports.handler = function (event, context, callback) {
-  var Airtable = require('airtable');
+  var Airtable = require("airtable");
   var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
     process.env.AIRTABLE_BASE_ID
   );
@@ -9,11 +9,11 @@ exports.handler = function (event, context, callback) {
   const { lat, lng, pageNum, search, ...filterOptions } =
     event.queryStringParameters;
 
-  var filterString = 'AND(';
+  var filterString = "AND(";
 
   if (search) {
     let searchValue = JSON.parse(search)[0];
-    filterString += 'OR(';
+    filterString += "OR(";
     filterString += `FIND("${searchValue}", {Name}), 
       FIND("${searchValue}", {Type}), 
       FIND("${searchValue}", {Severity}), 
@@ -24,15 +24,15 @@ exports.handler = function (event, context, callback) {
   } else if (filterOptions) {
     let filterKeys = Object.keys(filterOptions);
     filterKeys.forEach((key) => {
-      let filterStringForKey = 'OR(';
+      let filterStringForKey = "OR(";
       let filterOptionsForKey = JSON.parse(filterOptions[key]);
       filterOptionsForKey.forEach((filterOption, index) => {
         if (index !== 0) {
-          filterStringForKey += ', ';
+          filterStringForKey += ", ";
         }
         filterStringForKey += `FIND("${filterOption}", {${key}})`;
       });
-      filterStringForKey += '), ';
+      filterStringForKey += "), ";
       filterString += filterStringForKey;
     });
   }
@@ -53,26 +53,26 @@ exports.handler = function (event, context, callback) {
   var endingArticleNum = startingArticleNum + 10;
   var articleNum = 0;
 
-  base('Articles')
+  base("Articles")
     .select({
       filterByFormula: filterString,
       fields: [
-        'id',
-        'Name',
-        'lat',
-        'lng',
-        'City',
-        'Date',
-        'Type',
-        'Incident Type',
-        'Publisher',
-        'URL',
-        'Summary',
-        'Location Tags',
-        'Image',
+        "id",
+        "Name",
+        "lat",
+        "lng",
+        "City",
+        "Date",
+        "Type",
+        "Incident Type",
+        "Publisher",
+        "URL",
+        "Summary",
+        "Location Tags",
+        "Image",
       ],
-      sort: [{ field: 'Date', direction: 'desc' }],
-      view: 'All users',
+      sort: [{ field: "Date", direction: "desc" }],
+      view: "All users",
     })
     .eachPage(
       function page(records, fetchNextPage) {

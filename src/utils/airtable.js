@@ -1,15 +1,15 @@
-const BASE_URL = '.netlify/functions';
+const BASE_URL = ".netlify/functions";
 
 async function getVoices(lat, lng, pageNum = 1, ...args) {
   let cb;
   let filterOptions;
 
   args.forEach((arg) => {
-    if (typeof arg === 'function') {
+    if (typeof arg === "function") {
       cb = arg;
     }
 
-    if (typeof arg === 'object') {
+    if (typeof arg === "object") {
       filterOptions = arg;
     }
   });
@@ -26,7 +26,7 @@ async function getVoices(lat, lng, pageNum = 1, ...args) {
   }
 
   const ATresponse = await fetch(BASE_URL + `/Articles` + query, {
-    methods: 'GET',
+    methods: "GET",
   });
   const ATresponseData = await ATresponse.json();
 
@@ -42,7 +42,7 @@ async function getResources(locations, cb) {
   const ATresponse = await fetch(
     BASE_URL + `/Resources?locations=${parameters}`,
     {
-      methods: 'GET',
+      methods: "GET",
     }
   );
   const ATresponseData = await ATresponse.json();
@@ -56,7 +56,7 @@ async function getResources(locations, cb) {
 
 async function getAllArticles(cb) {
   const ATresponse = await fetch(BASE_URL + `/AllArticles`, {
-    methods: 'GET',
+    methods: "GET",
   });
   const ATresponseData = await ATresponse.json();
 

@@ -1,74 +1,74 @@
 .Container {
-	color: black;
-	font-family: "Hind";
-	padding: 2rem 6rem;
+  color: black;
+  font-family: "Hind";
+  padding: 2rem 6rem;
 }
 
 .Nav {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .Link {
-	color: black;
-	text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 .Section {
-	margin: 4rem 0;
+  margin: 4rem 0;
 }
 
 .Heading {
-	margin: 1rem 0;
+  margin: 1rem 0;
 }
 
 .Community {
-	display: grid;
-	gap: 1rem;
-	grid-template-columns: repeat(3, 1fr);
-	justify-items: start;
-	margin: 1rem auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: start;
+  margin: 1rem auto;
 }
 
 .Image {
-	border-radius: 1rem;
-	height: auto;
-	max-width: 100%;
+  border-radius: 1rem;
+  height: auto;
+  max-width: 100%;
 }
 
 .Caption {
-	line-height: 1rem;
-	margin: 1rem 0;
-	text-align: left;
+  line-height: 1rem;
+  margin: 1rem 0;
+  text-align: left;
 }
 
 .Story {
-	line-height: 2rem;
-	margin: 2rem 0;
-	text-align: justify;
+  line-height: 2rem;
+  margin: 2rem 0;
+  text-align: justify;
 }
 
 .People {
-	display: grid;
-	gap: 1rem;
-	grid-template-columns: repeat(4, 1fr);
-	justify-items: start;
-	margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: start;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-	.People {
-		grid-template-columns: repeat(3, 1fr);
-	}
+  .People {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 576px) {
-	.Community {
-		grid-template-columns: 1fr;
-	}
+  .Community {
+    grid-template-columns: 1fr;
+  }
 
-	.People {
-		grid-template-columns: 1fr;
-	}
+  .People {
+    grid-template-columns: 1fr;
+  }
 }

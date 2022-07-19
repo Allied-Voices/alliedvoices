@@ -1,12 +1,12 @@
-.FooterContainer{
-  padding:36px 36px;
-  display:flex;
+.FooterContainer {
+  padding: 36px 36px;
+  display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-@media only screen and (max-width:900px){
-  .FooterContainer{
+@media only screen and (max-width: 900px) {
+  .FooterContainer {
     flex-direction: column;
   }
 }

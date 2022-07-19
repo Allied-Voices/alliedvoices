@@ -1,22 +1,22 @@
-.Image{
-  width:auto;
-  height:225px;
+.Image {
+  width: auto;
+  height: 225px;
 }
 
-.ImagePlaceHolder{
-  width:100%;
-  height:225px;
-  display:flex;
+.ImagePlaceHolder {
+  width: 100%;
+  height: 225px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #c4c4c4;
 }
 
-.ImagePlaceHolder > *{
-  margin-top:10px
+.ImagePlaceHolder > * {
+  margin-top: 10px;
 }
 
-.Hidden{
-  display:none;
+.Hidden {
+  display: none;
 }

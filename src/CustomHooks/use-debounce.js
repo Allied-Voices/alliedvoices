@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // Our hook
 export default function useDebounce(value, delay) {
@@ -15,7 +15,7 @@ export default function useDebounce(value, delay) {
       };
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [value] 
+    [value]
   );
 
   return debouncedValue;

@@ -1,7 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 
 exports.handler = function (event, context, callback) {
-  var Airtable = require('airtable');
+  var Airtable = require("airtable");
   var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
     process.env.AIRTABLE_BASE_ID
   );
@@ -9,12 +9,12 @@ exports.handler = function (event, context, callback) {
   var data = {};
   data.rows = [];
 
-  var filterString = '';
+  var filterString = "";
 
-  base('Articles')
+  base("Articles")
     .select({
       filterByFormula: filterString,
-      fields: ['Name', 'Publisher', 'URL', 'Summary', 'Image', 'Type'],
+      fields: ["Name", "Publisher", "URL", "Summary", "Image", "Type"],
     })
     .eachPage(
       function page(records, fetchNextPage) {
