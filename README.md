@@ -1,6 +1,6 @@
 # Allied Voices
 
-This web app is intended to help users navigate their racial landscapes through data and positive resources.
+This web app is intended to help users navigate their racial landscape through data and positive resources.
 
 ## Tech Stack
 
@@ -8,13 +8,13 @@ We are building the front-end with [React](https://reactjs.org/) and deploying i
 
 ## Getting Started
 
-1. Clone this project and navigate to the project directory
+1. Clone this project and navigate to the project directory.
 
-2. Install dependencies: `npm install`
+2. Install dependencies: `npm install`. If you are using npm 7 +, use the `--legacy-peer-deps` flag.
 
-3. Install git hooks: `npm run prepare`
+3. Install git hooks: `npm run prepare`. We are using [Husky](https://github.com/typicode/husky#usage).
 
-4. Set environment variables in an `.env` file in the root directory of the project
+4. Set environment variables in a `.env` file in the root directory of the project.
 
 ```
 AIRTABLE_API_KEY=(KEY)
@@ -22,9 +22,9 @@ AIRTABLE_API_KEY=(KEY)
 AIRTABLE_BASE_ID=(BASE_ID)
 ```
 
-The [Airtable API](https://airtable.com/appO27pGCbnEq4l31/api/docs#javascript/introduction) for this project provides these values
+The [Airtable API](https://airtable.com/appO27pGCbnEq4l31/api/docs#javascript/introduction) for this project provides these values.
 
-5. Run the app: `npx netlify dev`
+5. Run the dev server: `npm run dev`.
 
 ## Environments
 
