@@ -149,9 +149,12 @@ const LandingHeader = () => {
       </div>
       <div className={LandingContentStyles.Footer}>
         <div className={LandingContentStyles.FooterAllied}>
-          <p className={LandingContentStyles.FooterAlliedText}>
+          <a
+            className={LandingContentStyles.FooterAlliedText}
+            href="mailto:ally@alliedvoices.org"
+          >
             ally@alliedvoices.org
-          </p>
+          </a>
         </div>
         <div className={LandingContentStyles.FooterSocial}>
           <a href="https://www.linkedin.com/company/allied-voices/">
